@@ -18,5 +18,21 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version> <!-- O usa la versión más reciente disponible -->
         </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE170</version>
+        </dependency>
     </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include> <!-- Incluye todos los archivos dentro de la carpeta de recursos -->
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
 </project>

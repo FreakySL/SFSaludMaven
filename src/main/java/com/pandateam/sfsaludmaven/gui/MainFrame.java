@@ -4,6 +4,10 @@
  */
 package com.pandateam.sfsaludmaven.gui;
 
+import com.pandateam.sfsaludmaven.gui.panels.*;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author santi
@@ -13,8 +17,22 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    private void ShowPanel (JPanel pan){
+        pan.setSize(650,570);
+        pan.setLocation(0,0);
+        
+        jPanContentPrincipal.removeAll();
+        jPanContentPrincipal.add(pan, BorderLayout.CENTER);
+        jPanContentPrincipal.revalidate();
+        jPanContentPrincipal.repaint();
+    }
+    
     public MainFrame() {
+       
         initComponents();
+        JPanAdmBienvenida pan = new JPanAdmBienvenida();
+        ShowPanel(pan);
+        
     }
 
     /**
@@ -26,31 +44,121 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jPanNavBar = new javax.swing.JPanel();
+        jPanButtonServicios = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanButtonCuidadores = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanButtonPacientes = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanContentPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(850, 570));
+        setMinimumSize(new java.awt.Dimension(850, 570));
+        setName("MainFrame"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(850, 570));
+        setResizable(false);
+        setSize(new java.awt.Dimension(850, 570));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
+        jPanNavBar.setBackground(new java.awt.Color(39, 168, 195));
+        jPanNavBar.setMaximumSize(new java.awt.Dimension(200, 570));
+        jPanNavBar.setMinimumSize(new java.awt.Dimension(200, 570));
+        jPanNavBar.setPreferredSize(new java.awt.Dimension(200, 570));
+        jPanNavBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(271, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(54, 54, 54))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jButton1)
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
+        jPanButtonServicios.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonServicios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonServicios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonServicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonServiciosMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Servicios");
+        jPanButtonServicios.add(jLabel1);
+
+        jPanNavBar.add(jPanButtonServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 150, 40));
+
+        jLabel2.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("San Francisco Salud");
+        jPanNavBar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 50));
+
+        jLabel3.setFont(new java.awt.Font("Roboto Condensed", 2, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Seleccione para administrar:");
+        jPanNavBar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 30));
+
+        jPanButtonCuidadores.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonCuidadores.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonCuidadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonCuidadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonCuidadoresMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Cuidadores");
+        jPanButtonCuidadores.add(jLabel4);
+
+        jPanNavBar.add(jPanButtonCuidadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 40));
+
+        jPanButtonPacientes.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonPacientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonPacientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonPacientesMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Pacientes");
+        jPanButtonPacientes.add(jLabel5);
+
+        jPanNavBar.add(jPanButtonPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, 40));
+
+        getContentPane().add(jPanNavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 570));
+
+        jPanContentPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        jPanContentPrincipal.setMaximumSize(new java.awt.Dimension(650, 570));
+        jPanContentPrincipal.setMinimumSize(new java.awt.Dimension(650, 570));
+        jPanContentPrincipal.setPreferredSize(new java.awt.Dimension(650, 570));
+        getContentPane().add(jPanContentPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 650, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanButtonCuidadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonCuidadoresMouseClicked
+        // TODO add your handling code here:
+        JPanAdmCuidadores pan = new JPanAdmCuidadores();
+        ShowPanel(pan);
+    }//GEN-LAST:event_jPanButtonCuidadoresMouseClicked
+
+    private void jPanButtonPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonPacientesMouseClicked
+        // TODO add your handling code here:
+        JPanAdmPacientes pan = new JPanAdmPacientes();
+        ShowPanel(pan);
+    }//GEN-LAST:event_jPanButtonPacientesMouseClicked
+
+    private void jPanButtonServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonServiciosMouseClicked
+        // TODO add your handling code here:
+        JPanAdmServicios pan = new JPanAdmServicios();
+        ShowPanel(pan);
+    }//GEN-LAST:event_jPanButtonServiciosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -88,6 +196,15 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanButtonCuidadores;
+    private javax.swing.JPanel jPanButtonPacientes;
+    private javax.swing.JPanel jPanButtonServicios;
+    private javax.swing.JPanel jPanContentPrincipal;
+    private javax.swing.JPanel jPanNavBar;
     // End of variables declaration//GEN-END:variables
 }
