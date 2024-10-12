@@ -24,7 +24,7 @@ public class DatabaseManager {
         String password = "admin";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(url, user, password);
             crearTablas();
         } catch (SQLException | ClassNotFoundException ex) {
@@ -43,13 +43,12 @@ public class DatabaseManager {
         return connection;
     }
 
-    private void crearTablas() {
-        String sql = "-- Crear la base de datos\n"
-                + "CREATE DATABASE IF NOT EXISTS SanFranciscoDB;\n"
-                + "USE SanFranciscoDB;\n"
-                + "\n"
-                + "-- Crear la tabla Personas\n"
-                + "CREATE TABLE Personas (\n"
+    private void crearTablas() throws SQLException {
+
+        Statement stmt = connection.createStatement();
+
+        // Crear la tabla Personas
+        stmt.execute("CREATE TABLE IF NOT EXISTS Personas (\n"
                 + "    Per_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    Per_Nombre VARCHAR(255) NOT NULL,\n"
                 + "    Per_Apellido VARCHAR(255) NOT NULL,\n"
@@ -57,61 +56,55 @@ public class DatabaseManager {
                 + "    Per_FechaNacimiento DATE NOT NULL,\n"
                 + "    Per_Telefono VARCHAR(20) NOT NULL,\n"
                 + "    Per_Correo VARCHAR(255) NOT NULL\n"
-                + ");\n"
-                + "\n"
-                + "-- Crear la tabla Pacientes (herencia de Personas)\n"
-                + "CREATE TABLE Pacientes (\n"
+                + ");");
+
+        // Crear la tabla Pacientes
+        stmt.execute("CREATE TABLE IF NOT EXISTS Pacientes (\n"
                 + "    Per_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    P_TieneSuscripcion ENUM('Sí', 'No') NOT NULL,\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Personas(Per_ID)\n"
-                + ");\n"
-                + "\n"
-                + "-- Crear la tabla Cuidadores (herencia de Personas)\n"
-                + "CREATE TABLE Cuidadores (\n"
+                + ");");
+
+        // Crear la tabla Cuidadores
+        stmt.execute("CREATE TABLE IF NOT EXISTS Cuidadores (\n"
                 + "    Per_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    C_Profesion VARCHAR(255) NOT NULL,\n"
                 + "    C_Experiencia VARCHAR(255) NOT NULL,\n"
                 + "    C_Categoria VARCHAR(255) NOT NULL,\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Personas(Per_ID)\n"
-                + ");\n"
-                + "\n"
-                + "-- Crear la tabla Socios (herencia de Pacientes)\n"
-                + "CREATE TABLE Socios (\n"
+                + ");");
+
+        stmt.execute("CREATE TABLE IF NOT EXISTS Socios (\n"
                 + "    Per_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    S_NúmeroSocio VARCHAR(20) NOT NULL,\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Pacientes(Per_ID)\n"
-                + ");\n"
-                + "\n"
-                + "-- Crear la tabla No Socios (herencia de Pacientes)\n"
-                + "CREATE TABLE NoSocios (\n"
+                + ");");
+
+        stmt.execute("CREATE TABLE IF NOT EXISTS NoSocios (\n"
                 + "    Per_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Pacientes(Per_ID)\n"
-                + ");\n"
-                + "\n"
-                + "-- Crear la tabla Suscripción\n"
-                + "CREATE TABLE Suscripcion (\n"
+                + ");");
+
+        stmt.execute("CREATE TABLE IF NOT EXISTS Suscripcion (\n"
                 + "    S_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    S_FechaInicio DATE NOT NULL,\n"
                 + "    S_Descuento DECIMAL(5, 2) NOT NULL,\n"
                 + "    S_Estado ENUM('Junior', 'Medium', 'Full', 'PreJunior', 'PreMedium', 'PreFull', 'JuniorToMedium', 'MediumToFull', 'JuniorToFull') NOT NULL\n"
-                + ");\n"
-                + "\n"
-                + "-- Relación de uno a uno entre Socios y Suscripción (Socio titular)\n"
-                + "ALTER TABLE Socios ADD CONSTRAINT FK_SocioSuscripción\n"
-                + "    FOREIGN KEY (Per_ID) REFERENCES Suscripción(S_ID);\n"
-                + "\n"
-                + "-- Crear la tabla Declaración Jurada\n"
-                + "CREATE TABLE DeclaracionJurada (\n"
+                + ");");
+
+        stmt.execute("ALTER TABLE Socios ADD CONSTRAINT FK_SocioSuscripción\n"
+                + "    FOREIGN KEY (Per_ID) REFERENCES Suscripcion(S_ID);");
+
+        stmt.execute("CREATE TABLE IF NOT EXISTS DeclaracionJurada (\n"
                 + "    DJ_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    DJ_Enfermedades TEXT,\n"
                 + "    DJ_OperacionesPrevias TEXT,\n"
                 + "    Per_ID VARCHAR(8) NOT NULL,\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Pacientes(Per_ID)\n"
-                + ");\n"
-                + "\n"
-                + "-- Crear la tabla Servicios\n"
-                + "CREATE TABLE Servicios (\n"
-                + "    S_ID VARCHAR(8) PRIMARY KEY,\n"
+                + ");");
+
+        stmt.execute("CREATE TABLE IF NOT EXISTS Servicios (\n"
+                + "    S_ID INT AUTO_INCREMENT PRIMARY KEY,\n"
                 + "    S_Descripcion TEXT NOT NULL,\n"
                 + "    S_FechaInicio DATE NOT NULL,\n"
                 + "    S_FechaFin DATE NOT NULL,\n"
@@ -121,22 +114,17 @@ public class DatabaseManager {
                 + "    Per_IDCuidador VARCHAR(8) NOT NULL,\n"
                 + "    FOREIGN KEY (Per_IDPaciente) REFERENCES Pacientes(Per_ID),\n"
                 + "    FOREIGN KEY (Per_IDCuidador) REFERENCES Cuidadores(Per_ID)\n"
-                + ");\n"
-                + "\n"
-                + "-- Crear la tabla Atenciones\n"
-                + "CREATE TABLE Atenciones (\n"
+                + ");");
+
+        stmt.execute("CREATE TABLE IF NOT EXISTS Atenciones (\n"
                 + "    A_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    A_Fecha DATE NOT NULL,\n"
                 + "    A_HoraInicio TIME NOT NULL,\n"
                 + "    A_HoraFin TIME NOT NULL,\n"
-                + "    S_ID VARCHAR(8) NOT NULL,\n"
+                + "    S_ID INT NOT NULL,\n"
                 + "    FOREIGN KEY (S_ID) REFERENCES Servicios(S_ID)\n"
-                + ");";
-        try (Statement stmt = connection.createStatement()) {
-            stmt.executeUpdate(sql);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+                + ");");
+
     }
 
 }
