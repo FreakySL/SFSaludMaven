@@ -53,13 +53,15 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanButtonPacientes = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jPanButtonInicio = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanContentPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(850, 570));
         setMinimumSize(new java.awt.Dimension(850, 570));
         setName("MainFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(850, 570));
         setResizable(false);
         setSize(new java.awt.Dimension(850, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,15 +87,17 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setText("Servicios");
         jPanButtonServicios.add(jLabel1);
 
-        jPanNavBar.add(jPanButtonServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 150, 40));
+        jPanNavBar.add(jPanButtonServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 160, 40));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto Condensed", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("San Francisco Salud");
-        jPanNavBar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 50));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Salud");
+        jPanNavBar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, 50));
 
         jLabel3.setFont(new java.awt.Font("Roboto Condensed", 2, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Seleccione para administrar:");
         jPanNavBar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 30));
 
@@ -112,7 +116,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4.setText("Cuidadores");
         jPanButtonCuidadores.add(jLabel4);
 
-        jPanNavBar.add(jPanButtonCuidadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 40));
+        jPanNavBar.add(jPanButtonCuidadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 160, 40));
 
         jPanButtonPacientes.setBackground(new java.awt.Color(0, 128, 155));
         jPanButtonPacientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -129,7 +133,30 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setText("Pacientes");
         jPanButtonPacientes.add(jLabel5);
 
-        jPanNavBar.add(jPanButtonPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, 40));
+        jPanNavBar.add(jPanButtonPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 160, 40));
+
+        jPanButtonInicio.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonInicioMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Inicio");
+        jPanButtonInicio.add(jLabel6);
+
+        jPanNavBar.add(jPanButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
+
+        jLabel7.setFont(new java.awt.Font("Roboto Condensed", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("San Francisco");
+        jPanNavBar.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 160, 50));
 
         getContentPane().add(jPanNavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 570));
 
@@ -159,6 +186,12 @@ public class MainFrame extends javax.swing.JFrame {
         JPanAdmServicios pan = new JPanAdmServicios();
         ShowPanel(pan);
     }//GEN-LAST:event_jPanButtonServiciosMouseClicked
+
+    private void jPanButtonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonInicioMouseClicked
+        // TODO add your handling code here:
+        JPanAdmBienvenida pan = new JPanAdmBienvenida();
+        ShowPanel(pan);
+    }//GEN-LAST:event_jPanButtonInicioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -201,7 +234,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanButtonCuidadores;
+    private javax.swing.JPanel jPanButtonInicio;
     private javax.swing.JPanel jPanButtonPacientes;
     private javax.swing.JPanel jPanButtonServicios;
     private javax.swing.JPanel jPanContentPrincipal;
