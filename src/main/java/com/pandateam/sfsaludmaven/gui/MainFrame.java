@@ -6,6 +6,8 @@ package com.pandateam.sfsaludmaven.gui;
 
 import com.pandateam.sfsaludmaven.gui.panels.*;
 import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -28,10 +30,13 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     public MainFrame() {
-       
+        
+        ImageIcon imgLogo = new ImageIcon (getClass().getResource("/Images/logo.png"));
+        
         initComponents();
         JPanAdmBienvenida pan = new JPanAdmBienvenida();
         ShowPanel(pan);
+        
         
     }
 
@@ -56,6 +61,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanButtonInicio = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanContentPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,19 +94,19 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setText("Servicios");
         jPanButtonServicios.add(jLabel1);
 
-        jPanNavBar.add(jPanButtonServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 160, 40));
+        jPanNavBar.add(jPanButtonServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 160, 40));
 
         jLabel2.setFont(new java.awt.Font("Roboto Condensed", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Salud");
-        jPanNavBar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, 50));
+        jPanNavBar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 30));
 
         jLabel3.setFont(new java.awt.Font("Roboto Condensed", 2, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Seleccione para administrar:");
-        jPanNavBar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 30));
+        jPanNavBar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 160, 30));
 
         jPanButtonCuidadores.setBackground(new java.awt.Color(0, 128, 155));
         jPanButtonCuidadores.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -116,7 +123,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4.setText("Cuidadores");
         jPanButtonCuidadores.add(jLabel4);
 
-        jPanNavBar.add(jPanButtonCuidadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 160, 40));
+        jPanNavBar.add(jPanButtonCuidadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 160, 40));
 
         jPanButtonPacientes.setBackground(new java.awt.Color(0, 128, 155));
         jPanButtonPacientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -133,7 +140,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setText("Pacientes");
         jPanButtonPacientes.add(jLabel5);
 
-        jPanNavBar.add(jPanButtonPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 160, 40));
+        jPanNavBar.add(jPanButtonPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 160, 40));
 
         jPanButtonInicio.setBackground(new java.awt.Color(0, 128, 155));
         jPanButtonInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -150,13 +157,19 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6.setText("Inicio");
         jPanButtonInicio.add(jLabel6);
 
-        jPanNavBar.add(jPanButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
+        jPanNavBar.add(jPanButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, 40));
 
         jLabel7.setFont(new java.awt.Font("Roboto Condensed", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("San Francisco");
-        jPanNavBar.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 160, 50));
+        jPanNavBar.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 50));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.png"))); // NOI18N
+        jPanNavBar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bg2.png"))); // NOI18N
+        jPanNavBar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 570));
 
         getContentPane().add(jPanNavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 570));
 
@@ -236,6 +249,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanButtonCuidadores;
     private javax.swing.JPanel jPanButtonInicio;
     private javax.swing.JPanel jPanButtonPacientes;
