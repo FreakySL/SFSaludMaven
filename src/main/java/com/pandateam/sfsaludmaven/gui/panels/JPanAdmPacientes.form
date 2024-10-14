@@ -78,7 +78,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="140" pref="140" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanButtonInicio" min="-2" pref="390" max="-2" attributes="0"/>
+                      <Component id="jPanButtonIngresarPaciente" min="-2" pref="390" max="-2" attributes="0"/>
                       <Component id="jPanButtonConsultarPacientes" min="-2" pref="390" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -88,7 +88,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                  <Component id="jPanButtonInicio" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jPanButtonIngresarPaciente" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                   <Component id="jPanButtonConsultarPacientes" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
@@ -130,7 +130,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanButtonInicio">
+        <Container class="javax.swing.JPanel" name="jPanButtonIngresarPaciente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9b" green="80" red="0" type="rgb"/>
@@ -145,7 +145,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanButtonInicioMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanButtonIngresarPacienteMouseClicked"/>
           </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
