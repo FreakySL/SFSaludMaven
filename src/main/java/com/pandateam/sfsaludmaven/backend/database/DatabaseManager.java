@@ -19,6 +19,8 @@ public class DatabaseManager {
     private Connection connection;
 
     private DatabaseManager() {
+
+        //CONSULTAR SOBRE INFORMACIÓN DE USUARIO Y CONTRASEÑA EN EL CÓDIGO
         String url = "jdbc:mysql://localhost:3306/cuidadosdb";
         String user = "root";
         String password = "admin";
@@ -61,7 +63,7 @@ public class DatabaseManager {
         // Crear la tabla Pacientes
         stmt.execute("CREATE TABLE IF NOT EXISTS Pacientes (\n"
                 + "    Per_ID VARCHAR(8) PRIMARY KEY,\n"
-                + "    P_TieneSuscripcion ENUM('Sí', 'No') NOT NULL,\n"
+                + "    P_TieneSuscripcion VARCHAR(8) NOT NULL,\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Personas(Per_ID)\n"
                 + ");");
 
@@ -76,7 +78,7 @@ public class DatabaseManager {
 
         stmt.execute("CREATE TABLE IF NOT EXISTS Socios (\n"
                 + "    Per_ID VARCHAR(8) PRIMARY KEY,\n"
-                + "    S_NúmeroSocio VARCHAR(20) NOT NULL,\n"
+                + "    S_NumeroSocio VARCHAR(20) NOT NULL,\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Pacientes(Per_ID)\n"
                 + ");");
 
@@ -89,10 +91,10 @@ public class DatabaseManager {
                 + "    S_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    S_FechaInicio DATE NOT NULL,\n"
                 + "    S_Descuento DECIMAL(5, 2) NOT NULL,\n"
-                + "    S_Estado ENUM('Junior', 'Medium', 'Full', 'PreJunior', 'PreMedium', 'PreFull', 'JuniorToMedium', 'MediumToFull', 'JuniorToFull') NOT NULL\n"
+                + "    S_Estado VARCHAR(30) NOT NULL\n"
                 + ");");
 
-        stmt.execute("ALTER TABLE Socios ADD CONSTRAINT FK_SocioSuscripción\n"
+        stmt.execute("ALTER TABLE Socios ADD CONSTRAINT FK_SocioSuscripcion\n"
                 + "    FOREIGN KEY (Per_ID) REFERENCES Suscripcion(S_ID);");
 
         stmt.execute("CREATE TABLE IF NOT EXISTS DeclaracionJurada (\n"
@@ -104,12 +106,12 @@ public class DatabaseManager {
                 + ");");
 
         stmt.execute("CREATE TABLE IF NOT EXISTS Servicios (\n"
-                + "    S_ID INT AUTO_INCREMENT PRIMARY KEY,\n"
+                + "    S_ID VARCHAR(8) PRIMARY KEY,\n"
                 + "    S_Descripcion TEXT NOT NULL,\n"
                 + "    S_FechaInicio DATE NOT NULL,\n"
                 + "    S_FechaFin DATE NOT NULL,\n"
                 + "    S_Costo DECIMAL(10, 2) NOT NULL,\n"
-                + "    S_Tipo ENUM('Eventualidad', 'Cuidado Nocturno', 'Cuidador Interno', 'Cuidado Externo', 'Acompañamiento', 'Niñera', 'Fin de semana') NOT NULL,\n"
+                + "    S_Tipo VARCHAR(30) NOT NULL,\n"
                 + "    Per_IDPaciente VARCHAR(8) NOT NULL,\n"
                 + "    Per_IDCuidador VARCHAR(8) NOT NULL,\n"
                 + "    FOREIGN KEY (Per_IDPaciente) REFERENCES Pacientes(Per_ID),\n"
@@ -121,7 +123,7 @@ public class DatabaseManager {
                 + "    A_Fecha DATE NOT NULL,\n"
                 + "    A_HoraInicio TIME NOT NULL,\n"
                 + "    A_HoraFin TIME NOT NULL,\n"
-                + "    S_ID INT NOT NULL,\n"
+                + "    S_ID VARCHAR(8) NOT NULL,\n"
                 + "    FOREIGN KEY (S_ID) REFERENCES Servicios(S_ID)\n"
                 + ");");
 
