@@ -4,6 +4,9 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author biane
@@ -13,8 +16,19 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmPacientes
      */
+    private void ShowPanel (JPanel pan){
+        pan.setSize(650,500);
+        pan.setLocation(0,0);
+        
+        jPanContentPacientes.removeAll();
+        jPanContentPacientes.add(pan, BorderLayout.CENTER);
+        jPanContentPacientes.revalidate();
+        jPanContentPacientes.repaint();
+    }
+    
     public JPanAdmPacientes() {
         initComponents();
+        
     }
 
     /**
@@ -27,21 +41,100 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jPanContentPacientes = new javax.swing.JPanel();
+        jPanButtonConsultarPacientes = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanButtonInicio = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(650, 570));
         setMinimumSize(new java.awt.Dimension(650, 570));
+        setPreferredSize(new java.awt.Dimension(650, 570));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto Condensed", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 153));
         jLabel1.setText("Administración de Pacientes");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        jPanContentPacientes.setBackground(new java.awt.Color(255, 255, 255));
+        jPanContentPacientes.setMaximumSize(new java.awt.Dimension(650, 500));
+        jPanContentPacientes.setMinimumSize(new java.awt.Dimension(650, 500));
+        jPanContentPacientes.setPreferredSize(new java.awt.Dimension(650, 500));
+
+        jPanButtonConsultarPacientes.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonConsultarPacientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonConsultarPacientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonConsultarPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonConsultarPacientesMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Consultar un paciente");
+        jPanButtonConsultarPacientes.add(jLabel5);
+
+        jPanButtonInicio.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonInicioMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Ingresar un nuevo paciente");
+        jPanButtonInicio.add(jLabel6);
+
+        javax.swing.GroupLayout jPanContentPacientesLayout = new javax.swing.GroupLayout(jPanContentPacientes);
+        jPanContentPacientes.setLayout(jPanContentPacientesLayout);
+        jPanContentPacientesLayout.setHorizontalGroup(
+            jPanContentPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanContentPacientesLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addGroup(jPanContentPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanButtonConsultarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanContentPacientesLayout.setVerticalGroup(
+            jPanContentPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanContentPacientesLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jPanButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jPanButtonConsultarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(jPanContentPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, 500));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanButtonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonInicioMouseClicked
+        // TODO add your handling code here:
+        JPanAdmBienvenida pan = new JPanAdmBienvenida();
+        ShowPanel(pan);
+    }//GEN-LAST:event_jPanButtonInicioMouseClicked
+
+    private void jPanButtonConsultarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonConsultarPacientesMouseClicked
+        // TODO add your handling code here:
+        JPanAdmPacientesConsultar pan = new JPanAdmPacientesConsultar();
+        ShowPanel(pan);
+    }//GEN-LAST:event_jPanButtonConsultarPacientesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanButtonConsultarPacientes;
+    private javax.swing.JPanel jPanButtonInicio;
+    private javax.swing.JPanel jPanContentPacientes;
     // End of variables declaration//GEN-END:variables
 }
