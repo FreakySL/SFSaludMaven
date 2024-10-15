@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="daoTest.ServicioDAOTest" time="0.823" tests="1" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="daoTest.ServicioDAOTest" time="0.625" tests="1" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="AR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\santi\AppData\Local\Temp\surefire14029604990018091333\surefirebooter3285932649073348036.jar C:\Users\santi\AppData\Local\Temp\surefire14029604990018091333 2024-10-13T23-53-02_974-jvmRun1 surefire17971147854307990689tmp surefire_016678519548094226957tmp"/>
+    <property name="sun.java.command" value="C:\Users\santi\AppData\Local\Temp\surefire7744338836662924095\surefirebooter9218398711159077046.jar C:\Users\santi\AppData\Local\Temp\surefire7744338836662924095 2024-10-14T01-08-21_907-jvmRun1 surefire17920687973820256219tmp surefire_013697893326424053534tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="daoTest.ServicioDAOTest"/>
     <property name="surefire.test.class.path" value="C:\Users\santi\OneDrive\Desktop\SFSaludMaven\SFSaludMaven\target\test-classes;C:\Users\santi\OneDrive\Desktop\SFSaludMaven\SFSaludMaven\target\classes;C:\Users\santi\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\santi\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\santi\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE170\AbsoluteLayout-RELEASE170.jar;C:\Users\santi\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\santi\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\santi\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\santi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\santi\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\santi\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\santi\AppData\Local\Temp\surefire14029604990018091333\surefirebooter3285932649073348036.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\santi\AppData\Local\Temp\surefire7744338836662924095\surefirebooter9218398711159077046.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.11+7-LTS-207"/>
@@ -58,11 +58,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAgregar" classname="daoTest.ServicioDAOTest" time="0.803">
-    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at daoTest.ServicioDAOTest.testAgregar(ServicioDAOTest.java:35)
+  <testcase name="testAgregar" classname="daoTest.ServicioDAOTest" time="0.608">
+    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: El servicio debería haberse creado correctamente ==> expected: <true> but was: <false>
+	at daoTest.ServicioDAOTest.testAgregar(ServicioDAOTest.java:34)
 ]]></failure>
-    <system-err><![CDATA[java.sql.SQLException: Duplicate foreign key constraint name 'FK_SocioSuscripcion'
+    <system-err><![CDATA[java.sql.SQLException: Duplicate foreign key constraint name 'FK_Socios_Suscripcion_Unique'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
 	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)

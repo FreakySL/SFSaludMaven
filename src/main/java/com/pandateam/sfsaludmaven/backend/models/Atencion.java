@@ -13,16 +13,16 @@ import java.sql.Time;
  */
 public class Atencion {
     
-    private long idAtencion;
+    private int idAtencion;
     private Date fecha;
     private Time horaInicio;
     private Time horaFin;
 
-    public long getIdAtencion() {
+    public int getIdAtencion() {
         return idAtencion;
     }
 
-    public void setIdAtencion(long idAtencion) {
+    public void setIdAtencion(int idAtencion) {
         this.idAtencion = idAtencion;
     }
 

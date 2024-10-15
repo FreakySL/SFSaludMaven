@@ -11,20 +11,20 @@ import java.util.Date;
  * @author santi
  */
 public class ServicioDTO {
-    private long idServicio;
+    private int idServicio;
     private String descripcion;
     private Date fechaInicio;
     private Date fechaFin;
     private double costo;
-    private int tipoServicio;
-    private long idPaciente;
-    private long idCuidador;
+    private String tipoServicio;
+    private int idPaciente;
+    private int idCuidador;
 
     // Constructor vacío
     public ServicioDTO() {}
 
     // Constructor completo
-    public ServicioDTO(long idServicio, String descripcion, Date fechaInicio, Date fechaFin, double costo, int tipoServicio, long idPaciente, long idCuidador) {
+    public ServicioDTO(int idServicio, String descripcion, Date fechaInicio, Date fechaFin, double costo, String tipoServicio, int idPaciente, int idCuidador) {
         this.idServicio = idServicio;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
@@ -37,11 +37,11 @@ public class ServicioDTO {
 
     // Getters y Setters
 
-    public long getIdServicio() {
+    public int getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(long idServicio) {
+    public void setIdServicio(int idServicio) {
         this.idServicio = idServicio;
     }
 
@@ -77,27 +77,27 @@ public class ServicioDTO {
         this.costo = costo;
     }
 
-    public int getTipoServicio() {
+    public String getTipoServicio() {
         return tipoServicio;
     }
 
-    public void setTipoServicio(int tipoServicio) {
+    public void setTipoServicio(String tipoServicio) {
         this.tipoServicio = tipoServicio;
     }
 
-    public long getIdPaciente() {
+    public int getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(long idPaciente) {
+    public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
     }
 
-    public long getIdCuidador() {
+    public int getIdCuidador() {
         return idCuidador;
     }
 
-    public void setIdCuidador(long idCuidador) {
+    public void setIdCuidador(int idCuidador) {
         this.idCuidador = idCuidador;
     }
     

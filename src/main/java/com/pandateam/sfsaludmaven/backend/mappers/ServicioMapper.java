@@ -16,14 +16,14 @@ public class ServicioMapper{
     
     public ServicioDTO map(ResultSet rs) throws SQLException {
         ServicioDTO servicioDTO = new ServicioDTO();
-        servicioDTO.setIdServicio(rs.getLong("idServicio"));
+        servicioDTO.setIdServicio(rs.getInt("idServicio"));
         servicioDTO.setDescripcion(rs.getString("descripcion"));
         servicioDTO.setFechaInicio(rs.getDate("fechaInicio"));
         servicioDTO.setFechaFin(rs.getDate("fechaFin"));
         servicioDTO.setCosto(rs.getDouble("costo"));
-        servicioDTO.setTipoServicio(rs.getInt("tipoServicio"));
-        servicioDTO.setIdPaciente(rs.getLong("idPaciente"));
-        servicioDTO.setIdCuidador(rs.getLong("idCuidador"));
+        servicioDTO.setTipoServicio(rs.getString("tipoServicio"));
+        servicioDTO.setIdPaciente(rs.getInt("idPaciente"));
+        servicioDTO.setIdCuidador(rs.getInt("idCuidador"));
         return servicioDTO;
     }
 }

@@ -34,7 +34,7 @@ public class ServicioDAO implements DAO<ServicioDTO>{
             pstmt.setDate(2, new java.sql.Date(servicioDTO.getFechaInicio().getTime()));
             pstmt.setDate(3, new java.sql.Date(servicioDTO.getFechaFin().getTime()));
             pstmt.setDouble(4, servicioDTO.getCosto());
-            pstmt.setInt(5, servicioDTO.getTipoServicio());
+            pstmt.setString(5, servicioDTO.getTipoServicio());
             pstmt.setLong(6, servicioDTO.getIdPaciente());
             pstmt.setLong(7, servicioDTO.getIdCuidador());
             
