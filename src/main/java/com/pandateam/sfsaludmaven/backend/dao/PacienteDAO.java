@@ -55,24 +55,49 @@ public class PacienteDAO implements DAO<PacienteDTO> {
 
     public ResultSet filtrarPacientes(String nombre, String apellido, String documento, String numeroSocio) throws SQLException {
 
-        String sql = "String sql = \"SELECT p.Per_ID, p.Per_Nombre, p.Per_Apellido, p.Per_NumeroDocumento, s.S_NumeroSocio \" +\n"
-                + "                     \"FROM Persona p \" +\n"
-                + "                     \"JOIN Paciente pac ON p.Per_ID = pac.Per_ID \" +\n"
-                + "                     \"LEFT JOIN Socio s ON pac.Per_ID = s.Per_ID \" +\n"
-                + "                     \"WHERE p.Per_Nombre LIKE ? AND p.Per_Apellido LIKE ? \" +\n"
-                + "                     \"AND p.Per_NumeroDocumento LIKE ? AND s.S_NumeroSocio LIKE ?\";";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+        // Construir la consulta SQL correctamente
+        String sql = "SELECT p.Per_ID, p.Per_Nombre, p.Per_Apellido, p.Per_NumeroDocumento, s.S_NumeroSocio "
+                + "FROM Persona p "
+                + "JOIN Paciente pac ON p.Per_ID = pac.Per_ID "
+                + "LEFT JOIN Socio s ON pac.Per_ID = s.Per_ID "
+                + "WHERE p.Per_Nombre LIKE ? AND p.Per_Apellido LIKE ? "
+                + "AND p.Per_NumeroDocumento LIKE ? AND s.S_NumeroSocio LIKE ?;";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
             pstmt.setString(1, "%" + nombre + "%");
             pstmt.setString(2, "%" + apellido + "%");
             pstmt.setString(3, "%" + documento + "%");
             pstmt.setString(4, "%" + numeroSocio + "%");
-            return pstmt.executeQuery();
-            
+
+            ResultSet rs = pstmt.executeQuery();
+
+            // Mostrar los resultados en consola
+            while (rs.next()) {
+                // Obtener los datos de cada columna
+                int id = rs.getInt("Per_ID");
+                String nombrePaciente = rs.getString("Per_Nombre");
+                String apellidoPaciente = rs.getString("Per_Apellido");
+                String documentoPaciente = rs.getString("Per_NumeroDocumento");
+                String numeroSocioPaciente = rs.getString("S_NumeroSocio");
+
+                // Mostrar los datos en consola
+                System.out.println("ID: " + id);
+                System.out.println("Nombre: " + nombrePaciente);
+                System.out.println("Apellido: " + apellidoPaciente);
+                System.out.println("Documento: " + documentoPaciente);
+                System.out.println("Número de Socio: " + numeroSocioPaciente);
+                System.out.println("----------------------------------");
+            }
+
+            // Devolver el ResultSet si aún lo necesitas
+            return rs;
+
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;
         }
-
     }
 
 }

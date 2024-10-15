@@ -4,6 +4,13 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author biane
@@ -13,8 +20,11 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmPacientesConsultar
      */
+    private Object[] o = new Object[5];
+    
     public JPanAdmPacientesConsultar() {
         initComponents();
+        
     }
 
     /**
@@ -102,9 +112,24 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Apellido", "DNI", "N° Socio"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableConsultaPaciente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -189,7 +214,20 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
     }//GEN-LAST:event_jTFNroAfiliadoPacienteActionPerformed
 
     private void jButtBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtBuscarPacienteActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            DefaultTableModel tabla = PacienteManager.consultarPaciente(jTFNombrePaciente.getText(), jTFApellidoPaciente.getText(), jTFDNIPaciente.getText(), jTFNroAfiliadoPaciente.getText());
+          
+            
+            o[0] = jTFNombrePaciente.getText().trim();
+            o[1] = jTFApellidoPaciente.getText().trim();
+            o[2] = jTFDNIPaciente.getText().trim();
+            o[3] = jTFNroAfiliadoPaciente.getText().trim();
+            
+            tabla.addRow(o);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmPacientesConsultar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtBuscarPacienteActionPerformed
 
 

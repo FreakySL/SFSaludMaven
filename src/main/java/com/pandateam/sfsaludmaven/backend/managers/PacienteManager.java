@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PacienteManager {
     
-    private static PacienteDAO pacienteDAO;
+    private static PacienteDAO pacienteDAO = new PacienteDAO();
     
     public static DefaultTableModel consultarPaciente(String nombre, String apellido, String documento, String numeroSocio) throws SQLException{
         
