@@ -44,7 +44,7 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
         jPanContentPacientes = new javax.swing.JPanel();
         jPanButtonConsultarPacientes = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanButtonInicio = new javax.swing.JPanel();
+        jPanButtonIngresarPaciente = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -79,12 +79,12 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
         jLabel5.setText("Consultar un paciente");
         jPanButtonConsultarPacientes.add(jLabel5);
 
-        jPanButtonInicio.setBackground(new java.awt.Color(0, 128, 155));
-        jPanButtonInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanButtonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanButtonInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanButtonIngresarPaciente.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonIngresarPaciente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonIngresarPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonIngresarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanButtonInicioMouseClicked(evt);
+                jPanButtonIngresarPacienteMouseClicked(evt);
             }
         });
 
@@ -92,7 +92,7 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Ingresar un nuevo paciente");
-        jPanButtonInicio.add(jLabel6);
+        jPanButtonIngresarPaciente.add(jLabel6);
 
         javax.swing.GroupLayout jPanContentPacientesLayout = new javax.swing.GroupLayout(jPanContentPacientes);
         jPanContentPacientes.setLayout(jPanContentPacientesLayout);
@@ -101,14 +101,14 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
             .addGroup(jPanContentPacientesLayout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addGroup(jPanContentPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanButtonIngresarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanButtonConsultarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanContentPacientesLayout.setVerticalGroup(
             jPanContentPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanContentPacientesLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addComponent(jPanButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanButtonIngresarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jPanButtonConsultarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -116,11 +116,11 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
         add(jPanContentPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, 500));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanButtonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonInicioMouseClicked
+    private void jPanButtonIngresarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonIngresarPacienteMouseClicked
         // TODO add your handling code here:
-        JPanAdmBienvenida pan = new JPanAdmBienvenida();
+        JPanAdmEnConstruccion pan = new JPanAdmEnConstruccion();
         ShowPanel(pan);
-    }//GEN-LAST:event_jPanButtonInicioMouseClicked
+    }//GEN-LAST:event_jPanButtonIngresarPacienteMouseClicked
 
     private void jPanButtonConsultarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonConsultarPacientesMouseClicked
         // TODO add your handling code here:
@@ -134,7 +134,7 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanButtonConsultarPacientes;
-    private javax.swing.JPanel jPanButtonInicio;
+    private javax.swing.JPanel jPanButtonIngresarPaciente;
     private javax.swing.JPanel jPanContentPacientes;
     // End of variables declaration//GEN-END:variables
 }
