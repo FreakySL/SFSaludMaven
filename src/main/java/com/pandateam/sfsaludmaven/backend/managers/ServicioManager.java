@@ -14,17 +14,14 @@ import java.util.concurrent.TimeUnit;
  * @author santi
  */
 public class ServicioManager {
-    private static ServicioDAO servicioDAO;
+    private ServicioDAO servicioDAO;
 
     public ServicioManager() {
         servicioDAO = new ServicioDAO();
     }
 
-    public static boolean agregarServicio(String descripcion,String tipoServicio, Date fechaInicio, Date fechaFin, double costo, int idPaciente, int idCuidador) {
-        
-        ServicioDTO servicioDTO = new ServicioDTO(0, descripcion, fechaInicio, fechaFin, costo, tipoServicio, idPaciente, idCuidador);
-        
-         return servicioDAO.create(servicioDTO);
+    public void agregarServicio(ServicioDTO servicioDTO) {
+        servicioDAO.create(servicioDTO);
     }
     
     public static double calcularHorasServicio(String tipoServ, Date fInicio, Date fFin, int cantAtenciones, int cantHorasDia, double costoHora){
