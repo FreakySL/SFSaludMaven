@@ -6,6 +6,8 @@ package com.pandateam.sfsaludmaven.backend.managers;
 
 import com.pandateam.sfsaludmaven.backend.dao.ServicioDAO;
 import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -20,6 +22,14 @@ public class ServicioManager {
 
     public void agregarServicio(ServicioDTO servicioDTO) {
         servicioDAO.create(servicioDTO);
+    }
+    
+    public static double calcularHorasServicio(String tipoServ, Date fInicio, Date fFin, int cantAtenciones, int cantHorasDia, double costoHora){
+        long tiempoTranscurrido = fFin.getTime() - fInicio.getTime();
+        TimeUnit unidad = TimeUnit.DAYS;
+        long dias = unidad.convert(tiempoTranscurrido, TimeUnit.MILLISECONDS);
+        
+        return dias*cantAtenciones*cantHorasDia*costoHora+0.0;
     }
 
     // Métodos adicionales para actualizar y eliminar servicios...
