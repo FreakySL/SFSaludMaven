@@ -6,6 +6,7 @@ package com.pandateam.sfsaludmaven.gui.panels;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
 
 /**
  *
@@ -13,21 +14,21 @@ import javax.swing.JPanel;
  */
 public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
-    private void ShowPanel (JPanel pan){
+    private void ShowPanel(JPanel pan) {
         pan.setSize(638, 457);
-        pan.setLocation(0,0);
-        
+        pan.setLocation(0, 0);
+
         jPanTabConsultarPaciente.removeAll();
         jPanTabConsultarPaciente.add(pan, BorderLayout.CENTER);
         jPanTabConsultarPaciente.revalidate();
         jPanTabConsultarPaciente.repaint();
     }
-    
+
     public JPanAdmServiciosCargar() {
         initComponents();
         JPanAdmEnConstruccion pan = new JPanAdmEnConstruccion();
         ShowPanel(pan);
-        
+
     }
 
     /**
@@ -57,11 +58,11 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jTabbedPaneCargarServicios = new javax.swing.JTabbedPane();
         jPanTabDatosServicio = new javax.swing.JPanel();
         jCBTipoServicio = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jSpinner1 = new javax.swing.JSpinner();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
+        JDCFechaInicio = new com.toedter.calendar.JDateChooser();
+        JSpinCantAtenciones = new javax.swing.JSpinner();
+        JDCFechaFin = new com.toedter.calendar.JDateChooser();
+        jSpinCantHorasDia = new javax.swing.JSpinner();
+        JSpinCostoHora = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -70,9 +71,9 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jButtSiguienteIngreso = new javax.swing.JButton();
         jButtCalcular = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPanCostoServicio = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jLabCostoServicio = new javax.swing.JLabel();
         jPanTabConsultarPaciente = new javax.swing.JPanel();
         jPanTabConsultarCuidador = new javax.swing.JPanel();
         jPanTabConfirmacion = new javax.swing.JPanel();
@@ -202,11 +203,17 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jCBTipoServicio.setForeground(new java.awt.Color(0, 0, 0));
         jCBTipoServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuidador Interno", "Cuidador Externo", "Cuidador Nocturno", "Acompañamiento", "Cuidado de niños", "Cuidador de fin de semana" }));
         jPanTabDatosServicio.add(jCBTipoServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
-        jPanTabDatosServicio.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 164, -1));
-        jPanTabDatosServicio.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 171, 164, -1));
-        jPanTabDatosServicio.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 164, -1));
-        jPanTabDatosServicio.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 211, 164, -1));
-        jPanTabDatosServicio.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 251, 164, -1));
+
+        JDCFechaInicio.setBackground(new java.awt.Color(255, 255, 255));
+        JDCFechaInicio.setForeground(new java.awt.Color(0, 0, 0));
+        jPanTabDatosServicio.add(JDCFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 164, -1));
+        jPanTabDatosServicio.add(JSpinCantAtenciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 171, 164, -1));
+
+        JDCFechaFin.setBackground(new java.awt.Color(255, 255, 255));
+        JDCFechaFin.setForeground(new java.awt.Color(0, 0, 0));
+        jPanTabDatosServicio.add(JDCFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 164, -1));
+        jPanTabDatosServicio.add(jSpinCantHorasDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 211, 164, -1));
+        jPanTabDatosServicio.add(JSpinCostoHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 251, 164, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
@@ -258,36 +265,36 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         });
         jPanTabDatosServicio.add(jButtCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 291, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanCostoServicio.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel14.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 102, 102));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("El costo total del servicio es de:");
 
-        jLabel15.setFont(new java.awt.Font("Roboto Condensed", 0, 48)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("$00000");
+        jLabCostoServicio.setFont(new java.awt.Font("Roboto Condensed", 0, 48)); // NOI18N
+        jLabCostoServicio.setForeground(new java.awt.Color(0, 102, 102));
+        jLabCostoServicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabCostoServicio.setText("$00000");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanCostoServicioLayout = new javax.swing.GroupLayout(jPanCostoServicio);
+        jPanCostoServicio.setLayout(jPanCostoServicioLayout);
+        jPanCostoServicioLayout.setHorizontalGroup(
+            jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabCostoServicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanCostoServicioLayout.setVerticalGroup(
+            jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanCostoServicioLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabCostoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        jPanTabDatosServicio.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 230, 220));
+        jPanTabDatosServicio.add(jPanCostoServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 230, 220));
 
         jTabbedPaneCargarServicios.addTab("Ingrese los datos", jPanTabDatosServicio);
 
@@ -363,26 +370,46 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
     private void jButtCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtCalcularActionPerformed
         // TODO add your handling code here:
+        //((Integer)JSpinCantAtenciones.getValue()).intValue(),((Integer)jSpinCantHorasDia.getValue()).intValue(),
+        int cantAtenciones = ((Integer) JSpinCantAtenciones.getValue());
+        int cantHorasDia = ((Integer) jSpinCantHorasDia.getValue());
+
+        // Convertir el valor de JSpinCostoHora a Double correctamente
+        Number costoHoraValue = (Number) JSpinCostoHora.getValue(); // Esto manejará tanto Integer como Double
+        double costoHora = costoHoraValue.doubleValue(); // Convertir a double
+
+        double precio = ServicioManager.calcularHorasServicio(
+                jCBTipoServicio.getSelectedItem().toString(),
+                JDCFechaInicio.getDate(),
+                JDCFechaFin.getDate(),
+                cantAtenciones,
+                cantHorasDia,
+                costoHora
+        );
+        
+        jLabCostoServicio.setText("$" + precio);
     }//GEN-LAST:event_jButtCalcularActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser JDCFechaFin;
+    private com.toedter.calendar.JDateChooser JDCFechaInicio;
+    private javax.swing.JSpinner JSpinCantAtenciones;
+    private javax.swing.JSpinner JSpinCostoHora;
     private javax.swing.JButton jButtCalcular;
     private javax.swing.JButton jButtSiguienteIngreso;
     private javax.swing.JButton jButtSiguienteIngreso1;
     private javax.swing.JComboBox<String> jCBTipoServicio;
     private javax.swing.JComboBox<String> jCBTipoServicio1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private com.toedter.calendar.JDateChooser jDateChooser4;
+    private javax.swing.JLabel jLabCostoServicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -391,15 +418,13 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanCostoServicio;
     private javax.swing.JPanel jPanTabConfirmacion;
     private javax.swing.JPanel jPanTabConsultarCuidador;
     private javax.swing.JPanel jPanTabConsultarPaciente;
     private javax.swing.JPanel jPanTabDatosServicio;
     private javax.swing.JPanel jPanTabDatosServicio1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinCantHorasDia;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JSpinner jSpinner6;
