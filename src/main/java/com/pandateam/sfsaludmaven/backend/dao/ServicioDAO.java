@@ -28,7 +28,7 @@ public class ServicioDAO implements DAO<ServicioDTO>{
     
     @Override
     public boolean create(ServicioDTO servicioDTO) {
-        String sql = "INSERT INTO Servicios (S_Descripcion, S_FechaInicio, S_FechaFin, S_Costo, S_Tipo, Per_IDPaciente, Per_IDCuidador) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Servicio (S_Descripcion, S_FechaInicio, S_FechaFin, S_Costo, S_Tipo, Per_IDPaciente, Per_IDCuidador) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, servicioDTO.getDescripcion());
             pstmt.setDate(2, new java.sql.Date(servicioDTO.getFechaInicio().getTime()));

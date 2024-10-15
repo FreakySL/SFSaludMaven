@@ -27,8 +27,8 @@ public class ServicioDAOTest {
         servicioDTO.setFechaFin(new Date());
         servicioDTO.setCosto(100.0);
         servicioDTO.setTipoServicio("Cuidado Nocturno");
-        servicioDTO.setIdPaciente(8);
-        servicioDTO.setIdCuidador(8);
+        servicioDTO.setIdPaciente(3);
+        servicioDTO.setIdCuidador(1);
 
         boolean creado = servicioDAO.create(servicioDTO);
         assertTrue(creado, "El servicio debería haberse creado correctamente");
