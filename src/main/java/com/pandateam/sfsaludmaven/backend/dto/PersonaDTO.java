@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.pandateam.sfsaludmaven.backend.models;
+package com.pandateam.sfsaludmaven.backend.dto;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author santi
  */
-public class Persona {
+public class PersonaDTO {
     
     private int idPersona;
     private String nombre;
@@ -20,6 +20,20 @@ public class Persona {
     private int telefono;
     private String mail;
     private String esp;
+
+    public PersonaDTO(int idPersona, String nombre, String apellido, String dni, Date fechaNacimiento, int telefono, String mail, String esp) {
+        this.idPersona = idPersona;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+        this.mail = mail;
+        this.esp = esp;
+    }
+
+    public PersonaDTO() {
+    }
     
     public int getIdPersona() {
         return idPersona;

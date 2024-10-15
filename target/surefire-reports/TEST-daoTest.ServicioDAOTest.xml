@@ -57,11 +57,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAgregar" classname="daoTest.ServicioDAOTest" time="0.504">
-    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at daoTest.ServicioDAOTest.testAgregar(ServicioDAOTest.java:35)
+  <testcase name="testAgregar" classname="daoTest.ServicioDAOTest" time="0.608">
+    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: El servicio debería haberse creado correctamente ==> expected: <true> but was: <false>
+	at daoTest.ServicioDAOTest.testAgregar(ServicioDAOTest.java:34)
 ]]></failure>
-    <system-err><![CDATA[java.sql.SQLException: Duplicate foreign key constraint name 'FK_SocioSuscripcion'
+    <system-err><![CDATA[java.sql.SQLException: Duplicate foreign key constraint name 'FK_Socios_Suscripcion_Unique'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
 	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)

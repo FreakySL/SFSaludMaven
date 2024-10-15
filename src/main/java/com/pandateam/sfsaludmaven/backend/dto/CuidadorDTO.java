@@ -2,19 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.pandateam.sfsaludmaven.backend.models;
+package com.pandateam.sfsaludmaven.backend.dto;
 
 /**
  *
  * @author santi
  */
-public class Cuidador extends Persona{
+public class CuidadorDTO {
     
     private int idCuidador;
     private String profesion;
     private String experiencia;
     private String categoria;
 
+    public CuidadorDTO(int idCuidador, String profesion, String experiencia, String categoria) {
+        this.idCuidador = idCuidador;
+        this.profesion = profesion;
+        this.experiencia = experiencia;
+        this.categoria = categoria;
+    }
+
+    public CuidadorDTO() {
+    }
+    
     public int getIdCuidador() {
         return idCuidador;
     }
@@ -46,5 +56,4 @@ public class Cuidador extends Persona{
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
 }

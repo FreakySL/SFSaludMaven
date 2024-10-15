@@ -10,13 +10,13 @@ package com.pandateam.sfsaludmaven.backend.models;
  */
 public class Socio extends Paciente{
     
-    private long idSocio;
+    private int idSocio;
 
-    public long getIdSocio() {
+    public int getIdSocio() {
         return idSocio;
     }
 
-    public void setIdSocio(long idSocio) {
+    public void setIdSocio(int idSocio) {
         this.idSocio = idSocio;
     }
 }
