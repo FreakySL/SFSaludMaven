@@ -18,8 +18,8 @@ import java.util.List;
  *
  * @author santi
  */
-public class CuidadorDAO implements DAO<CuidadorDTO>{
-    
+public class CuidadorDAO implements DAO<CuidadorDTO> {
+
     private Connection connection;
     private CuidadorMapper cuidadorMapper;
 
@@ -52,23 +52,17 @@ public class CuidadorDAO implements DAO<CuidadorDTO>{
     public List<CuidadorDTO> readAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     public ResultSet getAll() throws SQLException {
-        String sql = "String sql = \"SELECT p.Per_ID, p.Per_Nombre, p.Per_Apellido, p.Per_NumeroDocumento, s.S_NumeroSocio \" +\n"
-                + "                     \"FROM Persona p \" +\n"
-                + "                     \"JOIN Paciente pac ON p.Per_ID = pac.Per_ID \" +\n"
-                + "                     \"LEFT JOIN Socio s ON pac.Per_ID = s.Per_ID \" +\n"
-                + "                     \"WHERE p.Per_Nombre LIKE ? AND p.Per_Apellido LIKE ? \" +\n"
-                + "                     \"AND p.Per_NumeroDocumento LIKE ? AND s.S_NumeroSocio LIKE ?\";";
+        String sql = "String sql = \"SELECT * from cuidador;";
         try (Statement stmt = connection.createStatement()) {
-   
+
             return stmt.executeQuery(sql);
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;
         }
     }
 
-    
 }
