@@ -31,7 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public MainFrame() {
         
-        ImageIcon imgLogo = new ImageIcon (getClass().getResource("/Images/logo.png"));
+        //ImageIcon imgLogo = new ImageIcon (getClass().getResource("/Images/logo.png"));
         
         initComponents();
         JPanAdmBienvenida pan = new JPanAdmBienvenida();

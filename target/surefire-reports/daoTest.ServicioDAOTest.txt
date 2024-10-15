@@ -1,7 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: daoTest.ServicioDAOTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.519 s <<< FAILURE! - in daoTest.ServicioDAOTest
-daoTest.ServicioDAOTest.testAgregar  Time elapsed: 0.504 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at daoTest.ServicioDAOTest.testAgregar(ServicioDAOTest.java:35)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.689 s <<< FAILURE! - in daoTest.ServicioDAOTest
+daoTest.ServicioDAOTest.testAgregar  Time elapsed: 0.674 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "this.connection" is null
+	at daoTest.ServicioDAOTest.testAgregar(ServicioDAOTest.java:33)
+
