@@ -6,8 +6,12 @@ package com.pandateam.sfsaludmaven.backend.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -116,8 +120,8 @@ public class DatabaseManager {
                 + "    S_FechaFin DATE NOT NULL,\n"
                 + "    S_Costo DECIMAL(10, 2) NOT NULL,\n"
                 + "    S_Tipo VARCHAR(30) NOT NULL,\n"
-                + "    Per_IDPaciente INT UNIQUE NOT NULL,\n"
-                + "    Per_IDCuidador INT UNIQUE NOT NULL,\n"
+                + "    Per_IDPaciente INT NOT NULL,\n"
+                + "    Per_IDCuidador INT NOT NULL,\n"
                 + "    FOREIGN KEY (Per_IDPaciente) REFERENCES Paciente(Per_ID),\n"
                 + "    FOREIGN KEY (Per_IDCuidador) REFERENCES Cuidador(Per_ID)\n"
                 + ");");
@@ -174,6 +178,32 @@ public class DatabaseManager {
                 + "VALUES ('2024-01-01', '20:00', '08:00', 1),\n"
                 + "       ('2024-02-01', '09:00', '17:00', 2);");
 
+    }
+    
+    public static DefaultTableModel resultToTable(ResultSet rs) throws SQLException {
+        // Esta es una función auxiliar que les permite convertir los resultados de las
+        // consultas (ResultSet) a un modelo interpretable para la tabla mostrada en pantalla
+        // (es decir, para un objeto de tipo JTable, ver línea 81)
+        ResultSetMetaData metaData = rs.getMetaData();
+
+        // creando las culmnas de la tabla
+        Vector<String> columnNames = new Vector<String>();
+        int columnCount = metaData.getColumnCount();
+        for (int column = 1; column <= columnCount; column++) {
+            columnNames.add(metaData.getColumnName(column));
+        }
+
+        // creando las filas de la tabla con los resultados de la consulta
+        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> vector = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                vector.add(rs.getObject(columnIndex));
+            }
+            data.add(vector);
+        }
+
+        return new DefaultTableModel(data, columnNames);
     }
 
 }
