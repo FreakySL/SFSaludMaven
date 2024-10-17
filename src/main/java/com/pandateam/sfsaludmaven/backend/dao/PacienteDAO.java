@@ -73,23 +73,7 @@ public class PacienteDAO implements DAO<PacienteDTO> {
 
             ResultSet rs = pstmt.executeQuery();
 
-            // Mostrar los resultados en consola
-            while (rs.next()) {
-                // Obtener los datos de cada columna
-                int id = rs.getInt("Per_ID");
-                String nombrePaciente = rs.getString("Per_Nombre");
-                String apellidoPaciente = rs.getString("Per_Apellido");
-                String documentoPaciente = rs.getString("Per_NumeroDocumento");
-                String numeroSocioPaciente = rs.getString("S_NumeroSocio");
-
-                // Mostrar los datos en consola
-                System.out.println("ID: " + id);
-                System.out.println("Nombre: " + nombrePaciente);
-                System.out.println("Apellido: " + apellidoPaciente);
-                System.out.println("Documento: " + documentoPaciente);
-                System.out.println("Número de Socio: " + numeroSocioPaciente);
-                System.out.println("----------------------------------");
-            }
+            
 
             // Devolver el ResultSet si aún lo necesitas
             return rs;

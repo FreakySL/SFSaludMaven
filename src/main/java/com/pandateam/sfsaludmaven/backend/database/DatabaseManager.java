@@ -195,12 +195,15 @@ public class DatabaseManager {
             columnNames.add(metaData.getColumnName(column));
         }
 
+        
+
         // creando las filas de la tabla con los resultados de la consulta
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
         while (rs.next()) {
             Vector<Object> vector = new Vector<Object>();
             for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
                 vector.add(rs.getObject(columnIndex));
+                System.out.println(rs.getObject(columnIndex).toString());
             }
             data.add(vector);
         }

@@ -217,12 +217,8 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             DefaultTableModel tabla = PacienteManager.consultarPaciente(jTFNombrePaciente.getText(), jTFApellidoPaciente.getText(), jTFDNIPaciente.getText(), jTFNroAfiliadoPaciente.getText());
+            jTableConsultaPaciente.setModel(tabla);
           
-            
-            o[0] = jTFNombrePaciente.getText().trim();
-            o[1] = jTFApellidoPaciente.getText().trim();
-            o[2] = jTFDNIPaciente.getText().trim();
-            o[3] = jTFNroAfiliadoPaciente.getText().trim();
             
             tabla.addRow(o);
         } catch (SQLException ex) {
