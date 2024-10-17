@@ -188,7 +188,7 @@ public class DatabaseManager {
         // (es decir, para un objeto de tipo JTable, ver línea 81)
         ResultSetMetaData metaData = rs.getMetaData();
 
-        // creando las culmnas de la tabla
+        // creando las columnas de la tabla
         Vector<String> columnNames = new Vector<String>();
         int columnCount = metaData.getColumnCount();
         for (int column = 1; column <= columnCount; column++) {
