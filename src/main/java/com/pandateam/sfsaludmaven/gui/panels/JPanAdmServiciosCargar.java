@@ -14,20 +14,21 @@ import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
  */
 public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
-    private void ShowPanel(JPanel pan) {
+    private void ShowPanel(JPanel pan, JPanel insertable) {
         pan.setSize(638, 457);
         pan.setLocation(0, 0);
 
-        jPanTabConsultarPaciente.removeAll();
-        jPanTabConsultarPaciente.add(pan, BorderLayout.CENTER);
-        jPanTabConsultarPaciente.revalidate();
-        jPanTabConsultarPaciente.repaint();
+        insertable.removeAll();
+        insertable.add(pan, BorderLayout.CENTER);
+        insertable.revalidate();
+        insertable.repaint();
     }
 
     public JPanAdmServiciosCargar() {
+
         initComponents();
-        JPanAdmEnConstruccion pan = new JPanAdmEnConstruccion();
-        ShowPanel(pan);
+        JPanAdmPacientesConsultar pan = new JPanAdmPacientesConsultar();
+        ShowPanel(pan, jPanTabConsultarPaciente);
 
     }
 
@@ -69,7 +70,6 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButtSiguienteIngreso = new javax.swing.JButton();
         jButtCalcular = new javax.swing.JButton();
         jPanCostoServicio = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -194,6 +194,11 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jTabbedPaneCargarServicios.setForeground(new java.awt.Color(0, 0, 102));
         jTabbedPaneCargarServicios.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jTabbedPaneCargarServicios.setMinimumSize(new java.awt.Dimension(638, 488));
+        jTabbedPaneCargarServicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneCargarServiciosMouseClicked(evt);
+            }
+        });
 
         jPanTabDatosServicio.setBackground(new java.awt.Color(255, 255, 255));
         jPanTabDatosServicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -244,16 +249,6 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(0, 0, 102));
         jLabel7.setText("Costo por Hora establecido:");
         jPanTabDatosServicio.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, -1, -1));
-
-        jButtSiguienteIngreso.setBackground(new java.awt.Color(0, 153, 153));
-        jButtSiguienteIngreso.setForeground(new java.awt.Color(255, 255, 255));
-        jButtSiguienteIngreso.setText("Siguiente");
-        jButtSiguienteIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtSiguienteIngresoActionPerformed(evt);
-            }
-        });
-        jPanTabDatosServicio.add(jButtSiguienteIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 428, -1, -1));
 
         jButtCalcular.setBackground(new java.awt.Color(0, 153, 153));
         jButtCalcular.setForeground(new java.awt.Color(255, 255, 255));
@@ -322,7 +317,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         );
         jPanTabConsultarCuidadorLayout.setVerticalGroup(
             jPanTabConsultarCuidadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGap(0, 421, Short.MAX_VALUE)
         );
 
         jTabbedPaneCargarServicios.addTab("Elija un cuidador", jPanTabConsultarCuidador);
@@ -337,7 +332,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         );
         jPanTabConfirmacionLayout.setVerticalGroup(
             jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGap(0, 421, Short.MAX_VALUE)
         );
 
         jTabbedPaneCargarServicios.addTab("Confirmación", jPanTabConfirmacion);
@@ -355,14 +350,10 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPaneCargarServicios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPaneCargarServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtSiguienteIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguienteIngresoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtSiguienteIngresoActionPerformed
 
     private void jButtSiguienteIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguienteIngreso1ActionPerformed
         // TODO add your handling code here:
@@ -386,9 +377,13 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
                 cantHorasDia,
                 costoHora
         );
-        
+
         jLabCostoServicio.setText("$" + precio);
     }//GEN-LAST:event_jButtCalcularActionPerformed
+
+    private void jTabbedPaneCargarServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneCargarServiciosMouseClicked
+     
+    }//GEN-LAST:event_jTabbedPaneCargarServiciosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -397,7 +392,6 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private javax.swing.JSpinner JSpinCantAtenciones;
     private javax.swing.JSpinner JSpinCostoHora;
     private javax.swing.JButton jButtCalcular;
-    private javax.swing.JButton jButtSiguienteIngreso;
     private javax.swing.JButton jButtSiguienteIngreso1;
     private javax.swing.JComboBox<String> jCBTipoServicio;
     private javax.swing.JComboBox<String> jCBTipoServicio1;
