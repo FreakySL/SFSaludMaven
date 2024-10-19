@@ -141,6 +141,7 @@ public class JPanAdmServicios extends javax.swing.JPanel {
         // TODO add your handling code here:
         JPanAdmServiciosCargar pan = new JPanAdmServiciosCargar();
         ShowPanel(pan);
+        
     }//GEN-LAST:event_jPanButtonCargarServicioMouseClicked
 
 
