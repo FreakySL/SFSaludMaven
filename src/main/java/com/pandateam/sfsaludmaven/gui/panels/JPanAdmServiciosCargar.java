@@ -27,8 +27,10 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     public JPanAdmServiciosCargar() {
 
         initComponents();
-        JPanAdmPacientesConsultar pan = new JPanAdmPacientesConsultar();
-        ShowPanel(pan, jPanTabConsultarPaciente);
+        JPanAdmPacientesConsultar pacientes = new JPanAdmPacientesConsultar();
+        ShowPanel(pacientes, jPanTabConsultarPaciente);
+        JPanAdmCuidadoresConsultar cuidadores = new JPanAdmCuidadoresConsultar();
+        ShowPanel(cuidadores, jPanTabConsultarCuidador);
 
     }
 

@@ -4,12 +4,11 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
-import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
+import com.pandateam.sfsaludmaven.backend.managers.CuidadorManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -22,14 +21,23 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
      */
     private Object[] o = new Object[5];
     private int idCuidadorSeleccionado = -1;
-    
-    public int getIdPacienteSeleccionado(){
+
+    public int getIdPacienteSeleccionado() {
         return idCuidadorSeleccionado;
     }
-    
+
     public JPanAdmCuidadoresConsultar() {
         initComponents();
-        
+        try {
+            // TODO add your handling code here:
+            DefaultTableModel tabla = CuidadorManager.consultarCuidador();
+            jTableConsultaCuidador.setModel(tabla);
+
+            tabla.addRow(o);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmCuidadoresConsultar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -41,14 +49,7 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtBuscarCuidador = new javax.swing.JButton();
-        jTFNombreCuidador = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTFApellidoCuidador = new javax.swing.JTextField();
-        jTFDNICuidador = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConsultaCuidador = new javax.swing.JTable();
 
@@ -56,46 +57,9 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(650, 500));
         setMinimumSize(new java.awt.Dimension(650, 500));
 
-        jButtBuscarCuidador.setText("Buscar");
-        jButtBuscarCuidador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtBuscarCuidadorActionPerformed(evt);
-            }
-        });
-
-        jTFNombreCuidador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombreCuidadorActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Ingrese al menos uno de los datos del paciente a consultar:");
-
-        jLabel2.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Nombre:");
-
-        jLabel3.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Apellido:");
-
-        jLabel4.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("DNI:");
-
-        jTFApellidoCuidador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFApellidoCuidadorActionPerformed(evt);
-            }
-        });
-
-        jTFDNICuidador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFDNICuidadorActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Lista de Cuidadores");
 
         jTableConsultaCuidador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,30 +99,10 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jTFApellidoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jTFNombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4)
-                                    .addGap(38, 38, 38)
-                                    .addComponent(jTFDNICuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addComponent(jButtBuscarCuidador)))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,50 +110,11 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTFNombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTFApellidoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTFDNICuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtBuscarCuidador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTFNombreCuidadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreCuidadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombreCuidadorActionPerformed
-
-    private void jTFApellidoCuidadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFApellidoCuidadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFApellidoCuidadorActionPerformed
-
-    private void jTFDNICuidadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDNICuidadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFDNICuidadorActionPerformed
-
-    private void jButtBuscarCuidadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtBuscarCuidadorActionPerformed
-        try {
-            // TODO add your handling code here:
-            DefaultTableModel tabla = PacienteManager.consultarPaciente(jTFNombreCuidador.getText(), jTFApellidoCuidador.getText(), jTFDNICuidador.getText(), jTFNroAfiliadoPaciente.getText());
-            jTableConsultaCuidador.setModel(tabla);
-          
-            
-            tabla.addRow(o);
-        } catch (SQLException ex) {
-            Logger.getLogger(JPanAdmCuidadoresConsultar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButtBuscarCuidadorActionPerformed
 
     private void jTableConsultaCuidadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsultaCuidadorMouseClicked
         // TODO add your handling code here:
@@ -220,15 +125,8 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtBuscarCuidador;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTFApellidoCuidador;
-    private javax.swing.JTextField jTFDNICuidador;
-    private javax.swing.JTextField jTFNombreCuidador;
     private javax.swing.JTable jTableConsultaCuidador;
     // End of variables declaration//GEN-END:variables
 }
