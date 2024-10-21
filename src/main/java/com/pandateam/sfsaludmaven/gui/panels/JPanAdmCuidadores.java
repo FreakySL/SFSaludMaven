@@ -16,8 +16,6 @@ public class JPanAdmCuidadores extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmCuidadores
      */
-    
-    
     private void ShowPanel (JPanel pan){
         pan.setSize(650,500);
         pan.setLocation(0,0);

@@ -13,33 +13,6 @@ import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
  * @author biane
  */
 public class JPanAdmServiciosCargar extends javax.swing.JPanel {
-    
-    private int idCuidador = -1, idPaciente = -1;
-    private double precio = 0;
-    
-    public void setIDCuidador(int x){
-        this.idCuidador = x;
-    }
-    
-    public void setIDPaciente(int x){
-        this.idPaciente = x;
-    }
-    
-    public void setPrecio(double x){
-        this.precio = x;
-    }
-    
-    public int getIDCuidador(){
-        return idCuidador;
-    }
-    
-    public double getPrecio(){
-        return precio;
-    }
-    
-    public int getIDPaciente(){
-        return idPaciente;
-    }
 
     private void ShowPanel(JPanel pan, JPanel insertable) {
         pan.setSize(638, 457);
@@ -106,21 +79,6 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jPanTabConsultarPaciente = new javax.swing.JPanel();
         jPanTabConsultarCuidador = new javax.swing.JPanel();
         jPanTabConfirmacion = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
@@ -368,139 +326,15 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
         jPanTabConfirmacion.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel15.setFont(new java.awt.Font("Roboto Condensed", 3, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel15.setText("Datos del servicio");
-
-        jLabel16.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel16.setText("Fecha de Inicio:");
-
-        jLabel17.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel17.setText("Fecha de Finalización:");
-
-        jLabel18.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel18.setText("Cantidad de atenciones:");
-
-        jLabel19.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel19.setText("Costo total del servicio:");
-
-        jLabel20.setFont(new java.awt.Font("Roboto Condensed", 3, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel20.setText("Datos del paciente:");
-
-        jLabel21.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel21.setText("N° de Socio:");
-
-        jLabel22.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel22.setText("Apellido:");
-
-        jLabel23.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel23.setText("DNI:");
-
-        jLabel24.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel24.setText("Nombre:");
-
-        jLabel25.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel25.setText("Profesión:");
-
-        jLabel26.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel26.setText("Apellido:");
-
-        jLabel27.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel27.setText("DNI:");
-
-        jLabel28.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel28.setText("Nombre:");
-
-        jLabel29.setFont(new java.awt.Font("Roboto Condensed", 3, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel29.setText("Datos del cuidador:");
-
         javax.swing.GroupLayout jPanTabConfirmacionLayout = new javax.swing.GroupLayout(jPanTabConfirmacion);
         jPanTabConfirmacion.setLayout(jPanTabConfirmacionLayout);
         jPanTabConfirmacionLayout.setHorizontalGroup(
             jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172)
-                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172)
-                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29)
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172)
-                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(174, Short.MAX_VALUE))
+            .addGap(0, 638, Short.MAX_VALUE)
         );
         jPanTabConfirmacionLayout.setVerticalGroup(
             jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel19))
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21))
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25))
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel27)))
-                .addContainerGap(187, Short.MAX_VALUE))
+            .addGap(0, 421, Short.MAX_VALUE)
         );
 
         jTabbedPaneCargarServicios.addTab("Confirmación", jPanTabConfirmacion);
@@ -537,7 +371,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         Number costoHoraValue = (Number) JSpinCostoHora.getValue(); // Esto manejará tanto Integer como Double
         double costoHora = costoHoraValue.doubleValue(); // Convertir a double
 
-        double precioServ = ServicioManager.calcularHorasServicio(
+        double precio = ServicioManager.calcularHorasServicio(
                 jCBTipoServicio.getSelectedItem().toString(),
                 JDCFechaInicio.getDate(),
                 JDCFechaFin.getDate(),
@@ -545,10 +379,8 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
                 cantHorasDia,
                 costoHora
         );
-        
-        setPrecio(precioServ);
 
-        jLabCostoServicio.setText("$" + precioServ);
+        jLabCostoServicio.setText("$" + precio);
     }//GEN-LAST:event_jButtCalcularActionPerformed
 
     private void jTabbedPaneCargarServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneCargarServiciosMouseClicked
@@ -574,22 +406,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

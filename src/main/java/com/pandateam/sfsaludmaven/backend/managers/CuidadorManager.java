@@ -4,6 +4,7 @@
  */
 package com.pandateam.sfsaludmaven.backend.managers;
 
+import com.pandateam.sfsaludmaven.backend.dao.CuidadorDAO;
 import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +18,10 @@ public class CuidadorManager {
     
     private static CuidadorDAO cuidadorDAO = new CuidadorDAO();
     
+    public static DefaultTableModel consultarCuidador() throws SQLException{
         
         try {
+            ResultSet rs = cuidadorDAO.obtenerCuidadores();
             return DatabaseManager.resultToTable(rs);
         } catch (Exception e) {
             throw e;
