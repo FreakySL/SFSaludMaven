@@ -834,6 +834,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabConfDNIPaciente.setText(pacDTO.getDni());
         jLabConfNroSocio.setText(pacDTO.isSuscrip());
         jTabbedPaneCargarServicios.setSelectedIndex(2);
+        dto.setIdPaciente(pacientes.getIdPacienteSeleccionado());
     }//GEN-LAST:event_jButtSiguiente4ActionPerformed
 
     private void jButtSiguiente5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente5ActionPerformed
