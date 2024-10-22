@@ -4,11 +4,16 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
 import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
+import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -796,11 +801,21 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabConfCantAtenciones.setText(JSpinCantAtenciones.getValue().toString());
         jLabCostoTotalServicio.setText("$" + dto.getCosto());
         dto.setIdCuidador(cuidadores.getIdCuidadorSeleccionado());
+        
         jTabbedPaneCargarServicios.setSelectedIndex(3);
     }//GEN-LAST:event_jButtSiguiente2ActionPerformed
 
     private void jButtSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente4ActionPerformed
-        dto.setIdPaciente(pacientes.getIdPacienteSeleccionado());
+        PacienteDTO pacDTO = new PacienteDTO();
+        try {
+            pacDTO = PacienteManager.verPaciente(pacientes.getIdPacienteSeleccionado());
+                    } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServiciosCargar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jLabConfNombrePaciente.setText(pacDTO.getNombre());
+        jLabConfApellidoPaciente.setText(pacDTO.getApellido());
+        jLabConfDNIPaciente.setText(pacDTO.getDni());
+        jLabConfNroSocio.setText(pacDTO.isSuscrip());
         jTabbedPaneCargarServicios.setSelectedIndex(2);
     }//GEN-LAST:event_jButtSiguiente4ActionPerformed
 
