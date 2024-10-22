@@ -270,6 +270,11 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jCBTipoServicio.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         jCBTipoServicio.setForeground(new java.awt.Color(0, 0, 0));
         jCBTipoServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuidador Interno", "Cuidador Externo", "Cuidador Nocturno", "Acompañamiento", "Cuidado de niños", "Cuidador de fin de semana" }));
+        jCBTipoServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBTipoServicioActionPerformed(evt);
+            }
+        });
         jPanTabDatosServicio.add(jCBTipoServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
         JDCFechaInicio.setBackground(new java.awt.Color(255, 255, 255));
@@ -340,7 +345,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jPanCostoServicioLayout.setHorizontalGroup(
             jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabCostoServicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 230, Short.MAX_VALUE)
         );
         jPanCostoServicioLayout.setVerticalGroup(
             jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -665,9 +670,9 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
                             .addComponent(jLabel19)
                             .addComponent(jLabCostoTotalServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabConfFInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabConfFInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel17)
@@ -701,14 +706,10 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
                                 .addComponent(jLabel29)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                                        .addComponent(jLabel28)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel26)
-                                            .addComponent(jLabConfApellidoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                    .addComponent(jLabel28)
+                                    .addComponent(jLabel26)
+                                    .addComponent(jLabConfApellidoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
                                 .addComponent(jLabConfNombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)))
@@ -818,6 +819,10 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         servicioManager.agregarServicio(dto);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtConfirmarActionPerformed
+
+    private void jCBTipoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoServicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBTipoServicioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

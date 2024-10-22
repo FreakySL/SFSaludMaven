@@ -8,6 +8,7 @@ import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
 import com.pandateam.sfsaludmaven.backend.dto.CuidadorDTO;
 import com.pandateam.sfsaludmaven.backend.mappers.CuidadorMapper;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,8 +34,28 @@ public class CuidadorDAO implements DAO<CuidadorDTO> {
     }
 
     @Override
-    public CuidadorDTO read(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public CuidadorDTO read(int id) throws SQLException {
+
+        String sql = "SELECT * \n"
+                + "FROM Persona per\n"
+                + "JOIN Cuidador cu ON per.Per_ID = cu.Per_ID\n"
+                + "WHERE per.Per_ID = ?";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            return cuidadorMapper.map(rs);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+
     }
 
     @Override
@@ -43,7 +64,7 @@ public class CuidadorDAO implements DAO<CuidadorDTO> {
     }
 
     @Override
-    public CuidadorDTO delete(long id) {
+    public CuidadorDTO delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

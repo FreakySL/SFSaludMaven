@@ -48,7 +48,7 @@ public class ServicioDAO implements DAO<ServicioDTO>{
     }
 
     @Override
-    public ServicioDTO read(long id) {
+    public ServicioDTO read(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -58,7 +58,7 @@ public class ServicioDAO implements DAO<ServicioDTO>{
     }
 
     @Override
-    public ServicioDTO delete(long id) {
+    public ServicioDTO delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

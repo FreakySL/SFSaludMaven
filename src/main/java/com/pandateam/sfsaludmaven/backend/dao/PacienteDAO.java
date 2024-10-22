@@ -34,8 +34,28 @@ public class PacienteDAO implements DAO<PacienteDTO> {
     }
 
     @Override
-    public PacienteDTO read(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PacienteDTO read(int id) throws SQLException {
+
+        String sql = "SELECT * \n"
+                + "FROM Persona per\n"
+                + "JOIN Paciente pac ON per.Per_ID = pac.Per_ID\n"
+                + "WHERE per.Per_ID = ?;";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            return pacienteMapper.map(rs);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+
     }
 
     @Override
@@ -44,7 +64,7 @@ public class PacienteDAO implements DAO<PacienteDTO> {
     }
 
     @Override
-    public PacienteDTO delete(long id) {
+    public PacienteDTO delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -72,8 +92,6 @@ public class PacienteDAO implements DAO<PacienteDTO> {
             pstmt.setString(4, "%" + numeroSocio + "%");
 
             ResultSet rs = pstmt.executeQuery();
-
-            
 
             // Devolver el ResultSet si aún lo necesitas
             return rs;

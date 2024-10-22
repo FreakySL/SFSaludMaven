@@ -4,6 +4,7 @@
  */
 package com.pandateam.sfsaludmaven.backend.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -13,9 +14,9 @@ import java.util.List;
 public interface DAO<T> {
     
     public boolean create(T object);
-    public T read(long id);
+    public T read(int id) throws SQLException;
     public boolean update (T object);
-    public T delete(long id);
+    public T delete(int id);
     public List<T> readAll();
     
 }
