@@ -132,6 +132,12 @@ public class DatabaseManager {
                 + "    S_ID INT NOT NULL,\n"
                 + "    FOREIGN KEY (S_ID) REFERENCES Servicio(S_ID)\n"
                 + ");");
+        
+        stmt.execute("CREATE TABLE IF NOT EXISTS Usuario (\n"
+                + "    Usuario_ID INT AUTO_INCREMENT PRIMARY KEY,\n"
+                + "    Usuario_Nombre VARCHAR(50) NOT NULL,\n"
+                + "    Usuario_Contrasena VARCHAR(255) NOT NULL\n"
+                + ");");
 
         try {
             stmt.execute("INSERT INTO Persona (Per_Nombre, Per_Apellido, Per_NumeroDocumento, Per_FechaNacimiento, Per_Telefono, Per_Correo, Per_Esp)\n"

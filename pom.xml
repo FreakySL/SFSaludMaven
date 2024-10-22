@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>com.pandateam.sfsaludmaven.gui.MainFrame</exec.mainClass>
+        <exec.mainClass>com.pandateam.sfsaludmaven.gui.LoginFrame</exec.mainClass>
     </properties>
     <dependencies>
         <!-- MySQL Connector -->
@@ -39,6 +39,11 @@
             <groupId>com.toedter</groupId>
             <artifactId>jcalendar</artifactId>
             <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
         </dependency>
     </dependencies>
     <build>
