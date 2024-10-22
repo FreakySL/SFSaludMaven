@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,10 +40,11 @@ public class ServicioDAO implements DAO<ServicioDTO>{
             pstmt.setLong(7, servicioDTO.getIdCuidador());
             
             pstmt.executeUpdate();
-            
+            JOptionPane.showMessageDialog(null,"Carga exitosa");
             return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Carga incorrecta");
             return false;
         }
     }

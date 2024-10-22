@@ -19,25 +19,25 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    private void ShowPanel (JPanel pan){
-        pan.setSize(650,570);
-        pan.setLocation(0,0);
-        
+    private void ShowPanel(JPanel pan) {
+        pan.setSize(650, 570);
+        pan.setLocation(0, 0);
+
         jPanContentPrincipal.removeAll();
         jPanContentPrincipal.add(pan, BorderLayout.CENTER);
         jPanContentPrincipal.revalidate();
         jPanContentPrincipal.repaint();
     }
-    
+
     public MainFrame() {
-        
+
         //ImageIcon imgLogo = new ImageIcon (getClass().getResource("/Images/logo.png"));
-        
         initComponents();
+        setLocationRelativeTo(null);
+
         JPanAdmBienvenida pan = new JPanAdmBienvenida();
         ShowPanel(pan);
-        
-        
+
     }
 
     /**

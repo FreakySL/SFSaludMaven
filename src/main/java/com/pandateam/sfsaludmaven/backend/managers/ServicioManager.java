@@ -24,12 +24,13 @@ public class ServicioManager {
         servicioDAO.create(servicioDTO);
     }
     
-    public static double calcularHorasServicio(String tipoServ, Date fInicio, Date fFin, int cantAtenciones, int cantHorasDia, double costoHora){
+    public static double calcularHorasServicio(int cantAtenciones, int cantHorasDia, double costoHora){
+        /*
         long tiempoTranscurrido = fFin.getTime() - fInicio.getTime();
         TimeUnit unidad = TimeUnit.DAYS;
         long dias = unidad.convert(tiempoTranscurrido, TimeUnit.MILLISECONDS);
-        
-        return dias*cantAtenciones*cantHorasDia*costoHora+0.0;
+        */
+        return cantAtenciones*cantHorasDia*costoHora+0.0;
     }
 
     // Métodos adicionales para actualizar y eliminar servicios...

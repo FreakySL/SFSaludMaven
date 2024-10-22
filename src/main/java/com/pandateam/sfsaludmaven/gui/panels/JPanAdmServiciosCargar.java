@@ -14,8 +14,10 @@ import javax.swing.JPanel;
 import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,9 +60,10 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     public JPanAdmServiciosCargar() {
 
         initComponents();
+        JDCFechaInicio.setMinSelectableDate(new Date());
+        JDCFechaFin.setMinSelectableDate(new Date());
 
         ShowPanel(pacientes, jPanTabConsultarPaciente);
-
         ShowPanel(cuidadores, jPanTabConsultarCuidador);
 
     }
@@ -329,6 +332,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jButtSiguiente1.setBackground(new java.awt.Color(0, 153, 153));
         jButtSiguiente1.setForeground(new java.awt.Color(255, 255, 255));
         jButtSiguiente1.setText("Siguiente");
+        jButtSiguiente1.setEnabled(false);
         jButtSiguiente1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtSiguiente1ActionPerformed(evt);
@@ -777,9 +781,6 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         double costoHora = costoHoraValue.doubleValue(); // Convertir a double
 
         double precioServ = ServicioManager.calcularHorasServicio(
-                jCBTipoServicio.getSelectedItem().toString(),
-                JDCFechaInicio.getDate(),
-                JDCFechaFin.getDate(),
                 cantAtenciones,
                 cantHorasDia,
                 costoHora
@@ -792,6 +793,9 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         dto.setDescripcion(jTextAreaDesc.getText());
         dto.setTipoServicio(jCBTipoServicio.getItemAt(jCBTipoServicio.getSelectedIndex()).toString());
         dto.setCosto(precioServ);
+        
+        //activo el boton siguiente
+        jButtSiguiente1.setEnabled(true);
     }//GEN-LAST:event_jButtCalcular1ActionPerformed
 
     private void jButtSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente2ActionPerformed
@@ -857,6 +861,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private void jButtConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtConfirmarActionPerformed
         System.out.println(dto.toString());
         servicioManager.agregarServicio(dto);
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtConfirmarActionPerformed
 
