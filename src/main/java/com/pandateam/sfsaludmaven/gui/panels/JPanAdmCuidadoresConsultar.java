@@ -22,7 +22,7 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
     private Object[] o = new Object[5];
     private int idCuidadorSeleccionado = -1;
 
-    public int getIdPacienteSeleccionado() {
+    public int getIdCuidadorSeleccionado() {
         return idCuidadorSeleccionado;
     }
 

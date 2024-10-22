@@ -21,7 +21,7 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
      * Creates new form JPanAdmPacientesConsultar
      */
     private Object[] o = new Object[5];
-    private int idPacienteSeleccionado = -1;
+    private static int idPacienteSeleccionado = -1;
     
     public int getIdPacienteSeleccionado(){
         return idPacienteSeleccionado;
@@ -241,6 +241,7 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         int seleccion = jTableConsultaPaciente.getSelectedRow();
         idPacienteSeleccionado = (int) jTableConsultaPaciente.getValueAt(seleccion, 0);
         //System.out.println(idPacienteSeleccionado);
+        //JPanAdmServiciosCargar.dto.setIdPaciente(idPacienteSeleccionado);
     }//GEN-LAST:event_jTableConsultaPacienteMouseClicked
 
 

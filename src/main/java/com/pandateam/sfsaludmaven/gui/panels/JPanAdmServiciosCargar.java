@@ -4,6 +4,7 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
@@ -13,39 +14,35 @@ import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
  * @author biane
  */
 public class JPanAdmServiciosCargar extends javax.swing.JPanel {
-    
-    private int idCuidador = -1, idPaciente = -1;
+
+    private static ServicioDTO dto = new ServicioDTO();
     private double precio = 0;
-    
-    public void setIDCuidador(int x){
-        this.idCuidador = x;
-    }
-    
-    public void setIDPaciente(int x){
-        this.idPaciente = x;
-    }
-    
-    public void setPrecio(double x){
+    private JPanAdmPacientesConsultar pacientes = new JPanAdmPacientesConsultar();
+    private JPanAdmCuidadoresConsultar cuidadores = new JPanAdmCuidadoresConsultar();
+    private ServicioManager servicioManager = new ServicioManager();
+
+
+    public void setPrecio(double x) {
         this.precio = x;
     }
-    
-    public int getIDCuidador(){
-        return idCuidador;
-    }
-    
-    public double getPrecio(){
+
+    public double getPrecio() {
         return precio;
     }
     
-    public int getIDPaciente(){
-        return idPaciente;
+    public void setDTO(ServicioDTO dto) {
+        this.dto = dto;
+    }
+    
+    public ServicioDTO getDTO(){
+        return dto;
     }
 
     private void ShowPanel(JPanel pan, JPanel insertable) {
         pan.setSize(638, 457);
         pan.setLocation(0, 0);
 
-        insertable.removeAll();
+        //insertable.removeAll();
         insertable.add(pan, BorderLayout.CENTER);
         insertable.revalidate();
         insertable.repaint();
@@ -54,9 +51,9 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     public JPanAdmServiciosCargar() {
 
         initComponents();
-        JPanAdmPacientesConsultar pacientes = new JPanAdmPacientesConsultar();
+        
         ShowPanel(pacientes, jPanTabConsultarPaciente);
-        JPanAdmCuidadoresConsultar cuidadores = new JPanAdmCuidadoresConsultar();
+        
         ShowPanel(cuidadores, jPanTabConsultarCuidador);
 
     }
@@ -99,12 +96,20 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButtCalcular = new javax.swing.JButton();
+        jButtSiguiente1 = new javax.swing.JButton();
         jPanCostoServicio = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabCostoServicio = new javax.swing.JLabel();
+        jButtCalcular1 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaDesc = new javax.swing.JTextArea();
         jPanTabConsultarPaciente = new javax.swing.JPanel();
+        jButtSiguiente4 = new javax.swing.JButton();
+        jButtSiguiente5 = new javax.swing.JButton();
         jPanTabConsultarCuidador = new javax.swing.JPanel();
+        jButtSiguiente2 = new javax.swing.JButton();
+        jButtSiguiente6 = new javax.swing.JButton();
         jPanTabConfirmacion = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -121,6 +126,20 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        jButtSiguiente7 = new javax.swing.JButton();
+        jButtConfirmar = new javax.swing.JButton();
+        jLabConfFInicio = new javax.swing.JLabel();
+        jLabConfFFin = new javax.swing.JLabel();
+        jLabConfNombrePaciente = new javax.swing.JLabel();
+        jLabConfDNIPaciente = new javax.swing.JLabel();
+        jLabConfDNICuidador = new javax.swing.JLabel();
+        jLabConfNombreCuidador = new javax.swing.JLabel();
+        jLabConfApellidoPaciente = new javax.swing.JLabel();
+        jLabConfNroSocio = new javax.swing.JLabel();
+        jLabConfApellidoCuidador = new javax.swing.JLabel();
+        jLabConfProfesionCuidador = new javax.swing.JLabel();
+        jLabConfCantAtenciones = new javax.swing.JLabel();
+        jLabCostoTotalServicio = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
@@ -292,17 +311,17 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 102));
         jLabel7.setText("Costo por Hora establecido:");
-        jPanTabDatosServicio.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, -1, -1));
+        jPanTabDatosServicio.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        jButtCalcular.setBackground(new java.awt.Color(0, 153, 153));
-        jButtCalcular.setForeground(new java.awt.Color(255, 255, 255));
-        jButtCalcular.setText("Calcular");
-        jButtCalcular.addActionListener(new java.awt.event.ActionListener() {
+        jButtSiguiente1.setBackground(new java.awt.Color(0, 153, 153));
+        jButtSiguiente1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtSiguiente1.setText("Siguiente");
+        jButtSiguiente1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtCalcularActionPerformed(evt);
+                jButtSiguiente1ActionPerformed(evt);
             }
         });
-        jPanTabDatosServicio.add(jButtCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 291, -1, -1));
+        jPanTabDatosServicio.add(jButtSiguiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, -1, -1));
 
         jPanCostoServicio.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -335,33 +354,110 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
         jPanTabDatosServicio.add(jPanCostoServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 230, 220));
 
+        jButtCalcular1.setBackground(new java.awt.Color(0, 153, 153));
+        jButtCalcular1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtCalcular1.setText("Calcular");
+        jButtCalcular1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtCalcular1ActionPerformed(evt);
+            }
+        });
+        jPanTabDatosServicio.add(jButtCalcular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 110, 50));
+
+        jLabel30.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel30.setText("Costo por Hora establecido:");
+        jPanTabDatosServicio.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, -1, -1));
+
+        jTextAreaDesc.setColumns(20);
+        jTextAreaDesc.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDesc);
+
+        jPanTabDatosServicio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 170, 130));
+
         jTabbedPaneCargarServicios.addTab("Ingrese los datos", jPanTabDatosServicio);
 
         jPanTabConsultarPaciente.setMaximumSize(new java.awt.Dimension(638, 457));
         jPanTabConsultarPaciente.setMinimumSize(new java.awt.Dimension(638, 457));
 
+        jButtSiguiente4.setBackground(new java.awt.Color(0, 153, 153));
+        jButtSiguiente4.setForeground(new java.awt.Color(255, 255, 255));
+        jButtSiguiente4.setText("Siguiente");
+        jButtSiguiente4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtSiguiente4ActionPerformed(evt);
+            }
+        });
+
+        jButtSiguiente5.setBackground(new java.awt.Color(0, 153, 153));
+        jButtSiguiente5.setForeground(new java.awt.Color(255, 255, 255));
+        jButtSiguiente5.setText("Anterior");
+        jButtSiguiente5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtSiguiente5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanTabConsultarPacienteLayout = new javax.swing.GroupLayout(jPanTabConsultarPaciente);
         jPanTabConsultarPaciente.setLayout(jPanTabConsultarPacienteLayout);
         jPanTabConsultarPacienteLayout.setHorizontalGroup(
             jPanTabConsultarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanTabConsultarPacienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtSiguiente5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 474, Short.MAX_VALUE)
+                .addComponent(jButtSiguiente4)
+                .addContainerGap())
         );
         jPanTabConsultarPacienteLayout.setVerticalGroup(
             jPanTabConsultarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanTabConsultarPacienteLayout.createSequentialGroup()
+                .addContainerGap(392, Short.MAX_VALUE)
+                .addGroup(jPanTabConsultarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtSiguiente4)
+                    .addComponent(jButtSiguiente5))
+                .addContainerGap())
         );
 
         jTabbedPaneCargarServicios.addTab("Elija un paciente", jPanTabConsultarPaciente);
+
+        jButtSiguiente2.setBackground(new java.awt.Color(0, 153, 153));
+        jButtSiguiente2.setForeground(new java.awt.Color(255, 255, 255));
+        jButtSiguiente2.setText("Siguiente");
+        jButtSiguiente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtSiguiente2ActionPerformed(evt);
+            }
+        });
+
+        jButtSiguiente6.setBackground(new java.awt.Color(0, 153, 153));
+        jButtSiguiente6.setForeground(new java.awt.Color(255, 255, 255));
+        jButtSiguiente6.setText("Anterior");
+        jButtSiguiente6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtSiguiente6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanTabConsultarCuidadorLayout = new javax.swing.GroupLayout(jPanTabConsultarCuidador);
         jPanTabConsultarCuidador.setLayout(jPanTabConsultarCuidadorLayout);
         jPanTabConsultarCuidadorLayout.setHorizontalGroup(
             jPanTabConsultarCuidadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanTabConsultarCuidadorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtSiguiente6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 474, Short.MAX_VALUE)
+                .addComponent(jButtSiguiente2)
+                .addContainerGap())
         );
         jPanTabConsultarCuidadorLayout.setVerticalGroup(
             jPanTabConsultarCuidadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanTabConsultarCuidadorLayout.createSequentialGroup()
+                .addContainerGap(392, Short.MAX_VALUE)
+                .addGroup(jPanTabConsultarCuidadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtSiguiente2)
+                    .addComponent(jButtSiguiente6))
+                .addContainerGap())
         );
 
         jTabbedPaneCargarServicios.addTab("Elija un cuidador", jPanTabConsultarCuidador);
@@ -428,6 +524,60 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabel29.setForeground(new java.awt.Color(0, 102, 102));
         jLabel29.setText("Datos del cuidador:");
 
+        jButtSiguiente7.setBackground(new java.awt.Color(0, 153, 153));
+        jButtSiguiente7.setForeground(new java.awt.Color(255, 255, 255));
+        jButtSiguiente7.setText("Anterior");
+        jButtSiguiente7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtSiguiente7ActionPerformed(evt);
+            }
+        });
+
+        jButtConfirmar.setBackground(new java.awt.Color(0, 153, 153));
+        jButtConfirmar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtConfirmar.setText("Confirmar");
+        jButtConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtConfirmarActionPerformed(evt);
+            }
+        });
+
+        jLabConfFInicio.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfFInicio.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfFFin.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfFFin.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfNombrePaciente.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfNombrePaciente.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfDNIPaciente.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfDNIPaciente.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfDNICuidador.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfDNICuidador.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfNombreCuidador.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfNombreCuidador.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfApellidoPaciente.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfApellidoPaciente.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfNroSocio.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfNroSocio.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfApellidoCuidador.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfApellidoCuidador.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfProfesionCuidador.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfProfesionCuidador.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabConfCantAtenciones.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabConfCantAtenciones.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabCostoTotalServicio.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabCostoTotalServicio.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanTabConfirmacionLayout = new javax.swing.GroupLayout(jPanTabConfirmacion);
         jPanTabConfirmacion.setLayout(jPanTabConfirmacionLayout);
         jPanTabConfirmacionLayout.setHorizontalGroup(
@@ -438,28 +588,66 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
                     .addComponent(jLabel15)
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabConfFInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
                         .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabConfCantAtenciones, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabCostoTotalServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel20)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabConfFFin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabConfNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
                         .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabConfApellidoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabConfNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabConfDNIPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel29)
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabConfNombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
                         .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(174, Short.MAX_VALUE))
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabConfApellidoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabConfProfesionCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabConfDNICuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                .addComponent(jButtSiguiente7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtConfirmar)
+                .addContainerGap())
         );
         jPanTabConfirmacionLayout.setVerticalGroup(
             jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,38 +657,70 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabConfCantAtenciones, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel19))
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabCostoTotalServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabConfFInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)))
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabConfFFin, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabConfApellidoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21))
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabConfNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel24)
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabConfNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23)))
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabConfDNIPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabConfProfesionCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25))
-                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel27)))
-                .addContainerGap(187, Short.MAX_VALUE))
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel26)
+                                            .addComponent(jLabConfApellidoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                            .addGroup(jPanTabConfirmacionLayout.createSequentialGroup()
+                                .addComponent(jLabConfNombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)))
+                        .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabConfDNICuidador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addGroup(jPanTabConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtSiguiente7)
+                    .addComponent(jButtConfirmar))
+                .addContainerGap())
         );
 
         jTabbedPaneCargarServicios.addTab("Confirmación", jPanTabConfirmacion);
@@ -527,7 +747,17 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtSiguienteIngreso1ActionPerformed
 
-    private void jButtCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtCalcularActionPerformed
+    private void jButtSiguiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente1ActionPerformed
+        
+        jTabbedPaneCargarServicios.setSelectedIndex(1);
+        
+
+    }//GEN-LAST:event_jButtSiguiente1ActionPerformed
+
+    private void jTabbedPaneCargarServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneCargarServiciosMouseClicked
+    }//GEN-LAST:event_jTabbedPaneCargarServiciosMouseClicked
+
+    private void jButtCalcular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtCalcular1ActionPerformed
         // TODO add your handling code here:
         //((Integer)JSpinCantAtenciones.getValue()).intValue(),((Integer)jSpinCantHorasDia.getValue()).intValue(),
         int cantAtenciones = ((Integer) JSpinCantAtenciones.getValue());
@@ -545,15 +775,49 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
                 cantHorasDia,
                 costoHora
         );
-        
+
         setPrecio(precioServ);
-
         jLabCostoServicio.setText("$" + precioServ);
-    }//GEN-LAST:event_jButtCalcularActionPerformed
+        dto.setFechaInicio(JDCFechaInicio.getDate());
+        dto.setFechaFin(JDCFechaFin.getDate());
+        dto.setDescripcion(jTextAreaDesc.getText());
+        dto.setTipoServicio(jCBTipoServicio.toString());
+        dto.setCosto(precioServ);
+    }//GEN-LAST:event_jButtCalcular1ActionPerformed
 
-    private void jTabbedPaneCargarServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneCargarServiciosMouseClicked
-     
-    }//GEN-LAST:event_jTabbedPaneCargarServiciosMouseClicked
+    private void jButtSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente2ActionPerformed
+        jLabConfFInicio.setText(dto.getFechaInicio().toString());
+        dto.setIdCuidador(cuidadores.getIdCuidadorSeleccionado());
+        jTabbedPaneCargarServicios.setSelectedIndex(3);
+    }//GEN-LAST:event_jButtSiguiente2ActionPerformed
+
+    private void jButtSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente4ActionPerformed
+        dto.setIdPaciente(pacientes.getIdPacienteSeleccionado());
+        jTabbedPaneCargarServicios.setSelectedIndex(2);
+    }//GEN-LAST:event_jButtSiguiente4ActionPerformed
+
+    private void jButtSiguiente5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente5ActionPerformed
+        jTabbedPaneCargarServicios.setSelectedIndex(0);
+
+    }//GEN-LAST:event_jButtSiguiente5ActionPerformed
+
+    private void jButtSiguiente6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente6ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPaneCargarServicios.setSelectedIndex(1);
+
+    }//GEN-LAST:event_jButtSiguiente6ActionPerformed
+
+    private void jButtSiguiente7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente7ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPaneCargarServicios.setSelectedIndex(2);
+
+    }//GEN-LAST:event_jButtSiguiente7ActionPerformed
+
+    private void jButtConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtConfirmarActionPerformed
+        System.out.println(dto.toString());
+        servicioManager.agregarServicio(dto);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtConfirmarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -561,13 +825,32 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser JDCFechaInicio;
     private javax.swing.JSpinner JSpinCantAtenciones;
     private javax.swing.JSpinner JSpinCostoHora;
-    private javax.swing.JButton jButtCalcular;
+    private javax.swing.JButton jButtCalcular1;
+    private javax.swing.JButton jButtConfirmar;
+    private javax.swing.JButton jButtSiguiente1;
+    private javax.swing.JButton jButtSiguiente2;
+    private javax.swing.JButton jButtSiguiente4;
+    private javax.swing.JButton jButtSiguiente5;
+    private javax.swing.JButton jButtSiguiente6;
+    private javax.swing.JButton jButtSiguiente7;
     private javax.swing.JButton jButtSiguienteIngreso1;
     private javax.swing.JComboBox<String> jCBTipoServicio;
     private javax.swing.JComboBox<String> jCBTipoServicio1;
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private com.toedter.calendar.JDateChooser jDateChooser4;
+    private javax.swing.JLabel jLabConfApellidoCuidador;
+    private javax.swing.JLabel jLabConfApellidoPaciente;
+    private javax.swing.JLabel jLabConfCantAtenciones;
+    private javax.swing.JLabel jLabConfDNICuidador;
+    private javax.swing.JLabel jLabConfDNIPaciente;
+    private javax.swing.JLabel jLabConfFFin;
+    private javax.swing.JLabel jLabConfFInicio;
+    private javax.swing.JLabel jLabConfNombreCuidador;
+    private javax.swing.JLabel jLabConfNombrePaciente;
+    private javax.swing.JLabel jLabConfNroSocio;
+    private javax.swing.JLabel jLabConfProfesionCuidador;
     private javax.swing.JLabel jLabCostoServicio;
+    private javax.swing.JLabel jLabCostoTotalServicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -591,6 +874,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -603,10 +887,12 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanTabConsultarPaciente;
     private javax.swing.JPanel jPanTabDatosServicio;
     private javax.swing.JPanel jPanTabDatosServicio1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinCantHorasDia;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JSpinner jSpinner6;
     private javax.swing.JTabbedPane jTabbedPaneCargarServicios;
+    private javax.swing.JTextArea jTextAreaDesc;
     // End of variables declaration//GEN-END:variables
 }
