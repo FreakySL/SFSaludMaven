@@ -6,6 +6,7 @@ package com.pandateam.sfsaludmaven.backend.managers;
 
 import com.pandateam.sfsaludmaven.backend.dao.PacienteDAO;
 import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
+import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -26,5 +27,9 @@ public class PacienteManager {
         } catch (Exception e) {
             throw e;
         }
+    }
+    
+    public static PacienteDTO verPaciente(int id) throws SQLException {
+        return pacienteDAO.read(id);
     }
 }
