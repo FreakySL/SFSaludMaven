@@ -4,8 +4,10 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.dto.CuidadorDTO;
 import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
 import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
+import com.pandateam.sfsaludmaven.backend.managers.CuidadorManager;
 import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -788,11 +790,24 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         dto.setFechaInicio(JDCFechaInicio.getDate());
         dto.setFechaFin(JDCFechaFin.getDate());
         dto.setDescripcion(jTextAreaDesc.getText());
-        dto.setTipoServicio(jCBTipoServicio.toString());
+        dto.setTipoServicio(jCBTipoServicio.getItemAt(jCBTipoServicio.getSelectedIndex()).toString());
         dto.setCosto(precioServ);
     }//GEN-LAST:event_jButtCalcular1ActionPerformed
 
     private void jButtSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente2ActionPerformed
+        //Confirmacion del cuidador
+        CuidadorDTO cuiDTO = new CuidadorDTO();
+        try {
+            cuiDTO = CuidadorManager.verCuidador(cuidadores.getIdCuidadorSeleccionado());
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServiciosCargar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jLabConfNombreCuidador.setText(cuiDTO.getNombre());
+        jLabConfApellidoCuidador.setText(cuiDTO.getApellido());
+        jLabConfDNICuidador.setText(cuiDTO.getDni());
+        jLabConfProfesionCuidador.setText(cuiDTO.getProfesion());
+        
+        //Confirmacion del servicio
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String fechaInicio = dateFormat.format(dto.getFechaInicio());
         String fechaFin = dateFormat.format(dto.getFechaFin());
@@ -802,14 +817,16 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jLabCostoTotalServicio.setText("$" + dto.getCosto());
         dto.setIdCuidador(cuidadores.getIdCuidadorSeleccionado());
         
+
         jTabbedPaneCargarServicios.setSelectedIndex(3);
     }//GEN-LAST:event_jButtSiguiente2ActionPerformed
 
     private void jButtSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente4ActionPerformed
+        //Confirmacion del paciente
         PacienteDTO pacDTO = new PacienteDTO();
         try {
             pacDTO = PacienteManager.verPaciente(pacientes.getIdPacienteSeleccionado());
-                    } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(JPanAdmServiciosCargar.class.getName()).log(Level.SEVERE, null, ex);
         }
         jLabConfNombrePaciente.setText(pacDTO.getNombre());
