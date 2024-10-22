@@ -8,6 +8,7 @@ import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -21,7 +22,6 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private JPanAdmCuidadoresConsultar cuidadores = new JPanAdmCuidadoresConsultar();
     private ServicioManager servicioManager = new ServicioManager();
 
-
     public void setPrecio(double x) {
         this.precio = x;
     }
@@ -29,12 +29,12 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     public double getPrecio() {
         return precio;
     }
-    
+
     public void setDTO(ServicioDTO dto) {
         this.dto = dto;
     }
-    
-    public ServicioDTO getDTO(){
+
+    public ServicioDTO getDTO() {
         return dto;
     }
 
@@ -51,9 +51,9 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     public JPanAdmServiciosCargar() {
 
         initComponents();
-        
+
         ShowPanel(pacientes, jPanTabConsultarPaciente);
-        
+
         ShowPanel(cuidadores, jPanTabConsultarCuidador);
 
     }
@@ -255,6 +255,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
         jTabbedPaneCargarServicios.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPaneCargarServicios.setForeground(new java.awt.Color(0, 0, 102));
+        jTabbedPaneCargarServicios.setEnabled(false);
         jTabbedPaneCargarServicios.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jTabbedPaneCargarServicios.setMinimumSize(new java.awt.Dimension(638, 488));
         jTabbedPaneCargarServicios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -345,7 +346,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jPanCostoServicioLayout.setHorizontalGroup(
             jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabCostoServicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
         );
         jPanCostoServicioLayout.setVerticalGroup(
             jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -749,9 +750,9 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtSiguienteIngreso1ActionPerformed
 
     private void jButtSiguiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente1ActionPerformed
-        
+
         jTabbedPaneCargarServicios.setSelectedIndex(1);
-        
+
 
     }//GEN-LAST:event_jButtSiguiente1ActionPerformed
 
@@ -787,7 +788,13 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtCalcular1ActionPerformed
 
     private void jButtSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente2ActionPerformed
-        jLabConfFInicio.setText(dto.getFechaInicio().toString());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaInicio = dateFormat.format(dto.getFechaInicio());
+        String fechaFin = dateFormat.format(dto.getFechaFin());
+        jLabConfFFin.setText(fechaFin);
+        jLabConfFInicio.setText(fechaInicio);
+        jLabConfCantAtenciones.setText(JSpinCantAtenciones.getValue().toString());
+        jLabCostoTotalServicio.setText("$" + dto.getCosto());
         dto.setIdCuidador(cuidadores.getIdCuidadorSeleccionado());
         jTabbedPaneCargarServicios.setSelectedIndex(3);
     }//GEN-LAST:event_jButtSiguiente2ActionPerformed
