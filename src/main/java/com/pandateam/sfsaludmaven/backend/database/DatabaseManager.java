@@ -6,12 +6,15 @@ package com.pandateam.sfsaludmaven.backend.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import org.mindrot.jbcrypt.BCrypt;
+
 
 /**
  *
@@ -33,6 +36,7 @@ public class DatabaseManager {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(url, user, password);
             crearTablas();
+            crearUsuarioBase();
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -188,6 +192,25 @@ public class DatabaseManager {
 
     }
 
+    private void crearUsuarioBase() throws SQLException {
+
+        String sql = "INSERT INTO Usuario (Usuario_Nombre, Usuario_Contrasena) VALUES (?, ?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            String nombre = "admin";
+            String contrasena = "admin";
+            String hashedContrasena = BCrypt.hashpw(contrasena, BCrypt.gensalt());
+
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, hashedContrasena);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
     public static DefaultTableModel resultToTable(ResultSet rs) throws SQLException {
         // Esta es una función auxiliar que les permite convertir los resultados de las
         // consultas (ResultSet) a un modelo interpretable para la tabla mostrada en pantalla
