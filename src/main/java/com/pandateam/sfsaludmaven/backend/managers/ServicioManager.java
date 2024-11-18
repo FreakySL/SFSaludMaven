@@ -5,16 +5,20 @@
 package com.pandateam.sfsaludmaven.backend.managers;
 
 import com.pandateam.sfsaludmaven.backend.dao.ServicioDAO;
+import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
 import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author santi
  */
 public class ServicioManager {
-    private ServicioDAO servicioDAO;
+    private static ServicioDAO servicioDAO;
 
     public ServicioManager() {
         servicioDAO = new ServicioDAO();
@@ -31,6 +35,17 @@ public class ServicioManager {
         long dias = unidad.convert(tiempoTranscurrido, TimeUnit.MILLISECONDS);
         */
         return cantAtenciones*cantHorasDia*costoHora+0.0;
+    }
+    
+    public static DefaultTableModel consultarServicio(String nombre, String apellido, String documento, 
+            String descripcion, String tipo) throws SQLException {
+
+        try {
+            ResultSet rs = servicioDAO.filtrarServicios(nombre, apellido, documento, descripcion, tipo);
+            return DatabaseManager.resultToTable(rs);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     // Métodos adicionales para actualizar y eliminar servicios...

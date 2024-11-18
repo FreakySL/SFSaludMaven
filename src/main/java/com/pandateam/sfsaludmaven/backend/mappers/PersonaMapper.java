@@ -27,7 +27,7 @@ public class PersonaMapper {
     public PersonaDTO map(ResultSet rs) throws SQLException {
         PersonaDTO personaDTO = new PersonaDTO();
 
-        personaDTO.setIdPersona(rs.getInt("Per_Nombre"));
+        personaDTO.setIdPersona(rs.getInt("Per_ID"));
         personaDTO.setNombre(rs.getString("Per_Nombre"));
         personaDTO.setApellido(rs.getString("Per_Apellido"));
         personaDTO.setDni(rs.getString("Per_NumeroDocumento"));

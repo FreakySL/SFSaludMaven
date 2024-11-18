@@ -14,20 +14,23 @@ import java.sql.SQLException;
  */
 public class SocioMapper {
     
-    /*
-    private int idSocio;
-    private String numAfiliado;
-    private int suscripcionId;
-    */
-    
     public SocioDTO map(ResultSet rs) throws SQLException {
-        SocioDTO pacienteDTO = new SocioDTO();
-        
-        pacienteDTO.setIdSocio(rs.getInt("Per_ID"));
-        pacienteDTO.setNumAfiliado(rs.getString("S_NumeroSocio"));
-        pacienteDTO.setSuscripcionId(rs.getInt("Sus_ID"));
-        
-        return pacienteDTO;
+        SocioDTO socioDTO = new SocioDTO();
+
+        socioDTO.setIdSocio(rs.getInt("Per_ID"));
+        socioDTO.setNombre(rs.getString("Per_Nombre"));
+        socioDTO.setApellido(rs.getString("Per_Apellido"));
+        socioDTO.setDni(rs.getString("Per_NumeroDocumento"));
+        socioDTO.setFechaNacimiento(rs.getDate("Per_FechaNacimiento"));
+        socioDTO.setTelefono(rs.getInt("Per_Telefono"));
+        socioDTO.setMail(rs.getString("Per_Correo"));
+        socioDTO.setEspPersona(rs.getString("Per_Esp"));
+        socioDTO.setSuscrip(rs.getString("P_TieneSuscripcion"));
+        socioDTO.setEspPaciente(rs.getString("P_Esp"));
+        socioDTO.setNumAfiliado(rs.getString("S_NumeroSocio"));
+        socioDTO.setSuscripcionId(rs.getInt("Sus_ID"));
+
+        return socioDTO;
     }
-    
+
 }
