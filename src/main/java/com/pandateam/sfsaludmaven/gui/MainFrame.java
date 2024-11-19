@@ -50,6 +50,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanNavBar = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jPanButtonServicios = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -78,6 +80,22 @@ public class MainFrame extends javax.swing.JFrame {
         jPanNavBar.setMinimumSize(new java.awt.Dimension(200, 570));
         jPanNavBar.setPreferredSize(new java.awt.Dimension(200, 570));
         jPanNavBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 128, 155));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Suscripciones");
+        jPanel1.add(jLabel10);
+
+        jPanNavBar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 160, 40));
 
         jPanButtonServicios.setBackground(new java.awt.Color(0, 128, 155));
         jPanButtonServicios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -206,6 +224,12 @@ public class MainFrame extends javax.swing.JFrame {
         ShowPanel(pan);
     }//GEN-LAST:event_jPanButtonInicioMouseClicked
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        JPanAdmSuscripcionConsultar pan = new JPanAdmSuscripcionConsultar();
+        ShowPanel(pan);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +267,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -257,5 +282,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanButtonServicios;
     private javax.swing.JPanel jPanContentPrincipal;
     private javax.swing.JPanel jPanNavBar;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

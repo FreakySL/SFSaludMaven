@@ -53,6 +53,8 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         jTFNroAfiliadoPaciente = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConsultaPaciente = new javax.swing.JTable();
+        jButtBuscarPaciente1 = new javax.swing.JButton();
+        jButtBuscarPaciente2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(650, 500));
@@ -142,6 +144,20 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTableConsultaPaciente);
 
+        jButtBuscarPaciente1.setText("Consultar Suscripción");
+        jButtBuscarPaciente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtBuscarPaciente1ActionPerformed(evt);
+            }
+        });
+
+        jButtBuscarPaciente2.setText("Asignar Suscripción");
+        jButtBuscarPaciente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtBuscarPaciente2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,7 +190,12 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(286, 286, 286)
-                        .addComponent(jButtBuscarPaciente)))
+                        .addComponent(jButtBuscarPaciente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jButtBuscarPaciente1)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButtBuscarPaciente2)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -203,7 +224,11 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
                 .addComponent(jButtBuscarPaciente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtBuscarPaciente1)
+                    .addComponent(jButtBuscarPaciente2))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,9 +269,20 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         //JPanAdmServiciosCargar.dto.setIdPaciente(idPacienteSeleccionado);
     }//GEN-LAST:event_jTableConsultaPacienteMouseClicked
 
+    private void jButtBuscarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtBuscarPaciente1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtBuscarPaciente1ActionPerformed
+
+    private void jButtBuscarPaciente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtBuscarPaciente2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtBuscarPaciente2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtBuscarPaciente;
+    private javax.swing.JButton jButtBuscarPaciente1;
+    private javax.swing.JButton jButtBuscarPaciente2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
