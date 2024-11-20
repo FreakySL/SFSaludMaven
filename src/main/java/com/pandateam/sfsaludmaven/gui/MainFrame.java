@@ -120,11 +120,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setText("Salud");
         jPanNavBar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 30));
 
-        jLabel3.setFont(new java.awt.Font("Roboto Condensed", 2, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto Condensed", 2, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Seleccione para administrar:");
-        jPanNavBar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 160, 30));
+        jPanNavBar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 180, 30));
 
         jPanButtonCuidadores.setBackground(new java.awt.Color(0, 128, 155));
         jPanButtonCuidadores.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -181,7 +181,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("San Francisco");
-        jPanNavBar.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 50));
+        jPanNavBar.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 170, 50));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.png"))); // NOI18N
         jPanNavBar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
