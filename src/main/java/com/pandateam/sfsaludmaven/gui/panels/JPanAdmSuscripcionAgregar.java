@@ -48,7 +48,7 @@ public class JPanAdmSuscripcionAgregar extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabEstado = new javax.swing.JLabel();
         jDCFechaInicio = new com.toedter.calendar.JDateChooser();
-        jButtSiguiente = new javax.swing.JButton();
+        jButtAgregar = new javax.swing.JButton();
         jComboBoxPlanes = new javax.swing.JComboBox<>();
 
         jLabel4.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
@@ -116,11 +116,11 @@ public class JPanAdmSuscripcionAgregar extends javax.swing.JPanel {
         jLabEstado.setForeground(new java.awt.Color(102, 102, 102));
         jLabEstado.setText("-");
 
-        jButtSiguiente.setText("Siguiente");
-        jButtSiguiente.setEnabled(false);
-        jButtSiguiente.addActionListener(new java.awt.event.ActionListener() {
+        jButtAgregar.setText("Agregar");
+        jButtAgregar.setEnabled(false);
+        jButtAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtSiguienteActionPerformed(evt);
+                jButtAgregarActionPerformed(evt);
             }
         });
 
@@ -158,7 +158,7 @@ public class JPanAdmSuscripcionAgregar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtSiguiente)
+                    .addComponent(jButtAgregar)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel7)
@@ -199,7 +199,7 @@ public class JPanAdmSuscripcionAgregar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtSiguiente)
+                .addComponent(jButtAgregar)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -210,14 +210,14 @@ public class JPanAdmSuscripcionAgregar extends javax.swing.JPanel {
         int seleccion = jTableConsultaPaciente.getSelectedRow();
         idTitularSeleccionado = (int) jTableConsultaPaciente.getValueAt(seleccion, 0);
         
-        jButtSiguiente.setEnabled(true);
+        jButtAgregar.setEnabled(true);
         //System.out.println(idPacienteSeleccionado);
         //JPanAdmServiciosCargar.dto.setIdPaciente(idPacienteSeleccionado);
     }//GEN-LAST:event_jTableConsultaPacienteMouseClicked
 
-    private void jButtSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguienteActionPerformed
+    private void jButtAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtSiguienteActionPerformed
+    }//GEN-LAST:event_jButtAgregarActionPerformed
 
     private void jComboBoxPlanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxPlanesMouseClicked
         // TODO add your handling code here:
@@ -241,7 +241,7 @@ public class JPanAdmSuscripcionAgregar extends javax.swing.JPanel {
         // TODO add your handling code here:
         String plan;
         plan = jComboBoxPlanes.getSelectedItem().toString();
-        System.out.println(plan);
+        //System.out.println(plan);
         switch (plan){
             case "Junior":{
                 jLabEstado.setText("10%");
@@ -260,7 +260,7 @@ public class JPanAdmSuscripcionAgregar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtSiguiente;
+    private javax.swing.JButton jButtAgregar;
     private javax.swing.JComboBox<String> jComboBoxPlanes;
     private com.toedter.calendar.JDateChooser jDCFechaInicio;
     private javax.swing.JLabel jLabEstado;

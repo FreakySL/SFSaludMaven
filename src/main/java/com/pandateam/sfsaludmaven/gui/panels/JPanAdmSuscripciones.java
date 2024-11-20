@@ -37,6 +37,8 @@ public class JPanAdmSuscripciones extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanButtonAsignarSuscripcion = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jPanButtonAgregarSuscripcion = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(650, 570));
@@ -81,6 +83,21 @@ public class JPanAdmSuscripciones extends javax.swing.JPanel {
         jLabel6.setText("Asignar Suscripción a un Paciente");
         jPanButtonAsignarSuscripcion.add(jLabel6);
 
+        jPanButtonAgregarSuscripcion.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonAgregarSuscripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonAgregarSuscripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonAgregarSuscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonAgregarSuscripcionMouseClicked(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Agregar Suscripción");
+        jPanButtonAgregarSuscripcion.add(jLabel7);
+
         javax.swing.GroupLayout jPanContentSuscripcionesLayout = new javax.swing.GroupLayout(jPanContentSuscripciones);
         jPanContentSuscripciones.setLayout(jPanContentSuscripcionesLayout);
         jPanContentSuscripcionesLayout.setHorizontalGroup(
@@ -88,6 +105,7 @@ public class JPanAdmSuscripciones extends javax.swing.JPanel {
             .addGroup(jPanContentSuscripcionesLayout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addGroup(jPanContentSuscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanButtonAgregarSuscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanButtonAsignarSuscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanButtonConsultarSuscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -96,8 +114,11 @@ public class JPanAdmSuscripciones extends javax.swing.JPanel {
             .addGroup(jPanContentSuscripcionesLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jPanButtonAsignarSuscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jPanButtonConsultarSuscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanButtonAgregarSuscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanButtonConsultarSuscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -131,16 +152,24 @@ public class JPanAdmSuscripciones extends javax.swing.JPanel {
 
     private void jPanButtonAsignarSuscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonAsignarSuscripcionMouseClicked
         // TODO add your handling code here:
-        JPanAdmSuscripcionAgregar pan = new JPanAdmSuscripcionAgregar();
+        JPanAdmSuscripcionAsignar pan = new JPanAdmSuscripcionAsignar();
         GUIFunctions.showPanel(pan, jPanContentSuscripciones,650, 500);
         
     }//GEN-LAST:event_jPanButtonAsignarSuscripcionMouseClicked
+
+    private void jPanButtonAgregarSuscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonAgregarSuscripcionMouseClicked
+        // TODO add your handling code here:
+        JPanAdmSuscripcionAgregar pan = new JPanAdmSuscripcionAgregar();
+        GUIFunctions.showPanel(pan, jPanContentSuscripciones,650, 500);
+    }//GEN-LAST:event_jPanButtonAgregarSuscripcionMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanButtonAgregarSuscripcion;
     private javax.swing.JPanel jPanButtonAsignarSuscripcion;
     private javax.swing.JPanel jPanButtonConsultarSuscripcion;
     private javax.swing.JPanel jPanContentSuscripciones;
