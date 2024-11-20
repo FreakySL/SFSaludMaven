@@ -4,6 +4,7 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.gui.GUIFunctions;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -16,15 +17,6 @@ public class JPanAdmServicios extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmServicios
      */
-    private void ShowPanel (JPanel pan){
-        pan.setSize(650,500);
-        pan.setLocation(0,0);
-        
-        jPanContentPacientes.removeAll();
-        jPanContentPacientes.add(pan, BorderLayout.CENTER);
-        jPanContentPacientes.revalidate();
-        jPanContentPacientes.repaint();
-    }
     
     public JPanAdmServicios() {
         initComponents();
@@ -134,13 +126,13 @@ public class JPanAdmServicios extends javax.swing.JPanel {
     private void jPanButtonConsultarServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonConsultarServiciosMouseClicked
         // TODO add your handling code here:
         JPanAdmEnConstruccion pan = new JPanAdmEnConstruccion();
-        ShowPanel(pan);
+        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
     }//GEN-LAST:event_jPanButtonConsultarServiciosMouseClicked
 
     private void jPanButtonCargarServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonCargarServicioMouseClicked
         // TODO add your handling code here:
         JPanAdmServiciosCargar pan = new JPanAdmServiciosCargar();
-        ShowPanel(pan);
+        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
         
     }//GEN-LAST:event_jPanButtonCargarServicioMouseClicked
 

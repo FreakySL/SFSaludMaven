@@ -66,6 +66,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         ShowPanel(pacientes, jPanTabConsultarPaciente);
         ShowPanel(cuidadores, jPanTabConsultarCuidador);
 
+
     }
 
     /**

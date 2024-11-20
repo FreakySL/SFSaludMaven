@@ -226,7 +226,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        JPanAdmSuscripcionConsultar pan = new JPanAdmSuscripcionConsultar();
+        JPanAdmSuscripciones pan = new JPanAdmSuscripciones();
         ShowPanel(pan);
     }//GEN-LAST:event_jPanel1MouseClicked
 

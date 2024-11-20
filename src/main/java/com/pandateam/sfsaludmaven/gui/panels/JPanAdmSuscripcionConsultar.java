@@ -4,12 +4,6 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
-import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
