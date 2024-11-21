@@ -57,6 +57,30 @@ public class PacienteDAO implements DAO<PacienteDTO> {
         }
 
     }
+    
+    public PacienteDTO buscarPorDNI(String id) throws SQLException {
+
+        String sql = "SELECT * \n"
+                + "FROM Persona per\n"
+                + "JOIN Paciente pac ON per.Per_ID = pac.Per_ID\n"
+                + "WHERE per.Per_NumeroDocumento = ?;";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setString(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            return pacienteMapper.map(rs);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+
+    }
 
     @Override
     public boolean update(PacienteDTO object) {

@@ -7,6 +7,7 @@ package com.pandateam.sfsaludmaven.backend.managers;
 import com.pandateam.sfsaludmaven.backend.dao.PacienteDAO;
 import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
 import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -29,8 +30,21 @@ public class PacienteManager {
         }
     }
     
+    public static boolean tieneSus(int id) {
+        String sql = "SELECT P_TieneSuscripcion FROM Paciente "
+                + "WHERE Per_ID = ?";
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        return false;
+    }
+    
     public static PacienteDTO verPaciente(int id) throws SQLException {
         return pacienteDAO.read(id);
+    }
+    
+    public static PacienteDTO verPacientePorDNI(String dni) throws SQLException {
+        return pacienteDAO.buscarPorDNI(dni);
     }
     
     public static PacienteDTO cambiarSuscripcion(PacienteDTO paciente) {

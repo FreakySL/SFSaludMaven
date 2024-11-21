@@ -53,6 +53,8 @@ public class NoSocioDAO implements DAO<NoSocioDTO> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /*
+    
     public ResultSet obtenerNoSocios(String documento, String numeroSocio) throws SQLException {
 
         // Construir la consulta SQL correctamente
@@ -79,9 +81,33 @@ public class NoSocioDAO implements DAO<NoSocioDTO> {
             throw ex;
         }
     }
-    
-    public boolean borrarSocio(int id) {
-        
+     */
+    public ResultSet obtenerNoSocios(String documento) throws SQLException {
+
+        // Construir la consulta SQL correctamente
+        String sql = "SELECT Per_ID AS ID, Per_Nombre AS Nombre, Per_Apellido AS Apellido, Per_NumeroDocumento AS DNI\n"
+                + "FROM nosocio\n"
+                + "RIGHT JOIN persona ON nosocio.Per_ID = persona.Per_ID\n"
+                + "WHERE Per_NumeroDocumento = ?;";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setString(1, "%" + documento + "%");
+
+            ResultSet rs = pstmt.executeQuery();
+
+            // Devolver el ResultSet si aún lo necesitas
+            return rs;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+    }
+
+    public boolean borrarNoSocio(int id) {
+
         String sql = "DELETE FROM NoSocio WHERE Per_ID = ?;";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, Integer.toString(id));

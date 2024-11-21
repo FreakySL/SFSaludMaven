@@ -7,10 +7,12 @@ package com.pandateam.sfsaludmaven.backend.managers;
 import com.pandateam.sfsaludmaven.backend.dao.SuscripcionDAO;
 import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
 import com.pandateam.sfsaludmaven.backend.dto.SuscripcionDTO;
+import java.sql.SQLException;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -59,11 +61,17 @@ public class SuscripcionManager {
 
     }
     
-    public static SuscripcionDTO consultarSuscripcion(){
+    public static SuscripcionDTO encontrarPorTitular(String dni) throws SQLException {
+        return suscripcionDAO.encontrarPorTitular(dni);
+    }
+    
+    
+    public static SuscripcionDTO consultarSuscripcion(PacienteDTO paciente){
         
-        return null;
+        return suscripcionDAO.encontrarPorTitular(dni);
         
     }
+
 
     public static void actualizarPlan(SuscripcionDTO sus) {
 
@@ -124,4 +132,7 @@ public class SuscripcionManager {
             }
         }
     }
+    
+    
+    
 }
