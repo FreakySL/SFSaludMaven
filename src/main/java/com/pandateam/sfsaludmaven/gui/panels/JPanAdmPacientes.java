@@ -116,7 +116,7 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
 
     private void jPanButtonConsultarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonConsultarPacientesMouseClicked
         // TODO add your handling code here:
-        JPanAdmPacientesConsultar pan = new JPanAdmPacientesConsultar();
+        JPanAdmPacientesBaseConsultar pan = new JPanAdmPacientesBaseConsultar();
         GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
     }//GEN-LAST:event_jPanButtonConsultarPacientesMouseClicked
 

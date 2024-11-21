@@ -53,8 +53,9 @@ public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
         jLabel4.setText("Nombre:");
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(650, 500));
-        setMinimumSize(new java.awt.Dimension(650, 500));
+        setMaximumSize(new java.awt.Dimension(650, 456));
+        setMinimumSize(new java.awt.Dimension(650, 456));
+        setPreferredSize(new java.awt.Dimension(650, 456));
 
         jLabel1.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -174,8 +175,8 @@ public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

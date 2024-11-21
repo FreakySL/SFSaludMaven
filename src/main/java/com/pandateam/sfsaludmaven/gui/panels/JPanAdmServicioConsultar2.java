@@ -22,8 +22,7 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
     
     public JPanAdmServicioConsultar2() {
         initComponents();
-        jButtCalcPres.setVisible(false);
-        
+                
     }
 
     /**
@@ -40,7 +39,6 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButtAnterior = new javax.swing.JButton();
         jLabIDServicio = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -66,289 +64,151 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         jLabApellidoCuidador = new javax.swing.JLabel();
         jLabDNICuidador = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jButtCalcPres = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Nombre:");
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(650, 500));
-        setMinimumSize(new java.awt.Dimension(650, 500));
+        setMaximumSize(new java.awt.Dimension(650, 456));
+        setMinimumSize(new java.awt.Dimension(650, 456));
+        setPreferredSize(new java.awt.Dimension(650, 456));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Servicio:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 16, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Descripción:");
-
-        jButtAnterior.setText("Anterior");
-        jButtAnterior.setEnabled(false);
-        jButtAnterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtAnteriorActionPerformed(evt);
-            }
-        });
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 67, -1, -1));
 
         jLabIDServicio.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabIDServicio.setForeground(new java.awt.Color(0, 0, 0));
         jLabIDServicio.setText("-");
+        add(jLabIDServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 16, 269, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("-");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 50, 366, 50));
 
         jLabel8.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("Fecha de inicio:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 112, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("-");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 112, 189, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(102, 102, 102));
         jLabel10.setText("-");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 112, 177, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("Fecha de finalización:");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 112, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("Tipo:");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 135, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 102, 102));
         jLabel13.setText("-");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 135, 270, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
         jLabel14.setText("-");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 135, 240, -1));
 
         jLabel15.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 102, 102));
         jLabel15.setText("Costo:");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 135, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 164, 590, 10));
 
         jLabel2.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cuidador:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 192, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Paciente:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 192, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(102, 102, 102));
         jLabel16.setText("Nombre:");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
 
         jLabNombrePaciente.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabNombrePaciente.setForeground(new java.awt.Color(102, 102, 102));
         jLabNombrePaciente.setText("-");
+        add(jLabNombrePaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 220, 216, -1));
 
         jLabel18.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(102, 102, 102));
         jLabel18.setText("Apellido:");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 243, -1, -1));
 
         jLabApellidoPaciente.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabApellidoPaciente.setForeground(new java.awt.Color(102, 102, 102));
         jLabApellidoPaciente.setText("-");
+        add(jLabApellidoPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 243, 216, -1));
 
         jLabel20.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(102, 102, 102));
         jLabel20.setText("DNI:");
+        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 266, -1, -1));
 
         jLabDNIPaciente.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabDNIPaciente.setForeground(new java.awt.Color(102, 102, 102));
         jLabDNIPaciente.setText("-");
+        add(jLabDNIPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 266, 240, -1));
 
         jLabNombreCuidador.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabNombreCuidador.setForeground(new java.awt.Color(102, 102, 102));
         jLabNombreCuidador.setText("-");
+        add(jLabNombreCuidador, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 220, 216, -1));
 
         jLabel23.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(102, 102, 102));
         jLabel23.setText("Nombre:");
+        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 220, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(102, 102, 102));
         jLabel24.setText("Apellido:");
+        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 243, -1, -1));
 
         jLabApellidoCuidador.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabApellidoCuidador.setForeground(new java.awt.Color(102, 102, 102));
         jLabApellidoCuidador.setText("-");
+        add(jLabApellidoCuidador, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 243, 216, -1));
 
         jLabDNICuidador.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabDNICuidador.setForeground(new java.awt.Color(102, 102, 102));
         jLabDNICuidador.setText("-");
+        add(jLabDNICuidador, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 266, 240, -1));
 
         jLabel27.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 102, 102));
         jLabel27.setText("DNI:");
-
-        jButtCalcPres.setText("Calcular Presupuesto");
-        jButtCalcPres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtCalcPresActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(261, 261, 261))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButtAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel15)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addComponent(jSeparator1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabIDServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(105, 105, 105))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGap(4, 4, 4)
-                                    .addComponent(jButtCalcPres)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabDNIPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel18)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabApellidoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel27)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabDNICuidador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel24)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabApellidoCuidador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel23)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabNombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(26, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabIDServicio)
-                    .addComponent(jButtCalcPres, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabNombrePaciente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabApellidoPaciente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabDNIPaciente)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabNombreCuidador))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabApellidoCuidador))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabDNICuidador))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                .addComponent(jButtAnterior)
-                .addGap(20, 20, 20))
-        );
+        add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 266, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtAnteriorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtAnteriorActionPerformed
-
-    private void jButtCalcPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtCalcPresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtCalcPresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtAnterior;
-    private javax.swing.JButton jButtCalcPres;
     private javax.swing.JLabel jLabApellidoCuidador;
     private javax.swing.JLabel jLabApellidoPaciente;
     private javax.swing.JLabel jLabDNICuidador;
