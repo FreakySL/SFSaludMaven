@@ -44,9 +44,10 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
         jLabCantHoras = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabPrecioPorHora = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabCostoServicio = new javax.swing.JLabel();
+        jSpinnerPrecioHora = new javax.swing.JSpinner();
+        jButtonCalcular = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -85,10 +86,6 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(102, 102, 102));
         jLabel10.setText("El precio por hora es de");
 
-        jLabPrecioPorHora.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        jLabPrecioPorHora.setForeground(new java.awt.Color(102, 102, 102));
-        jLabPrecioPorHora.setText("___________");
-
         jLabel12.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("El costo del servicio es de");
@@ -96,6 +93,13 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
         jLabCostoServicio.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         jLabCostoServicio.setForeground(new java.awt.Color(102, 102, 102));
         jLabCostoServicio.setText("___________");
+
+        jButtonCalcular.setText("Calcular");
+        jButtonCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCalcularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,21 +112,26 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabCostoServicio))
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabPrecioPorHora))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabCantAtenciones)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabCantHoras)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonCalcular)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jSpinnerPrecioHora))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabCantAtenciones)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabCantHoras)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9))
-                    .addComponent(jLabel1))
+                        .addComponent(jLabel9)))
                 .addContainerGap(232, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,30 +140,37 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabCantAtenciones)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabCantHoras)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabPrecioPorHora))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabCantAtenciones)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabCantHoras)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10))
+                    .addComponent(jSpinnerPrecioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabCostoServicio))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jButtonCalcular)
+                .addContainerGap(258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCalcularActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCalcular;
     private javax.swing.JLabel jLabCantAtenciones;
     private javax.swing.JLabel jLabCantHoras;
     private javax.swing.JLabel jLabCostoServicio;
-    private javax.swing.JLabel jLabPrecioPorHora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -162,5 +178,6 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JSpinner jSpinnerPrecioHora;
     // End of variables declaration//GEN-END:variables
 }

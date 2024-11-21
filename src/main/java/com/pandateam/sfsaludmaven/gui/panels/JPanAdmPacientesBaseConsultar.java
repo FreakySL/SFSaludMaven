@@ -22,7 +22,6 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
         JPanAdmPacientesConsultar pan = new JPanAdmPacientesConsultar();
         GUIFunctions.showPanel(pan, jPanelContent,650, 456);
         jButtConsultarSusc.setVisible(true);
-        jButtAsignarSusc.setVisible(true);
     }
 
     /**
@@ -35,7 +34,6 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
     private void initComponents() {
 
         jButtConsultarSusc = new javax.swing.JButton();
-        jButtAsignarSusc = new javax.swing.JButton();
         jPanelContent = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -49,13 +47,6 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
             }
         });
 
-        jButtAsignarSusc.setText("Asignar Suscripción");
-        jButtAsignarSusc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtAsignarSuscActionPerformed(evt);
-            }
-        });
-
         jPanelContent.setBackground(new java.awt.Color(255, 255, 255));
         jPanelContent.setMaximumSize(new java.awt.Dimension(650, 456));
         jPanelContent.setMinimumSize(new java.awt.Dimension(650, 456));
@@ -65,7 +56,7 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
         jPanelContent.setLayout(jPanelContentLayout);
         jPanelContentLayout.setHorizontalGroup(
             jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
         jPanelContentLayout.setVerticalGroup(
             jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,21 +68,17 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtConsultarSusc)
-                .addGap(36, 36, 36)
-                .addComponent(jButtAsignarSusc)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGap(248, 248, 248))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanelContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtConsultarSusc, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jButtAsignarSusc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButtConsultarSusc, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -101,21 +88,11 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
         JPanAdmSuscripcionConsultar pan = new JPanAdmSuscripcionConsultar();
         GUIFunctions.showPanel(pan, jPanelContent,650, 456);
         jButtConsultarSusc.setVisible(false);
-        jButtAsignarSusc.setVisible(false);
         
     }//GEN-LAST:event_jButtConsultarSuscActionPerformed
 
-    private void jButtAsignarSuscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtAsignarSuscActionPerformed
-        // TODO add your handling code here:
-        JPanAdmSuscripcionAsignar pan = new JPanAdmSuscripcionAsignar();
-        GUIFunctions.showPanel(pan, jPanelContent,650, 456);
-        jButtConsultarSusc.setVisible(false);
-        jButtAsignarSusc.setVisible(false);
-    }//GEN-LAST:event_jButtAsignarSuscActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtAsignarSusc;
     private javax.swing.JButton jButtConsultarSusc;
     private javax.swing.JPanel jPanelContent;
     // End of variables declaration//GEN-END:variables
