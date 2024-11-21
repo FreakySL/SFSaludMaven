@@ -10,9 +10,9 @@ import java.util.Date;
  *
  * @author santi
  */
-public class SocioDTO {
-
-    private int idSocio;
+public class NoSocioDTO {
+    
+    private int idNoSocio;
     private String suscrip;
     private String nombre;
     private String apellido;
@@ -22,10 +22,12 @@ public class SocioDTO {
     private String mail;
     private String espPersona;
     private String espPaciente;
-    private String numAfiliado;
-    private int suscripcionId;
 
-    public SocioDTO(String suscrip, String nombre, String apellido, String dni, Date fechaNacimiento, int telefono, String mail, String espPersona, String espPaciente, int idSocio, String numAfiliado, int suscripcionId) {
+    public NoSocioDTO() {
+    }
+
+    public NoSocioDTO(int idNoSocio, String suscrip, String nombre, String apellido, String dni, Date fechaNacimiento, int telefono, String mail, String espPersona, String espPaciente) {
+        this.idNoSocio = idNoSocio;
         this.suscrip = suscrip;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -35,12 +37,14 @@ public class SocioDTO {
         this.mail = mail;
         this.espPersona = espPersona;
         this.espPaciente = espPaciente;
-        this.idSocio = idSocio;
-        this.numAfiliado = numAfiliado;
-        this.suscripcionId = suscripcionId;
     }
 
-    public SocioDTO() {
+    public int getIdNoSocio() {
+        return idNoSocio;
+    }
+
+    public void setIdNoSocio(int idNoSocio) {
+        this.idNoSocio = idNoSocio;
     }
 
     public String getSuscrip() {
@@ -114,29 +118,4 @@ public class SocioDTO {
     public void setEspPaciente(String espPaciente) {
         this.espPaciente = espPaciente;
     }
-
-    public int getIdSocio() {
-        return idSocio;
-    }
-
-    public void setIdSocio(int idSocio) {
-        this.idSocio = idSocio;
-    }
-
-    public String getNumAfiliado() {
-        return numAfiliado;
-    }
-
-    public void setNumAfiliado(String numAfiliado) {
-        this.numAfiliado = numAfiliado;
-    }
-
-    public int getSuscripcionId() {
-        return suscripcionId;
-    }
-
-    public void setSuscripcionId(int suscripcionId) {
-        this.suscripcionId = suscripcionId;
-    }
-
 }

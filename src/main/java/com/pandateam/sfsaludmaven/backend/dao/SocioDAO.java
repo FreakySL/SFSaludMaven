@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,7 +30,19 @@ public class SocioDAO implements DAO<SocioDTO> {
 
     @Override
     public boolean create(SocioDTO object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO socio (Per_ID, S_NumeroSocio, Sus_ID) VALUES (?,?,?);";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, object.getNumAfiliado());
+            pstmt.setInt(2, object.getSuscripcionId());
+
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Carga exitosa");
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Carga incorrecta");
+            return false;
+        }
     }
 
     @Override
@@ -43,8 +56,8 @@ public class SocioDAO implements DAO<SocioDTO> {
     }
 
     @Override
-    public SocioDTO delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public SocioDTO delete(int id) { 
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody  
     }
 
     @Override
@@ -88,10 +101,10 @@ public class SocioDAO implements DAO<SocioDTO> {
                         + "INNER JOIN paciente pa ON pa.Per_ID = p.Per_ID\n"
                         + "WHERE \n"
                         + "    s.Sus_ID = ?";
-                
+
                 pstmt = connection.prepareStatement(sql);
                 pstmt.setString(1, susId);
-                
+
                 return pstmt.executeQuery();
             } else {
                 return null;

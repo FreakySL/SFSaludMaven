@@ -37,11 +37,10 @@ public class ServicioManager {
         return cantAtenciones*cantHorasDia*costoHora+0.0;
     }
     
-    public static DefaultTableModel consultarServicio(String nombre, String apellido, String documento, 
-            String descripcion, String tipo) throws SQLException {
+    public static DefaultTableModel consultarServicio(String dniPaciente, String dniCuidador) throws SQLException {
 
         try {
-            ResultSet rs = servicioDAO.filtrarServicios(nombre, apellido, documento, descripcion, tipo);
+            ResultSet rs = servicioDAO.filtrarServicios(dniPaciente, dniCuidador);
             return DatabaseManager.resultToTable(rs);
         } catch (Exception e) {
             throw e;

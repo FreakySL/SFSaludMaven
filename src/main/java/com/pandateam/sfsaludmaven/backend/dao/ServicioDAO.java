@@ -70,26 +70,21 @@ public class ServicioDAO implements DAO<ServicioDTO> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ResultSet filtrarServicios(String nombre, String apellido, String documento, String descripcion, String tipo) throws SQLException {
+    public ResultSet filtrarServicios(String documentoPaciente, String documentoCuidador) throws SQLException {
 
         // Construir la consulta SQL correctamente
-        String sql = "SELECT s.S_Descripcion, s.S_FechaInicio, s.S_FechaFin, s.S_Costo, \n"
-                + "s.S_Tipo, p.Per_Nombre, p.Per_Apellido, p.Per_NumeroDocumento\n"
-                + "FROM Persona p\n"
-                + "JOIN Servicio s ON p.Per_ID = s.Per_IDPaciente\n"
-                + "WHERE p.Per_Nombre LIKE ? AND p.Per_Apellido LIKE ?\n"
-                + "AND p.Per_NumeroDocumento LIKE ? AND s.S_Descripcion LIKE ?\n"
-                + "AND s.S_Tipo LIKE ?;";
+        String sql = "SELECT s.S_ID AS `ID Servicio`,s.S_Descripcion AS Descripcion, s.S_FechaInicio AS `Fecha de Inicio`, s.S_FechaFin AS `Fecha de Fin`, s.S_Tipo AS `Tipo de Servicio`, pa.Per_NumeroDocumento AS `DNI Paciente`, pa.Per_Nombre AS `Nombre Paciente`, pa.Per_Apellido AS `Apellido Paciente`, cu.Per_NumeroDocumento AS `DNI Cuidador`, cu.Per_Nombre AS `Nombre Cuidador`, cu.Per_Apellido AS `Apellido Cuidador`\n"
+                + "FROM servicio s\n"
+                + "RIGHT JOIN persona pa ON s.Per_IDPaciente = pa.Per_ID\n"
+                + "RIGHT JOIN persona cu ON s.Per_IDCuidador = cu.Per_ID\n"
+                + "WHERE pa.Per_NumeroDocumento = ? AND cu.Per_NumeroDocumento = ?;";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
             // Asignar los valores a los parámetros
-            pstmt.setString(1, "%" + nombre + "%");
-            pstmt.setString(2, "%" + apellido + "%");
-            pstmt.setString(3, "%" + documento + "%");
-            pstmt.setString(4, "%" + descripcion + "%");
-            pstmt.setString(5, "%" + tipo + "%");
-
+            pstmt.setString(1, "%" + documentoPaciente + "%");
+            pstmt.setString(2, "%" + documentoCuidador + "%");
+            
             ResultSet rs = pstmt.executeQuery();
 
             // Devolver el ResultSet si aún lo necesitas
