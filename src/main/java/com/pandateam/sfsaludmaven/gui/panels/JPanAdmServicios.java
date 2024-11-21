@@ -4,6 +4,7 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.gui.GUIFunctions;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -16,18 +17,10 @@ public class JPanAdmServicios extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmServicios
      */
-    private void ShowPanel (JPanel pan){
-        pan.setSize(650,500);
-        pan.setLocation(0,0);
-        
-        jPanContentPacientes.removeAll();
-        jPanContentPacientes.add(pan, BorderLayout.CENTER);
-        jPanContentPacientes.revalidate();
-        jPanContentPacientes.repaint();
-    }
     
     public JPanAdmServicios() {
         initComponents();
+        
     }
 
     /**
@@ -45,6 +38,8 @@ public class JPanAdmServicios extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanButtonCargarServicio = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jPanButtonCalcularPres = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(650, 570));
@@ -89,6 +84,21 @@ public class JPanAdmServicios extends javax.swing.JPanel {
         jLabel6.setText("Cargar nuevo servicio");
         jPanButtonCargarServicio.add(jLabel6);
 
+        jPanButtonCalcularPres.setBackground(new java.awt.Color(0, 128, 155));
+        jPanButtonCalcularPres.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanButtonCalcularPres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanButtonCalcularPres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanButtonCalcularPresMouseClicked(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Roboto Condensed Light", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Calcular presupuesto");
+        jPanButtonCalcularPres.add(jLabel7);
+
         javax.swing.GroupLayout jPanContentPacientesLayout = new javax.swing.GroupLayout(jPanContentPacientes);
         jPanContentPacientes.setLayout(jPanContentPacientesLayout);
         jPanContentPacientesLayout.setHorizontalGroup(
@@ -96,8 +106,10 @@ public class JPanAdmServicios extends javax.swing.JPanel {
             .addGroup(jPanContentPacientesLayout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addGroup(jPanContentPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanButtonCalcularPres, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanButtonCargarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanButtonConsultarServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanButtonConsultarServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(120, 120, 120))
         );
         jPanContentPacientesLayout.setVerticalGroup(
             jPanContentPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +117,10 @@ public class JPanAdmServicios extends javax.swing.JPanel {
                 .addGap(80, 80, 80)
                 .addComponent(jPanButtonCargarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jPanButtonConsultarServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanButtonConsultarServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanButtonCalcularPres, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(278, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -133,22 +148,31 @@ public class JPanAdmServicios extends javax.swing.JPanel {
 
     private void jPanButtonConsultarServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonConsultarServiciosMouseClicked
         // TODO add your handling code here:
-        JPanAdmEnConstruccion pan = new JPanAdmEnConstruccion();
-        ShowPanel(pan);
+        JPanAdmServicioConsultarBase pan = new JPanAdmServicioConsultarBase();
+        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
+        
     }//GEN-LAST:event_jPanButtonConsultarServiciosMouseClicked
 
     private void jPanButtonCargarServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonCargarServicioMouseClicked
         // TODO add your handling code here:
         JPanAdmServiciosCargar pan = new JPanAdmServiciosCargar();
-        ShowPanel(pan);
+        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
         
     }//GEN-LAST:event_jPanButtonCargarServicioMouseClicked
+
+    private void jPanButtonCalcularPresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonCalcularPresMouseClicked
+        // TODO add your handling code here:
+        JPanAdmServicioCalcPresupuestoBase pan = new JPanAdmServicioCalcPresupuestoBase();
+        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
+    }//GEN-LAST:event_jPanButtonCalcularPresMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanButtonCalcularPres;
     private javax.swing.JPanel jPanButtonCargarServicio;
     private javax.swing.JPanel jPanButtonConsultarServicios;
     private javax.swing.JPanel jPanContentPacientes;

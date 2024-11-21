@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="daoTest.ServicioDAOTest" time="0.014" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="daoTest.ServicioDAOTest" time="2.677" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.class.path" value="C:\Users\biane\Documents\GitHub\SFSaludMaven\target\test-classes;C:\Users\biane\Documents\GitHub\SFSaludMaven\target\classes;C:\Users\biane\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\biane\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\biane\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE170\AbsoluteLayout-RELEASE170.jar;C:\Users\biane\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\biane\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\biane\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\biane\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\biane\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\biane\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\biane\.m2\repository\com\toedter\jcalendar\1.4\jcalendar-1.4.jar;C:\Users\biane\.m2\repository\org\mindrot\jbcrypt\0.4\jbcrypt-0.4.jar;"/>
+    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,7 +16,7 @@
     <property name="user.country" value="AR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\biane\AppData\Local\Temp\surefire453404914041505109\surefirebooter10242567898362275264.jar C:\Users\biane\AppData\Local\Temp\surefire453404914041505109 2024-10-22T17-23-52_347-jvmRun1 surefire7469924626781523838tmp surefire_017387431295100055557tmp"/>
+    <property name="sun.java.command" value="C:\Users\biane\AppData\Local\Temp\surefire4405693978410470906\surefirebooter3405166829751068780.jar C:\Users\biane\AppData\Local\Temp\surefire4405693978410470906 2024-11-19T20-28-28_166-jvmRun1 surefire10958509098871486018tmp surefire_015890428047652040945tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\biane\Documents\GitHub\SFSaludMaven\target\test-classes;C:\Users\biane\Documents\GitHub\SFSaludMaven\target\classes;C:\Users\biane\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\biane\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\biane\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE170\AbsoluteLayout-RELEASE170.jar;C:\Users\biane\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\biane\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\biane\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\biane\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\biane\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\biane\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\biane\.m2\repository\com\toedter\jcalendar\1.4\jcalendar-1.4.jar;C:\Users\biane\.m2\repository\org\mindrot\jbcrypt\0.4\jbcrypt-0.4.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\biane\AppData\Local\Temp\surefire453404914041505109\surefirebooter10242567898362275264.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\biane\AppData\Local\Temp\surefire4405693978410470906\surefirebooter3405166829751068780.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.2+8-LTS-86"/>
@@ -57,5 +58,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAgregar" classname="daoTest.ServicioDAOTest" time="0.013"/>
+  <testcase name="testAgregar" classname="daoTest.ServicioDAOTest" time="2.675"/>
 </testsuite>

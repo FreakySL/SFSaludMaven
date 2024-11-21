@@ -4,6 +4,7 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.gui.GUIFunctions;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -16,15 +17,6 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmPacientes
      */
-    private void ShowPanel (JPanel pan){
-        pan.setSize(650,500);
-        pan.setLocation(0,0);
-        
-        jPanContentPacientes.removeAll();
-        jPanContentPacientes.add(pan, BorderLayout.CENTER);
-        jPanContentPacientes.revalidate();
-        jPanContentPacientes.repaint();
-    }
     
     public JPanAdmPacientes() {
         initComponents();
@@ -119,13 +111,13 @@ public class JPanAdmPacientes extends javax.swing.JPanel {
     private void jPanButtonIngresarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonIngresarPacienteMouseClicked
         // TODO add your handling code here:
         JPanAdmEnConstruccion pan = new JPanAdmEnConstruccion();
-        ShowPanel(pan);
+        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
     }//GEN-LAST:event_jPanButtonIngresarPacienteMouseClicked
 
     private void jPanButtonConsultarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonConsultarPacientesMouseClicked
         // TODO add your handling code here:
-        JPanAdmPacientesConsultar pan = new JPanAdmPacientesConsultar();
-        ShowPanel(pan);
+        JPanAdmPacientesBaseConsultar pan = new JPanAdmPacientesBaseConsultar();
+        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
     }//GEN-LAST:event_jPanButtonConsultarPacientesMouseClicked
 
 

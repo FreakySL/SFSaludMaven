@@ -5,6 +5,7 @@
 package com.pandateam.sfsaludmaven.gui.panels;
 
 import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
+import com.pandateam.sfsaludmaven.gui.GUIFunctions;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,8 +56,9 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         jTableConsultaPaciente = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(650, 500));
-        setMinimumSize(new java.awt.Dimension(650, 500));
+        setMaximumSize(new java.awt.Dimension(650, 456));
+        setMinimumSize(new java.awt.Dimension(650, 456));
+        setPreferredSize(new java.awt.Dimension(650, 456));
 
         jButtBuscarPaciente.setText("Buscar");
         jButtBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +205,7 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
                 .addComponent(jButtBuscarPaciente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

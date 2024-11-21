@@ -4,8 +4,7 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
+import com.pandateam.sfsaludmaven.gui.GUIFunctions;
 
 /**
  *
@@ -17,21 +16,10 @@ public class JPanAdmCuidadores extends javax.swing.JPanel {
      * Creates new form JPanAdmCuidadores
      */
     
-    
-    private void ShowPanel (JPanel pan){
-        pan.setSize(650,500);
-        pan.setLocation(0,0);
-        
-        jPanContentCuidadores.removeAll();
-        jPanContentCuidadores.add(pan, BorderLayout.CENTER);
-        jPanContentCuidadores.revalidate();
-        jPanContentCuidadores.repaint();
-    }
-    
     public JPanAdmCuidadores() {
         initComponents();
         JPanAdmCuidadoresConsultar pan = new JPanAdmCuidadoresConsultar();
-        ShowPanel(pan);
+        GUIFunctions.showPanel(pan, jPanContentCuidadores, 650, 500);
     }
 
     /**

@@ -1,8 +1,10 @@
 package com.pandateam.sfsaludmaven.gui;
+
 import com.pandateam.sfsaludmaven.backend.dao.UsuarioDAO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 public class LoginFrame extends javax.swing.JFrame {
 
@@ -10,7 +12,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private JPasswordField passField;
     private JButton loginButton;
     private UsuarioDAO usuarioDAO;
-    
+
     public LoginFrame() {
         setTitle("Login");
         setSize(300, 150);
@@ -25,7 +27,7 @@ public class LoginFrame extends javax.swing.JFrame {
         placeComponents(panel);
         setVisible(true);
     }
-    
+
     private void placeComponents(JPanel panel) {
         panel.setLayout(null);
 
@@ -54,6 +56,13 @@ public class LoginFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 String user = userField.getText();
                 String pass = new String(passField.getPassword());
+
+                // Validar que los campos no contengan caracteres especiales 
+                if (!isInputValid(user) || !isInputValid(pass)) {
+                    JOptionPane.showMessageDialog(null, "El nombre de usuario o la contraseña contienen caracteres especiales. Por favor, ingrese solo letras y números.");
+                    return;
+                }
+
                 boolean loginExitoso = usuarioDAO.verificarUsuario(user, pass);
                 if (loginExitoso) {
                     JOptionPane.showMessageDialog(null, "Login exitoso");
@@ -65,6 +74,13 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
     }
+
+    private boolean isInputValid(String input) {
+    // Definir el patrón de la expresión regular para letras y números 
+        String regex = "^[a-zA-Z0-9]+$";
+        return Pattern.matches(regex,input);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -99,16 +115,28 @@ public class LoginFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrame.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(LoginFrame.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(LoginFrame.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LoginFrame.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
