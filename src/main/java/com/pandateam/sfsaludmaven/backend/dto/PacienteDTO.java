@@ -47,7 +47,7 @@ public class PacienteDTO {
         this.idPaciente = idPaciente;
     }
 
-    public String isSuscrip() {
+    public String getSuscrip() {
         return suscrip;
     }
 

@@ -47,6 +47,16 @@ public class ServicioManager {
             throw e;
         }
     }
+    
+    public static double calcularPresupuesto(ServicioDTO servicio, double costo) {
+        
+        double horas = AtencionManager
+                .obtenerHorasDeAtenciones(AtencionManager
+                        .obtenerAtencionesDeServicio(servicio.getIdServicio()));
+        
+        return costo * horas;
+        
+    }
 
     // Métodos adicionales para actualizar y eliminar servicios...
 }

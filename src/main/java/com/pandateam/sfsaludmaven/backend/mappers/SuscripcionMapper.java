@@ -20,7 +20,7 @@ public class SuscripcionMapper {
         if (rs.next()) {
             suscripcionDTO.setIdSuscripcion(rs.getInt("Sus_ID"));
             suscripcionDTO.setFechaInicio(rs.getDate("Sus_FechaInicio"));
-            suscripcionDTO.setTitular(rs.getInt("Sus_Titular"));
+            suscripcionDTO.setTitular(rs.getString("Sus_Titular"));
             suscripcionDTO.setDescuento(rs.getInt("Sus_Descuento"));
             suscripcionDTO.setEstado(rs.getString("Sus_Estado"));
         }

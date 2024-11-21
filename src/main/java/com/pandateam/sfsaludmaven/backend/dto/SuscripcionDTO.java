@@ -14,11 +14,11 @@ public class SuscripcionDTO {
     
     private int idSuscripcion;
     private Date fechaInicio;
-    private int titular;
+    private String titular;
     private int descuento;
     private String estado;
 
-    public SuscripcionDTO(int idSuscripcion, Date fechaInicio, int titular, int descuento, String estado) {
+    public SuscripcionDTO(int idSuscripcion, Date fechaInicio, String titular, int descuento, String estado) {
         this.idSuscripcion = idSuscripcion;
         this.fechaInicio = fechaInicio;
         this.titular = titular;
@@ -45,11 +45,11 @@ public class SuscripcionDTO {
         this.fechaInicio = fechaInicio;
     }
 
-    public int getTitular() {
+    public String getTitular() {
         return titular;
     }
 
-    public void setTitular(int titular) {
+    public void setTitular(String titular) {
         this.titular = titular;
     }
 

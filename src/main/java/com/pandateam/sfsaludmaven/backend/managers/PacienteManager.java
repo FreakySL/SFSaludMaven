@@ -32,4 +32,18 @@ public class PacienteManager {
     public static PacienteDTO verPaciente(int id) throws SQLException {
         return pacienteDAO.read(id);
     }
+    
+    public static PacienteDTO cambiarSuscripcion(PacienteDTO paciente) {
+        
+        if (paciente.getEspPaciente().equals("NoSocio")) {
+            paciente.setEspPaciente("Socio");
+            paciente.setSuscrip("Sí");
+        } else {
+            paciente.setEspPaciente("NoSocio");
+            paciente.setSuscrip("No");
+        }
+        
+        pacienteDAO.update(paciente);
+        return paciente;
+    }
 }

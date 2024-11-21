@@ -60,7 +60,17 @@ public class PacienteDAO implements DAO<PacienteDTO> {
 
     @Override
     public boolean update(PacienteDTO object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "UPDATE Paciente SET P_TieneSuscripcion = ?, P_Esp = ? WHERE Per_ID = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, object.getSuscrip());
+            pstmt.setString(2, object.getEspPaciente());
+            pstmt.setInt(3, object.getIdPaciente());
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     @Override
