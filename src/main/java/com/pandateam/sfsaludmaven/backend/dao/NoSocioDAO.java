@@ -5,85 +5,55 @@
 package com.pandateam.sfsaludmaven.backend.dao;
 
 import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
-import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
-import com.pandateam.sfsaludmaven.backend.mappers.PacienteMapper;
+import com.pandateam.sfsaludmaven.backend.dto.NoSocioDTO;
+import com.pandateam.sfsaludmaven.backend.mappers.NoSocioMapper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.Statement;
 import java.util.List;
 
 /**
  *
  * @author santi
  */
-public class PacienteDAO implements DAO<PacienteDTO> {
+public class NoSocioDAO implements DAO<NoSocioDTO> {
 
     private Connection connection;
-    private PacienteMapper pacienteMapper;
+    private NoSocioMapper socioMapper;
 
-    public PacienteDAO() {
+    public NoSocioDAO() {
         connection = DatabaseManager.getInstance().getConnection();
-        pacienteMapper = new PacienteMapper();
+        socioMapper = new NoSocioMapper();
     }
 
     @Override
-    public boolean create(PacienteDTO object) {
+    public boolean create(NoSocioDTO object) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public PacienteDTO read(int id) throws SQLException {
-
-        String sql = "SELECT * \n"
-                + "FROM Persona per\n"
-                + "JOIN Paciente pac ON per.Per_ID = pac.Per_ID\n"
-                + "WHERE per.Per_ID = ?;";
-
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(sql);
-
-            // Asignar los valores a los parámetros
-            pstmt.setInt(1, id);
-
-            ResultSet rs = pstmt.executeQuery();
-
-            return pacienteMapper.map(rs);
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            throw ex;
-        }
-
-    }
-
-    @Override
-    public boolean update(PacienteDTO object) {
-        String sql = "UPDATE paciente SET P_TieneSuscripcion = ?, P_Esp = ? WHERE Per_ID = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, object.getSuscrip());
-            pstmt.setString(2, object.getEspPaciente());
-            pstmt.setInt(3, object.getIdPaciente());
-            int affectedRows = pstmt.executeUpdate();
-            return affectedRows > 0;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public PacienteDTO delete(int id) {
+    public NoSocioDTO read(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<PacienteDTO> readAll() {
+    public boolean update(NoSocioDTO object) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ResultSet filtrarPacientes(String nombre, String apellido, String documento, String numeroSocio) throws SQLException {
+    @Override
+    public NoSocioDTO delete(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<NoSocioDTO> readAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public ResultSet obtenerNoSocios(String documento, String numeroSocio) throws SQLException {
 
         // Construir la consulta SQL correctamente
         String sql = "SELECT p.Per_ID, p.Per_Nombre, p.Per_Apellido, p.Per_NumeroDocumento, s.S_NumeroSocio "
@@ -96,10 +66,8 @@ public class PacienteDAO implements DAO<PacienteDTO> {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
             // Asignar los valores a los parámetros
-            pstmt.setString(1, "%" + nombre + "%");
-            pstmt.setString(2, "%" + apellido + "%");
-            pstmt.setString(3, "%" + documento + "%");
-            pstmt.setString(4, "%" + numeroSocio + "%");
+            pstmt.setString(1, "%" + documento + "%");
+            pstmt.setString(2, "%" + numeroSocio + "%");
 
             ResultSet rs = pstmt.executeQuery();
 
@@ -109,6 +77,20 @@ public class PacienteDAO implements DAO<PacienteDTO> {
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;
+        }
+    }
+    
+    public boolean borrarSocio(int id) {
+        
+        String sql = "DELETE FROM NoSocio WHERE Per_ID = ?;";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, Integer.toString(id));
+
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
         }
     }
 
