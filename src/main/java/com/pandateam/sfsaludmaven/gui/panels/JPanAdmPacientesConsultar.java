@@ -24,9 +24,15 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
     private Object[] o = new Object[5];
     private static int idPacienteSeleccionado = -1;
     
-    public int getIdPacienteSeleccionado(){
+    public static int getIdPacienteSeleccionado(){
         return idPacienteSeleccionado;
     }
+    /*
+    public int getDNIPaciente(){
+        int dni = (int) jTableConsultaPaciente.getValueAt(idPacienteSeleccionado, 3);
+        System.out.println(dni);
+        return dni;
+    }*/
     
     public JPanAdmPacientesConsultar() {
         initComponents();
@@ -242,6 +248,7 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         // TODO add your handling code here:
         int seleccion = jTableConsultaPaciente.getSelectedRow();
         idPacienteSeleccionado = (int) jTableConsultaPaciente.getValueAt(seleccion, 0);
+        int dniPacienteSeleccionado = (int) jTableConsultaPaciente.getValueAt(seleccion, 3);
         //System.out.println(idPacienteSeleccionado);
         //JPanAdmServiciosCargar.dto.setIdPaciente(idPacienteSeleccionado);
     }//GEN-LAST:event_jTableConsultaPacienteMouseClicked

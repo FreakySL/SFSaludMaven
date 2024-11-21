@@ -85,7 +85,9 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
 
     private void jButtConsultarSuscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtConsultarSuscActionPerformed
         // TODO add your handling code here:
-        JPanAdmSuscripcionConsultar pan = new JPanAdmSuscripcionConsultar();
+        
+        int idPac=JPanAdmPacientesConsultar.getIdPacienteSeleccionado();
+        JPanAdmSuscripcionConsultar pan = new JPanAdmSuscripcionConsultar(idPac);
         GUIFunctions.showPanel(pan, jPanelContent,650, 456);
         jButtConsultarSusc.setVisible(false);
         

@@ -14,18 +14,9 @@ public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmPacientesConsultar
      */
-    private Object[] o = new Object[5];
-    private static int idPacienteSeleccionado = -1;
-    
-    public int getIdPacienteSeleccionado(){
-        return idPacienteSeleccionado;
-    }
-    
-    public JPanAdmSuscripcionConsultar() {
+    public JPanAdmSuscripcionConsultar(int id) {
         initComponents();
-        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +29,7 @@ public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableConsultaPaciente = new javax.swing.JTable();
+        jTableConsultarSuscripcion = new javax.swing.JTable();
         jLabDNITitular = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -61,38 +52,23 @@ public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Suscripción de:");
 
-        jTableConsultaPaciente.setModel(new javax.swing.table.DefaultTableModel(
+        jTableConsultarSuscripcion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Nombre", "Apellido", "DNI", "N° Socio"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableConsultaPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+        ));
+        jTableConsultarSuscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableConsultaPacienteMouseClicked(evt);
+                jTableConsultarSuscripcionMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTableConsultaPaciente);
+        jScrollPane1.setViewportView(jTableConsultarSuscripcion);
 
         jLabDNITitular.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabDNITitular.setForeground(new java.awt.Color(0, 0, 0));
@@ -180,13 +156,10 @@ public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableConsultaPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsultaPacienteMouseClicked
+    private void jTableConsultarSuscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsultarSuscripcionMouseClicked
         // TODO add your handling code here:
-        int seleccion = jTableConsultaPaciente.getSelectedRow();
-        idPacienteSeleccionado = (int) jTableConsultaPaciente.getValueAt(seleccion, 0);
-        //System.out.println(idPacienteSeleccionado);
-        //JPanAdmServiciosCargar.dto.setIdPaciente(idPacienteSeleccionado);
-    }//GEN-LAST:event_jTableConsultaPacienteMouseClicked
+        
+    }//GEN-LAST:event_jTableConsultarSuscripcionMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -201,6 +174,6 @@ public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableConsultaPaciente;
+    private javax.swing.JTable jTableConsultarSuscripcion;
     // End of variables declaration//GEN-END:variables
 }
