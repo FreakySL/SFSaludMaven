@@ -6,6 +6,7 @@ package com.pandateam.sfsaludmaven.backend.managers;
 
 import com.pandateam.sfsaludmaven.backend.dao.NoSocioDAO;
 import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
+import com.pandateam.sfsaludmaven.backend.dto.NoSocioDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,10 @@ import javax.swing.table.DefaultTableModel;
 public class NoSocioManager {
     private static NoSocioDAO noSocioDAO = new NoSocioDAO();
     
+    public static NoSocioDTO consultarPorId(int id) throws SQLException {
+        return noSocioDAO.read(id);
+    }
+    
     public static DefaultTableModel consultarNoSocio(String documento) throws SQLException{
         
         try {
@@ -25,5 +30,9 @@ public class NoSocioManager {
         } catch (Exception e) {
             throw e;
         }
+    }
+    
+    public static void eliminarNoSocio(int id) {
+        noSocioDAO.borrarNoSocio(id);
     }
 }

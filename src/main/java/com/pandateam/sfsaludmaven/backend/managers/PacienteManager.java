@@ -30,13 +30,8 @@ public class PacienteManager {
         }
     }
     
-    public static boolean tieneSus(int id) {
-        String sql = "SELECT P_TieneSuscripcion FROM Paciente "
-                + "WHERE Per_ID = ?";
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        return false;
+    public static boolean tieneSus(int id) throws SQLException {
+        return pacienteDAO.isSuscripto(id);
     }
     
     public static PacienteDTO verPaciente(int id) throws SQLException {

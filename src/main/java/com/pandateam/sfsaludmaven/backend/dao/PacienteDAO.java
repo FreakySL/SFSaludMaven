@@ -55,7 +55,6 @@ public class PacienteDAO implements DAO<PacienteDTO> {
             ex.printStackTrace();
             throw ex;
         }
-
     }
     
     public PacienteDTO buscarPorDNI(String id) throws SQLException {
@@ -134,6 +133,17 @@ public class PacienteDAO implements DAO<PacienteDTO> {
             ex.printStackTrace();
             throw ex;
         }
+    }
+    
+    public boolean isSuscripto(int id) throws SQLException {
+        
+        PacienteDTO paciente = this.read(id);
+        
+        if (paciente.getSuscrip().equals("Sí"))
+            return true;
+        else
+            return false;
+        
     }
 
 }

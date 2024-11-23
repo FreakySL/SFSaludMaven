@@ -21,11 +21,11 @@ import java.util.List;
 public class NoSocioDAO implements DAO<NoSocioDTO> {
 
     private Connection connection;
-    private NoSocioMapper socioMapper;
+    private NoSocioMapper noSocioMapper;
 
     public NoSocioDAO() {
         connection = DatabaseManager.getInstance().getConnection();
-        socioMapper = new NoSocioMapper();
+        noSocioMapper = new NoSocioMapper();
     }
 
     @Override
@@ -35,7 +35,25 @@ public class NoSocioDAO implements DAO<NoSocioDTO> {
 
     @Override
     public NoSocioDTO read(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // Construir la consulta SQL correctamente
+        String sql = "SELECT *\n"
+                + "FROM NoSocio\n"
+                + "WHERE per_id = ?";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            // Devolver el ResultSet si aún lo necesitas
+            return noSocioMapper.map(rs);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
     @Override
@@ -106,17 +124,15 @@ public class NoSocioDAO implements DAO<NoSocioDTO> {
         }
     }
 
-    public boolean borrarNoSocio(int id) {
+    public void borrarNoSocio(int id) {
 
         String sql = "DELETE FROM NoSocio WHERE Per_ID = ?;";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, Integer.toString(id));
 
             pstmt.executeUpdate();
-            return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return false;
         }
     }
 

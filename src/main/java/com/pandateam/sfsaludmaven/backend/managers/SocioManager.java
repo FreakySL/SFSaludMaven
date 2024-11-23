@@ -5,7 +5,14 @@
 package com.pandateam.sfsaludmaven.backend.managers;
 
 import com.pandateam.sfsaludmaven.backend.dao.SocioDAO;
+import com.pandateam.sfsaludmaven.backend.database.DatabaseManager;
+import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
+import com.pandateam.sfsaludmaven.backend.dto.SocioDTO;
+import com.pandateam.sfsaludmaven.backend.dto.SuscripcionDTO;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,14 +23,58 @@ public class SocioManager {
     private static SocioDAO socioDAO = new SocioDAO();
     
     
-    public static String asignarSuscripcion(dni titular, id suscripcion, int grado) {
-        
-        crearNroAfiliado(titular, definirGP(titular, grado));
+    public static void agregarSocio(SocioDTO socio) {
+        socioDAO.create(socio);
     }
     
-    public static int obtenerSusID
+    public static SocioDTO consultarPorId(int id) throws SQLException {
+        return socioDAO.read(id);
+    }
     
-    public String definirGP(int dniTitular, int grado){
+    public static DefaultTableModel miembrosSuscripcion(int susId) throws Exception {
+        try {
+            ResultSet rs = socioDAO.miembrosDeSuscripcion(susId);
+            return DatabaseManager.resultToTable(rs);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+    public static void asignarSuscripcion(PacienteDTO paciente, SuscripcionDTO suscripcion, int grado) {
+        
+        String numAfiliado = crearNroAfiliado(suscripcion.getTitular(), definirGP(suscripcion.getTitular(), grado));
+        
+        paciente = PacienteManager.cambiarSuscripcion(paciente);
+        
+        SocioDTO socio = pacienteToSocio(paciente);
+        
+        socio.setNumAfiliado(numAfiliado);
+        socio.setSuscripcionId(suscripcion.getIdSuscripcion());
+        agregarSocio(socio);
+        
+        NoSocioManager.eliminarNoSocio(paciente.getIdPaciente());
+    }
+    
+    public static SocioDTO pacienteToSocio(PacienteDTO paciente) {
+        
+        SocioDTO socio = new SocioDTO();
+        
+        socio.setIdSocio(paciente.getIdPaciente());
+        socio.setNombre(paciente.getNombre());
+        socio.setApellido(paciente.getApellido());
+        socio.setDni(paciente.getDni());
+        socio.setFechaNacimiento(socio.getFechaNacimiento());
+        socio.setMail(paciente.getMail());
+        socio.setTelefono(paciente.getTelefono());
+        socio.setSuscrip(paciente.getSuscrip());
+        socio.setEspPersona(paciente.getEspPersona());
+        socio.setEspPaciente(paciente.getEspPaciente());
+        
+        return socio;
+    }
+    
+    
+    private static String definirGP(String dniTitular, int grado){
         String aux;
         String gp ="";
         
@@ -88,9 +139,9 @@ public class SocioManager {
         return gp;
     }
     
-    public String crearNroAfiliado(int dniTitular, String gp){
+    private static String crearNroAfiliado(String dniTitular, String gp){
     
-        String nroSocioAux = Integer.toString(dniTitular) + gp;
+        String nroSocioAux = dniTitular + gp;
         
         return nroSocioAux;
         

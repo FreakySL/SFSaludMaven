@@ -6,6 +6,7 @@ package com.pandateam.sfsaludmaven.backend.managers;
 
 import com.pandateam.sfsaludmaven.backend.dao.SuscripcionDAO;
 import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
+import com.pandateam.sfsaludmaven.backend.dto.SocioDTO;
 import com.pandateam.sfsaludmaven.backend.dto.SuscripcionDTO;
 import java.sql.SQLException;
 import java.util.Date;
@@ -66,9 +67,18 @@ public class SuscripcionManager {
     }
     
     
-    public static SuscripcionDTO consultarSuscripcion(PacienteDTO paciente){
+    public static SuscripcionDTO consultarSuscripcion(PacienteDTO paciente) throws SQLException, Exception{
         
-        return suscripcionDAO.encontrarPorTitular(dni);
+        if (PacienteManager.tieneSus(paciente.getIdPaciente())) {
+            
+            SocioDTO socio = new SocioDTO();
+            socio = SocioManager.consultarPorId(paciente.getIdPaciente());
+            
+            return suscripcionDAO.read(socio.getSuscripcionId());
+        }
+        else {
+            throw new Exception("El paciente seleccionado no está suscripto");
+        }
         
     }
 

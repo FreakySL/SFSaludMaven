@@ -47,7 +47,25 @@ public class SocioDAO implements DAO<SocioDTO> {
 
     @Override
     public SocioDTO read(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // Construir la consulta SQL correctamente
+        String sql = "SELECT *\n"
+                + "FROM Socio\n"
+                + "WHERE per_id = ?";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            // Devolver el ResultSet si aún lo necesitas
+            return socioMapper.map(rs);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
     @Override
@@ -65,6 +83,34 @@ public class SocioDAO implements DAO<SocioDTO> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public ResultSet miembrosDeSuscripcion(int id) throws SQLException {
+        String sql = "SELECT \n"
+                + "    p.Per_Nombre, \n"
+                + "    p.Per_Apellido, \n"
+                + "    p.Per_NumeroDocumento, \n"
+                + "    s.S_NumeroSocio\n"
+                + "FROM socio s\n"
+                + "INNER JOIN persona p ON s.Per_ID = p.Per_ID\n"
+                + "INNER JOIN paciente pa ON pa.Per_ID = p.Per_ID\n"
+                + "WHERE \n"
+                + "    s.Sus_ID = ?";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setInt(1, id);
+
+            return pstmt.executeQuery();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+    }
+
+    /*
+    
     public ResultSet miembrosDeSuscripcion(String id) throws SQLException {
 
         String sql = "SELECT P_TieneSuscripcion FROM Paciente "
@@ -131,7 +177,8 @@ public class SocioDAO implements DAO<SocioDTO> {
         }
         return null;
     }
-
+    
+     */
     public boolean tieneMenosDeCuatroMiembros(int susId) {
         String sql = "SELECT COUNT(*) AS total_miembros FROM socio WHERE Sus_ID = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -140,16 +187,14 @@ public class SocioDAO implements DAO<SocioDTO> {
                 if (rs.next()) {
                     int totalMiembros = rs.getInt("total_miembros");
                     return totalMiembros < 4; // Retorna true si hay menos de 5 miembros 
-                } 
-            } 
-        } catch (Exception e) { 
-            e.printStackTrace(); 
-        } 
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false; // Retorna false si no hubo resultados o en caso de error 
     }
-    
-    
-    
+
     public boolean existeNumeroSocio(String numeroSocio) {
         String sql = "SELECT COUNT(*) FROM Socio WHERE S_NumeroSocio = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -158,11 +203,11 @@ public class SocioDAO implements DAO<SocioDTO> {
                 if (rs.next()) {
                     int count = rs.getInt(1);
                     return count > 0; // Retorna true si el número de socio ya existe 
-                } 
-            } 
-        } catch (Exception e) { 
-            e.printStackTrace(); 
-        } 
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false; // Retorna false si no hubo resultados
     }
 }
