@@ -15,7 +15,6 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import org.mindrot.jbcrypt.BCrypt;
 
-
 /**
  *
  * @author santi
@@ -36,6 +35,9 @@ public class DatabaseManager {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(url, user, password);
             crearTablas();
+            if(!chequearDatos()) {
+                insercionesIniciales();
+            }
             crearUsuarioBase();
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
@@ -53,7 +55,7 @@ public class DatabaseManager {
         return connection;
     }
 
-    private void crearTablas() throws SQLException {
+    private void crearTablas() throws SQLException{
 
         Statement stmt = connection.createStatement();
 
@@ -136,60 +138,75 @@ public class DatabaseManager {
                 + "    S_ID INT NOT NULL,\n"
                 + "    FOREIGN KEY (S_ID) REFERENCES Servicio(S_ID)\n"
                 + ");");
-        
+
         stmt.execute("CREATE TABLE IF NOT EXISTS Usuario (\n"
                 + "    Usuario_ID INT AUTO_INCREMENT PRIMARY KEY,\n"
                 + "    Usuario_Nombre VARCHAR(50) NOT NULL,\n"
                 + "    Usuario_Contrasena VARCHAR(255) NOT NULL\n"
                 + ");");
 
-        try {
-            stmt.execute("INSERT INTO Persona (Per_Nombre, Per_Apellido, Per_NumeroDocumento, Per_FechaNacimiento, Per_Telefono, Per_Correo, Per_Esp)\n"
-                    + "VALUES ('Juan', 'Pérez', 12345678, '1985-03-25', 123456789, 'juan.perez@example.com', 'Paciente y Cuidador'),\n"
-                    + "       ('María', 'González', 23456789, '1990-07-14', 987654321, 'maria.gonzalez@example.com', 'Cuidador'),\n"
-                    + "       ('Luis', 'Rodríguez', 34567890, '1988-11-02', 555555555, 'luis.rodriguez@example.com', 'Paciente'),\n"
-                    + "       ('Ana', 'López', 45678901, '1995-05-18', 444444444, 'ana.lopez@example.com', 'Paciente'),\n"
-                    + "       ('Carlos', 'Martínez', 56789012, '1980-09-09', 333333333, 'carlos.martinez@example.com', 'Paciente');");
+        
 
-            stmt.execute("INSERT INTO Paciente (Per_ID, P_TieneSuscripcion, P_Esp)\n"
+    }
+    
+    private void insercionesIniciales() throws SQLException {
+        Statement stmt = connection.createStatement();
+        
+        try {
+            stmt.execute("-- Insertar datos en Persona\n"
+                    + "INSERT INTO Persona (Per_Nombre, Per_Apellido, Per_NumeroDocumento, Per_FechaNacimiento, Per_Telefono, Per_Correo, Per_Esp)\n"
+                    + "VALUES \n"
+                    + "('Luis', 'Rodríguez', 34567890, '1988-11-02', 555555555, 'luis.rodriguez@example.com', 'Paciente'),\n"
+                    + "('Ana', 'López', 45678901, '1995-05-18', 444444444, 'ana.lopez@example.com', 'Paciente'),\n"
+                    + "('Carlos', 'Martínez', 56789012, '1980-09-09', 333333333, 'carlos.martinez@example.com', 'Paciente'),\n"
+                    + "('María', 'González', 23456789, '1990-07-14', 987654321, 'maria.gonzalez@example.com', 'Cuidador'),\n"
+                    + "('Juan', 'Pérez', 12345678, '1985-03-25', 123456789, 'juan.perez@example.com', 'Paciente y Cuidador');");
+
+            stmt.execute("-- Insertar datos en Paciente\n"
+                    + "INSERT INTO Paciente (Per_ID, P_TieneSuscripcion, P_Esp)\n"
                     + "VALUES (1, 'Sí', 'Socio'),\n"
-                    + "       (3, 'No', 'NoSocio'),\n"
-                    + "       (4, 'Sí', 'Socio'),\n"
+                    + "       (2, 'Sí', 'Socio'),\n"
+                    + "       (3, 'Sí', 'Socio'),\n"
                     + "       (5, 'No', 'NoSocio');");
 
-            stmt.execute("INSERT INTO Cuidador (Per_ID, C_Profesion, C_Experiencia, C_Categoria)\n"
-                    + "VALUES (1, 'Enfermero', '5 años', 'Senior'),\n"
-                    + "       (2, 'Cuidador domiciliario', '3 años', 'Junior');");
+            stmt.execute("-- Insertar datos en Cuidador\n"
+                    + "INSERT INTO Cuidador (Per_ID, C_Profesion, C_Experiencia, C_Categoria)\n"
+                    + "VALUES (4, 'Enfermero', '5 años', 'Senior'),\n"
+                    + "       (5, 'Cuidador domiciliario', '3 años', 'Junior');");
 
-            stmt.execute("INSERT INTO Suscripcion (Sus_Titular, Sus_FechaInicio, Sus_Descuento, Sus_Estado)\n"
-                    + "VALUES (12345, '2022-01-15', 10, 'Activo'),\n"
-                    + "       (12346, '2021-07-20', 15, 'Activo');");
+            stmt.execute("-- Insertar datos en Suscripcion\n"
+                    + "INSERT INTO Suscripcion (Sus_Titular, Sus_FechaInicio, Sus_Descuento, Sus_Estado)\n"
+                    + "VALUES (34567890, '2024-01-01', 30, 'Full');");
 
-            stmt.execute("INSERT INTO Socio (Per_ID, S_NumeroSocio, Sus_ID)\n"
+            stmt.execute("-- Insertar datos en Socio\n"
+                    + "INSERT INTO Socio (Per_ID, S_NumeroSocio, Sus_ID)\n"
                     + "VALUES (1, 'S001', 1),\n"
-                    + "       (4, 'S002', 2);");
+                    + "       (2, 'S002', 1),\n"
+                    + "       (3, 'S003', 1);");
 
-            stmt.execute("INSERT INTO NoSocio (Per_ID)\n"
-                    + "VALUES (3),\n"
-                    + "       (5);");
+            stmt.execute("-- Insertar datos en NoSocio\n"
+                    + "INSERT INTO NoSocio (Per_ID)\n"
+                    + "VALUES (5);");
 
-            stmt.execute("INSERT INTO DeclaracionJurada (DJ_Enfermedades, DJ_OperacionesPrevias, Per_ID)\n"
+            stmt.execute("-- Insertar datos en DeclaracionJurada\n"
+                    + "INSERT INTO DeclaracionJurada (DJ_Enfermedades, DJ_OperacionesPrevias, Per_ID)\n"
                     + "VALUES ('Hipertensión', 'Apéndice', 1),\n"
+                    + "       ('Asma', 'Ninguna', 2),\n"
                     + "       ('Diabetes', 'Cirugía ocular', 3),\n"
-                    + "       ('Asma', 'Ninguna', 4),\n"
                     + "       ('Ninguna', 'Ninguna', 5);");
 
-            stmt.execute("INSERT INTO Servicio (S_Descripcion, S_FechaInicio, S_FechaFin, S_Costo, S_Tipo, Per_IDPaciente, Per_IDCuidador)\n"
-                    + "VALUES ('Cuidado nocturno para paciente con hipertensión', '2024-01-01', '2024-01-05', 500.00, 'Cuidado Nocturno', 1, 2),\n"
-                    + "       ('Acompañamiento para paciente con diabetes', '2024-02-01', '2024-02-03', 300.00, 'Acompañamiento', 3, 1);");
+            stmt.execute("-- Insertar datos en Servicio\n"
+                    + "INSERT INTO Servicio (S_Descripcion, S_FechaInicio, S_FechaFin, S_Costo, S_Tipo, Per_IDPaciente, Per_IDCuidador)\n"
+                    + "VALUES ('Cuidado nocturno para paciente con hipertensión', '2024-01-01', '2024-01-05', 500.00, 'Cuidado Nocturno', 1, 4);");
 
-            stmt.execute("INSERT INTO Atencion (A_Fecha, A_HoraInicio, A_HoraFin, S_ID)\n"
+            stmt.execute("-- Insertar datos en Atencion\n"
+                    + "INSERT INTO Atencion (A_Fecha, A_HoraInicio, A_HoraFin, S_ID)\n"
                     + "VALUES ('2024-01-01', '20:00', '08:00', 1),\n"
-                    + "       ('2024-02-01', '09:00', '17:00', 2);");
+                    + "       ('2024-01-02', '20:00', '08:00', 1),\n"
+                    + "       ('2024-01-05', '20:00', '08:00', 1);");
         } catch (Exception e) {
-            System.out.println("Inserciones realizadas");
+            System.out.println(e.getMessage());
         }
-
     }
 
     private void crearUsuarioBase() throws SQLException {
@@ -209,8 +226,7 @@ public class DatabaseManager {
             ex.printStackTrace();
         }
     }
-    
-    
+
     public static DefaultTableModel resultToTable(ResultSet rs) throws SQLException {
         // Esta es una función auxiliar que les permite convertir los resultados de las
         // consultas (ResultSet) a un modelo interpretable para la tabla mostrada en pantalla
@@ -223,8 +239,6 @@ public class DatabaseManager {
         for (int column = 1; column <= columnCount; column++) {
             columnNames.add(metaData.getColumnName(column));
         }
-
-        
 
         // creando las filas de la tabla con los resultados de la consulta
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
@@ -240,4 +254,16 @@ public class DatabaseManager {
         return new DefaultTableModel(data, columnNames);
     }
 
+    private boolean chequearDatos() {
+        String sql = "SELECT 1 FROM Persona WHERE Per_ID = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, 1);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
 }

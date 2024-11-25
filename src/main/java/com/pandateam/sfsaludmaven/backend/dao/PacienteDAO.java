@@ -57,7 +57,7 @@ public class PacienteDAO implements DAO<PacienteDTO> {
         }
     }
     
-    public PacienteDTO buscarPorDNI(String id) throws SQLException {
+    public PacienteDTO buscarPorDNI(String dni) throws SQLException {
 
         String sql = "SELECT * \n"
                 + "FROM Persona per\n"
@@ -68,7 +68,7 @@ public class PacienteDAO implements DAO<PacienteDTO> {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
             // Asignar los valores a los parámetros
-            pstmt.setString(1, id);
+            pstmt.setString(1, dni);
 
             ResultSet rs = pstmt.executeQuery();
 

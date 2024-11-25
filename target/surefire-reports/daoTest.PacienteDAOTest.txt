@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: daoTest.PacienteDAOTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.593 s - in daoTest.PacienteDAOTest
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.727 s <<< FAILURE! - in daoTest.PacienteDAOTest
+daoTest.PacienteDAOTest.buscarPorDNI  Time elapsed: 0.669 s  <<< ERROR!
+java.lang.RuntimeException: 
+Uncompilable code - cannot find symbol
+  symbol:   variable id
+  location: class com.pandateam.sfsaludmaven.backend.dao.PacienteDAO
+	at daoTest.PacienteDAOTest.buscarPorDNI(PacienteDAOTest.java:57)
+
