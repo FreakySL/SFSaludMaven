@@ -49,9 +49,11 @@ public class SocioDAO implements DAO<SocioDTO> {
     @Override
     public SocioDTO read(int id) throws SQLException {
         // Construir la consulta SQL correctamente
-        String sql = "SELECT *\n"
-                + "FROM Socio\n"
-                + "WHERE per_id = ?";
+        String sql = "SELECT * \n"
+                + "FROM Persona per\n"
+                + "JOIN Paciente pac ON per.Per_ID = pac.Per_ID\n"
+                + "JOIN Socio soc ON per.Per_ID = soc.Per_ID "
+                + "WHERE per.Per_ID = ?;";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 

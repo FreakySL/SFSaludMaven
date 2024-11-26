@@ -98,7 +98,7 @@ public class SuscripcionDAO implements DAO<SuscripcionDTO> {
     }
 
     public SuscripcionDTO encontrarPorTitular(String dni) throws SQLException {
-        String sql = "SELECT Sus_ID AS `ID Suscripcion`, Per_Nombre AS Nombre, Per_Apellido AS Apellido, Sus_Estado AS Plan, Sus_FechaInicio AS `Fecha de Inicio`, Sus_Descuento AS Descuento\n"
+        String sql = "SELECT * \n"
                 + "FROM suscripcion\n"
                 + "LEFT JOIN persona ON suscripcion.Sus_Titular = persona.Per_NumeroDocumento\n"
                 + "WHERE suscripcion.Sus_Titular = ?;";

@@ -5,6 +5,8 @@
 package com.pandateam.sfsaludmaven.gui.panels;
 
 import com.pandateam.sfsaludmaven.gui.GUIFunctions;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -84,12 +86,16 @@ public class JPanAdmPacientesBaseConsultar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtConsultarSuscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtConsultarSuscActionPerformed
-        // TODO add your handling code here:
-        
-        int idPac=JPanAdmPacientesConsultar.getIdPacienteSeleccionado();
-        JPanAdmSuscripcionConsultar pan = new JPanAdmSuscripcionConsultar(idPac);
-        GUIFunctions.showPanel(pan, jPanelContent,650, 456);
-        jButtConsultarSusc.setVisible(false);
+        try {
+            // TODO add your handling code here:
+            
+            int idPac=JPanAdmPacientesConsultar.getIdPacienteSeleccionado();
+            JPanAdmSuscripcionConsultar pan = new JPanAdmSuscripcionConsultar(idPac);
+            GUIFunctions.showPanel(pan, jPanelContent,650, 456);
+            jButtConsultarSusc.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(JPanAdmPacientesBaseConsultar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButtConsultarSuscActionPerformed
 

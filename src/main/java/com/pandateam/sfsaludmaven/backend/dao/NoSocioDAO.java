@@ -103,10 +103,10 @@ public class NoSocioDAO implements DAO<NoSocioDTO> {
     public ResultSet obtenerNoSocios(String documento) throws SQLException {
 
         // Construir la consulta SQL correctamente
-        String sql = "SELECT Per_ID AS ID, Per_Nombre AS Nombre, Per_Apellido AS Apellido, Per_NumeroDocumento AS DNI\n"
-                + "FROM nosocio\n"
-                + "RIGHT JOIN persona ON nosocio.Per_ID = persona.Per_ID\n"
-                + "WHERE Per_NumeroDocumento = ?;";
+        String sql = "SELECT persona.Per_ID AS ID, persona.Per_Nombre AS Nombre, persona.Per_Apellido AS Apellido, persona.Per_NumeroDocumento AS DNI "
+                + "FROM paciente "
+                + "RIGHT JOIN persona ON paciente.Per_ID = persona.Per_ID "
+                + "WHERE persona.Per_NumeroDocumento LIKE ? AND paciente.P_ESP LIKE 'NoSocio';";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 

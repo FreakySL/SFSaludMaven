@@ -20,10 +20,10 @@ public class PacienteManager {
     
     private static PacienteDAO pacienteDAO = new PacienteDAO();
     
-    public static DefaultTableModel consultarPaciente(String nombre, String apellido, String documento, String numeroSocio) throws SQLException{
+    public static DefaultTableModel consultarPaciente(String nombre, String apellido, String documento) throws SQLException{
         
         try {
-            ResultSet rs = pacienteDAO.filtrarPacientes(nombre, apellido, documento, numeroSocio);
+            ResultSet rs = pacienteDAO.filtrarPacientes(nombre, apellido, documento);
             return DatabaseManager.resultToTable(rs);
         } catch (Exception e) {
             throw e;

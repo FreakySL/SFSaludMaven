@@ -4,18 +4,35 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
+import com.pandateam.sfsaludmaven.backend.dto.SuscripcionDTO;
+import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
+import com.pandateam.sfsaludmaven.backend.managers.SocioManager;
+import com.pandateam.sfsaludmaven.backend.managers.SuscripcionManager;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author biane
  */
 public class JPanAdmSuscripcionConsultar extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form JPanAdmPacientesConsultar
      */
-    public JPanAdmSuscripcionConsultar(int id) {
+    public JPanAdmSuscripcionConsultar(int id) throws SQLException, Exception {
         initComponents();
+        PacienteDTO paciente = PacienteManager.verPaciente(id);
+        SuscripcionDTO suscripcion = SuscripcionManager.consultarSuscripcion(paciente);
+        
+        jLabDNITitular.setText(suscripcion.getTitular());
+        jLabFecha.setText(""+suscripcion.getFechaInicio());
+        jLabDescuento.setText(""+suscripcion.getDescuento());
+        jLabEstado.setText(suscripcion.getEstado());
+        DefaultTableModel tabla = SocioManager.miembrosSuscripcion(suscripcion.getIdSuscripcion());
+        jTableConsultarSuscripcion.setModel(tabla);
     }
     /**
      * This method is called from within the constructor to initialize the form.

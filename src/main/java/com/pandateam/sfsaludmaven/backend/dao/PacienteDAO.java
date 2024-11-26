@@ -106,15 +106,15 @@ public class PacienteDAO implements DAO<PacienteDTO> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ResultSet filtrarPacientes(String nombre, String apellido, String documento, String numeroSocio) throws SQLException {
+    public ResultSet filtrarPacientes(String nombre, String apellido, String documento) throws SQLException {
 
         // Construir la consulta SQL correctamente
-        String sql = "SELECT p.Per_ID, p.Per_Nombre, p.Per_Apellido, p.Per_NumeroDocumento, s.S_NumeroSocio "
+        String sql = "SELECT p.Per_ID, p.Per_Nombre, p.Per_Apellido, p.Per_NumeroDocumento, pac.P_TieneSuscripcion "
                 + "FROM Persona p "
                 + "JOIN Paciente pac ON p.Per_ID = pac.Per_ID "
                 + "LEFT JOIN Socio s ON pac.Per_ID = s.Per_ID "
                 + "WHERE p.Per_Nombre LIKE ? AND p.Per_Apellido LIKE ? "
-                + "AND p.Per_NumeroDocumento LIKE ? AND s.S_NumeroSocio LIKE ?;";
+                + "AND p.Per_NumeroDocumento LIKE ?;";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
@@ -122,7 +122,6 @@ public class PacienteDAO implements DAO<PacienteDTO> {
             pstmt.setString(1, "%" + nombre + "%");
             pstmt.setString(2, "%" + apellido + "%");
             pstmt.setString(3, "%" + documento + "%");
-            pstmt.setString(4, "%" + numeroSocio + "%");
 
             ResultSet rs = pstmt.executeQuery();
 

@@ -68,10 +68,8 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jTFApellidoPaciente = new javax.swing.JTextField();
         jTFDNIPaciente = new javax.swing.JTextField();
-        jTFNroAfiliadoPaciente = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConsultaPaciente = new javax.swing.JTable();
 
@@ -109,10 +107,6 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("DNI:");
 
-        jLabel5.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("N° de afiliado:");
-
         jTFApellidoPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFApellidoPacienteActionPerformed(evt);
@@ -125,28 +119,22 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
             }
         });
 
-        jTFNroAfiliadoPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNroAfiliadoPacienteActionPerformed(evt);
-            }
-        });
-
         jTableConsultaPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "DNI", "N° Socio"
+                "Nombre", "Apellido", "DNI"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -186,13 +174,9 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
                                             .addGap(18, 18, 18)
                                             .addComponent(jTFNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel4))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTFNroAfiliadoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTFDNIPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel4)
+                                    .addGap(68, 68, 68)
+                                    .addComponent(jTFDNIPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(286, 286, 286)
@@ -215,17 +199,12 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jTFApellidoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTFDNIPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTFNroAfiliadoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
+                    .addComponent(jTFDNIPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtBuscarPaciente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -241,14 +220,10 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFDNIPacienteActionPerformed
 
-    private void jTFNroAfiliadoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNroAfiliadoPacienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNroAfiliadoPacienteActionPerformed
-
     private void jButtBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtBuscarPacienteActionPerformed
         try {
             // TODO add your handling code here:
-            DefaultTableModel tabla = PacienteManager.consultarPaciente(jTFNombrePaciente.getText(), jTFApellidoPaciente.getText(), jTFDNIPaciente.getText(), jTFNroAfiliadoPaciente.getText());
+            DefaultTableModel tabla = PacienteManager.consultarPaciente(jTFNombrePaciente.getText(), jTFApellidoPaciente.getText(), jTFDNIPaciente.getText());
             jTableConsultaPaciente.setModel(tabla);
           
             
@@ -274,12 +249,10 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFApellidoPaciente;
     private javax.swing.JTextField jTFDNIPaciente;
     private javax.swing.JTextField jTFNombrePaciente;
-    private javax.swing.JTextField jTFNroAfiliadoPaciente;
     private static javax.swing.JTable jTableConsultaPaciente;
     // End of variables declaration//GEN-END:variables
 }
