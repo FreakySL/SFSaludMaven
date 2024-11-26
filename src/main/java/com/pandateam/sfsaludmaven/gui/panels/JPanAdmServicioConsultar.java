@@ -4,8 +4,13 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
+import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
 import com.pandateam.sfsaludmaven.gui.GUIFunctions;
-
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,13 +22,29 @@ public class JPanAdmServicioConsultar extends javax.swing.JPanel {
      * Creates new form JPanAdmPacientesConsultar
      */
     private static int idFilaSeleccionada = -1;
-    
-    public int getIdPacienteSeleccionado(){
+    private JPanAdmServicioConsultar2 panel2;
+
+    public int getIdPacienteSeleccionado() {
         return idFilaSeleccionada;
     }
-    
+
+    public int getServicioIDSeleccionado() {
+        int selectedRow = jTableConsultarServicio.getSelectedRow();
+        if (selectedRow != -1) {
+            return (int) jTableConsultarServicio.getValueAt(selectedRow, 0);
+            // Suponiendo que la primera columna es el ID del servicio 
+        }
+        return -1;
+            // Indica que no hay selección 
+    }
+
+    public JPanAdmServicioConsultar2 getPanel2() {
+        return panel2;
+    }
+
     public JPanAdmServicioConsultar() {
         initComponents();
+        panel2 = new JPanAdmServicioConsultar2();
         
     }
 
@@ -136,15 +157,24 @@ public class JPanAdmServicioConsultar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtBuscarActionPerformed
-        // TODO add your handling code here:
+        String dniPaciente = jTFDNIPac.getText();
+        String dniCuidador = jTFDNICuid.getText();
+
+        try {
+            
+            DefaultTableModel tabla = ServicioManager.consultarServicio(dniPaciente, dniCuidador);
+            jTableConsultarServicio.setModel(tabla);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServicioConsultar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtBuscarActionPerformed
 
     private void jTableConsultarServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsultarServicioMouseClicked
         // TODO add your handling code here:
-        
-         int seleccion = jTableConsultarServicio.getSelectedRow();
+
+        int seleccion = jTableConsultarServicio.getSelectedRow();
         idFilaSeleccionada = (int) jTableConsultarServicio.getValueAt(seleccion, 0);
-        
+        System.out.println(""+idFilaSeleccionada);
     }//GEN-LAST:event_jTableConsultarServicioMouseClicked
 
 

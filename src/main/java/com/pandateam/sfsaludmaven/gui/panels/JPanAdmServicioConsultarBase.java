@@ -5,7 +5,9 @@
 package com.pandateam.sfsaludmaven.gui.panels;
 
 import com.pandateam.sfsaludmaven.gui.GUIFunctions;
-
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -16,11 +18,15 @@ public class JPanAdmServicioConsultarBase extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmPacientesConsultar
      */
+    private JPanAdmServicioConsultar panelConsultar;
+    
     
     public JPanAdmServicioConsultarBase() {
         initComponents();
+        panelConsultar = new JPanAdmServicioConsultar();
         JPanAdmServicioConsultar pan = new JPanAdmServicioConsultar();
-        GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
+        panelConsultar = pan;
+        GUIFunctions.showPanel(pan, JPanelContentConsServicio, 650, 456);
     }
 
     /**
@@ -103,16 +109,28 @@ public class JPanAdmServicioConsultarBase extends javax.swing.JPanel {
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         // TODO add your handling code here:
-        JPanAdmServicioConsultar2 pan = new JPanAdmServicioConsultar2();
-        GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
-        jButtonAnterior.setEnabled(true);
-        jButtonSiguiente.setEnabled(false);
+        JPanAdmServicioConsultar2 pan2 = new JPanAdmServicioConsultar2();
+        //GUIFunctions.showPanel(pan2, JPanelContentConsServicio, 650, 456);
+        
+        int servicioID = panelConsultar.getServicioIDSeleccionado();
+        System.out.println(""+servicioID);
+        if (servicioID == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un servicio antes de continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            pan2.setServicioID(servicioID);
+            GUIFunctions.showPanel(pan2, JPanelContentConsServicio, 650, 456);
+            jButtonAnterior.setEnabled(true);
+            jButtonSiguiente.setEnabled(false);
+        }
+        
+        
+
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         // TODO add your handling code here:
         JPanAdmServicioConsultar pan = new JPanAdmServicioConsultar();
-        GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
+        GUIFunctions.showPanel(pan, JPanelContentConsServicio, 650, 456);
         jButtonAnterior.setEnabled(false);
         jButtonSiguiente.setEnabled(true);
     }//GEN-LAST:event_jButtonAnteriorActionPerformed

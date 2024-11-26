@@ -4,6 +4,8 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,14 +17,38 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
      * Creates new form JPanAdmPacientesConsultar
      */
     private static int idFilaSeleccionada = -1;
-    
-    public int getIdPacienteSeleccionado(){
+    private static int servicioID;
+
+    public void setServicioID(int servicioID) {
+        this.servicioID = servicioID;
+    }
+
+    public int getIdPacienteSeleccionado() {
         return idFilaSeleccionada;
     }
-    
+
     public JPanAdmServicioConsultar2() {
         initComponents();
-                
+    }
+
+    private void cargarDatosServicio() {
+        // Aquí llamas al método para obtener y cargar los datos del servicio usando el ID
+        ServicioDTO servicio = servicioDTO.obtenerServicioPorID(servicioID);
+        if (servicio != null) {
+            jLabDesc.setText(servicio.getDescripcion());
+            jLabFInicio.setText(servicio.getFechaInicio().toString());
+            jLabFFin.setText(servicio.getFechaFin().toString());
+            jLabCosto.setText(String.valueOf(servicio.getCosto()));
+            jLabTipo.setText(servicio.getTipo());
+            jLabNombrePaciente.setText(servicio.getNombrePaciente());
+            jLabApellidoPaciente.setText(servicio.getApellidoPaciente());
+            jLabDNIPaciente.setText(servicio.getDniPaciente());
+            jLabNombreCuidador.setText(servicio.getNombreCuidador());
+            jLabApellidoCuidador.setText(servicio.getApellidoCuidador());
+            jLabDNICuidador.setText(servicio.getDniCuidador());
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el servicio con el ID proporcionado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -39,14 +65,14 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabDesc = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabFInicio = new javax.swing.JLabel();
+        jLabFFin = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabTipo = new javax.swing.JLabel();
+        jLabCosto = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -84,25 +110,25 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         jLabel5.setText("Descripción:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 67, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("-");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 50, 366, 50));
+        jLabDesc.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabDesc.setForeground(new java.awt.Color(102, 102, 102));
+        jLabDesc.setText("-");
+        add(jLabDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 50, 366, 50));
 
         jLabel8.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("Fecha de inicio:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 112, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("-");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 112, 189, -1));
+        jLabFInicio.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabFInicio.setForeground(new java.awt.Color(102, 102, 102));
+        jLabFInicio.setText("-");
+        add(jLabFInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 180, -1));
 
-        jLabel10.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("-");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 112, 177, -1));
+        jLabFFin.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabFFin.setForeground(new java.awt.Color(102, 102, 102));
+        jLabFFin.setText("-");
+        add(jLabFFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 150, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
@@ -114,15 +140,15 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         jLabel12.setText("Tipo:");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 135, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("-");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 135, 270, -1));
+        jLabTipo.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabTipo.setForeground(new java.awt.Color(102, 102, 102));
+        jLabTipo.setText("-");
+        add(jLabTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 135, 270, -1));
 
-        jLabel14.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("-");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 135, 240, -1));
+        jLabCosto.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabCosto.setForeground(new java.awt.Color(102, 102, 102));
+        jLabCosto.setText("-");
+        add(jLabCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 135, 240, -1));
 
         jLabel15.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 102, 102));
@@ -205,16 +231,18 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabApellidoCuidador;
     private javax.swing.JLabel jLabApellidoPaciente;
+    private javax.swing.JLabel jLabCosto;
     private javax.swing.JLabel jLabDNICuidador;
     private javax.swing.JLabel jLabDNIPaciente;
+    private javax.swing.JLabel jLabDesc;
+    private javax.swing.JLabel jLabFFin;
+    private javax.swing.JLabel jLabFInicio;
     private javax.swing.JLabel jLabNombreCuidador;
     private javax.swing.JLabel jLabNombrePaciente;
+    private javax.swing.JLabel jLabTipo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
@@ -226,9 +254,7 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

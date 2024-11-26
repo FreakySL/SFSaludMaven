@@ -18,11 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author santi
  */
 public class ServicioManager {
-    private static ServicioDAO servicioDAO;
-
-    public ServicioManager() {
-        servicioDAO = new ServicioDAO();
-    }
+    private static ServicioDAO servicioDAO = new ServicioDAO();
 
     public void agregarServicio(ServicioDTO servicioDTO) {
         servicioDAO.create(servicioDTO);

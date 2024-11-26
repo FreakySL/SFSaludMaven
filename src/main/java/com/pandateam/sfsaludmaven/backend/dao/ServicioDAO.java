@@ -72,22 +72,22 @@ public class ServicioDAO implements DAO<ServicioDTO> {
 
     public ResultSet filtrarServicios(String documentoPaciente, String documentoCuidador) throws SQLException {
 
-        // Construir la consulta SQL correctamente
-        String sql = "SELECT s.S_ID AS `ID Servicio`,s.S_Descripcion AS Descripcion, s.S_FechaInicio AS `Fecha de Inicio`, s.S_FechaFin AS `Fecha de Fin`, s.S_Tipo AS `Tipo de Servicio`, pa.Per_NumeroDocumento AS `DNI Paciente`, pa.Per_Nombre AS `Nombre Paciente`, pa.Per_Apellido AS `Apellido Paciente`, cu.Per_NumeroDocumento AS `DNI Cuidador`, cu.Per_Nombre AS `Nombre Cuidador`, cu.Per_Apellido AS `Apellido Cuidador`\n"
-                + "FROM servicio s\n"
-                + "RIGHT JOIN persona pa ON s.Per_IDPaciente = pa.Per_ID\n"
-                + "RIGHT JOIN persona cu ON s.Per_IDCuidador = cu.Per_ID\n"
-                + "WHERE pa.Per_NumeroDocumento = ? AND cu.Per_NumeroDocumento = ?;";
+        String sql = "SELECT s.S_ID AS `ID Servicio`, s.S_Descripcion AS Descripcion, s.S_FechaInicio AS `Fecha de Inicio`, s.S_FechaFin AS `Fecha de Fin`, s.S_Tipo AS `Tipo de Servicio`, "
+                + "pa.Per_NumeroDocumento AS `DNI Paciente`, pa.Per_Nombre AS `Nombre Paciente`, pa.Per_Apellido AS `Apellido Paciente`, "
+                + "cu.Per_NumeroDocumento AS `DNI Cuidador`, cu.Per_Nombre AS `Nombre Cuidador`, cu.Per_Apellido AS `Apellido Cuidador` "
+                + "FROM servicio s "
+                + "INNER JOIN persona pa ON s.Per_IDPaciente = pa.Per_ID "
+                + "INNER JOIN persona cu ON s.Per_IDCuidador = cu.Per_ID "
+                + "WHERE pa.Per_NumeroDocumento LIKE ? AND cu.Per_NumeroDocumento LIKE ?";
+
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
-            // Asignar los valores a los parámetros
             pstmt.setString(1, "%" + documentoPaciente + "%");
             pstmt.setString(2, "%" + documentoCuidador + "%");
-            
+
             ResultSet rs = pstmt.executeQuery();
 
-            // Devolver el ResultSet si aún lo necesitas
             return rs;
 
         } catch (SQLException ex) {
