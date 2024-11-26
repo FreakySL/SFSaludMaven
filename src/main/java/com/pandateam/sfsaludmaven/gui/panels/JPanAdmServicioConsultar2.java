@@ -4,6 +4,12 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.dto.CuidadorDTO;
+import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
+import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
+import com.pandateam.sfsaludmaven.backend.managers.CuidadorManager;
+import com.pandateam.sfsaludmaven.backend.managers.PacienteManager;
+import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -27,25 +33,33 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         return idFilaSeleccionada;
     }
 
-    public JPanAdmServicioConsultar2() {
+    public JPanAdmServicioConsultar2(int servicio) throws SQLException {
         initComponents();
+        setServicioID(servicio);
+        cargarDatosServicio();
     }
 
-    private void cargarDatosServicio() {
+    private void cargarDatosServicio() throws SQLException {
         // Aquí llamas al método para obtener y cargar los datos del servicio usando el ID
-        ServicioDTO servicio = servicioDTO.obtenerServicioPorID(servicioID);
+        ServicioDTO servicio = ServicioManager.verServicio(this.servicioID);
+        
         if (servicio != null) {
             jLabDesc.setText(servicio.getDescripcion());
             jLabFInicio.setText(servicio.getFechaInicio().toString());
             jLabFFin.setText(servicio.getFechaFin().toString());
             jLabCosto.setText(String.valueOf(servicio.getCosto()));
-            jLabTipo.setText(servicio.getTipo());
-            jLabNombrePaciente.setText(servicio.getNombrePaciente());
-            jLabApellidoPaciente.setText(servicio.getApellidoPaciente());
-            jLabDNIPaciente.setText(servicio.getDniPaciente());
-            jLabNombreCuidador.setText(servicio.getNombreCuidador());
-            jLabApellidoCuidador.setText(servicio.getApellidoCuidador());
-            jLabDNICuidador.setText(servicio.getDniCuidador());
+            jLabTipo.setText(servicio.getTipoServicio());
+            
+            PacienteDTO paciente = PacienteManager.verPaciente(servicio.getIdPaciente());
+            CuidadorDTO cuidador = CuidadorManager.verCuidador(servicio.getIdCuidador());
+            
+            
+            jLabNombrePaciente.setText(paciente.getNombre());
+            jLabApellidoPaciente.setText(paciente.getApellido());
+            jLabDNIPaciente.setText(paciente.getDni());
+            jLabNombreCuidador.setText(cuidador.getNombre());
+            jLabApellidoCuidador.setText(cuidador.getApellido());
+            jLabDNICuidador.setText(cuidador.getDni());
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el servicio con el ID proporcionado.", "Error", JOptionPane.ERROR_MESSAGE);
         }

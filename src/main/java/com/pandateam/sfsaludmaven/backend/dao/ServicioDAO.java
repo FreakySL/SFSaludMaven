@@ -104,7 +104,7 @@ public class ServicioDAO implements DAO<ServicioDTO> {
             pstmt.setString(2, "%" + documentoCuidador + "%");
 
             ResultSet rs = pstmt.executeQuery();
-
+            
             return rs;
 
         } catch (SQLException ex) {

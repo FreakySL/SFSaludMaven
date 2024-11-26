@@ -12,19 +12,23 @@ import java.sql.SQLException;
  *
  * @author santi
  */
-public class ServicioMapper{
-    
+public class ServicioMapper {
+
     public ServicioDTO map(ResultSet rs) throws SQLException {
-        ServicioDTO servicioDTO = new ServicioDTO();
-        servicioDTO.setIdServicio(rs.getInt("idServicio"));
-        servicioDTO.setDescripcion(rs.getString("descripcion"));
-        servicioDTO.setFechaInicio(rs.getDate("fechaInicio"));
-        servicioDTO.setFechaFin(rs.getDate("fechaFin"));
-        servicioDTO.setCosto(rs.getDouble("costo"));
-        servicioDTO.setTipoServicio(rs.getString("tipoServicio"));
-        servicioDTO.setIdPaciente(rs.getInt("idPaciente"));
-        servicioDTO.setIdCuidador(rs.getInt("idCuidador"));
-        return servicioDTO;
+
+        if (rs.next()) {
+            ServicioDTO servicioDTO = new ServicioDTO();
+            servicioDTO.setIdServicio(rs.getInt("S_ID"));
+            servicioDTO.setDescripcion(rs.getString("S_Descripcion"));
+            servicioDTO.setFechaInicio(rs.getDate("S_FechaInicio"));
+            servicioDTO.setFechaFin(rs.getDate("S_FechaFin"));
+            servicioDTO.setCosto(rs.getDouble("S_Costo"));
+            servicioDTO.setTipoServicio(rs.getString("S_Tipo"));
+            servicioDTO.setIdPaciente(rs.getInt("Per_IDPaciente"));
+            servicioDTO.setIdCuidador(rs.getInt("Per_IDCuidador"));
+            return servicioDTO;
+        }
+        return null;
+
     }
 }
-

@@ -42,9 +42,9 @@ public class JPanAdmServicioConsultar extends javax.swing.JPanel {
         return panel2;
     }
 
-    public JPanAdmServicioConsultar() {
+    public JPanAdmServicioConsultar() throws SQLException {
         initComponents();
-        panel2 = new JPanAdmServicioConsultar2();
+        
         
     }
 
@@ -174,7 +174,11 @@ public class JPanAdmServicioConsultar extends javax.swing.JPanel {
 
         int seleccion = jTableConsultarServicio.getSelectedRow();
         idFilaSeleccionada = (int) jTableConsultarServicio.getValueAt(seleccion, 0);
-        System.out.println(""+idFilaSeleccionada);
+        try {
+            panel2 = new JPanAdmServicioConsultar2(idFilaSeleccionada);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServicioConsultar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jTableConsultarServicioMouseClicked
 
 

@@ -5,7 +5,9 @@
 package com.pandateam.sfsaludmaven.gui.panels;
 
 import com.pandateam.sfsaludmaven.gui.GUIFunctions;
-
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,12 +18,13 @@ public class JPanAdmServicioCalcPresupuestoBase extends javax.swing.JPanel {
     /**
      * Creates new form JPanAdmPacientesConsultar
      */
-    private int pantalla = 1;
-    
-    public JPanAdmServicioCalcPresupuestoBase() {
+    private JPanAdmServicioConsultar pan;
+    private JPanAdmServicioPresupuesto3 pan3;
+
+    public JPanAdmServicioCalcPresupuestoBase() throws SQLException {
         initComponents();
-        JPanAdmServicioConsultar pan = new JPanAdmServicioConsultar();
-        GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
+        pan = new JPanAdmServicioConsultar();
+        GUIFunctions.showPanel(pan, JPanelContentConsServicio, 650, 456);
     }
 
     /**
@@ -103,55 +106,25 @@ public class JPanAdmServicioCalcPresupuestoBase extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        // TODO add your handling code here:
-        
-        
-        switch (pantalla){
-            case 1: {
-                JPanAdmServicioConsultar2 pan = new JPanAdmServicioConsultar2();
-                GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
-                jButtonAnterior.setEnabled(true);
-                jButtonSiguiente.setEnabled(true);
-                break;
-            }
-            case 2: {
-                JPanAdmServicioPresupuesto3 pan = new JPanAdmServicioPresupuesto3();
-                GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
-                jButtonAnterior.setEnabled(true);
-                jButtonSiguiente.setEnabled(false);
-                break;
-            }
+
+        jButtonAnterior.setEnabled(true);
+        jButtonSiguiente.setEnabled(false);
+        try {
+            pan3 = new JPanAdmServicioPresupuesto3(pan.getServicioIDSeleccionado());
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServicioCalcPresupuestoBase.class.getName()).log(Level.SEVERE, null, ex);
         }
-        pantalla ++;
-        System.out.println(pantalla);
+
+        GUIFunctions.showPanel(pan3, JPanelContentConsServicio, 650, 456);
+
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        // TODO add your handling code here:
-        switch (pantalla){
-            case 1: {
-                
-                jButtonAnterior.setEnabled(false);
-                jButtonSiguiente.setEnabled(true);
-                break;
-            }
-            case 2: {
-                JPanAdmServicioConsultar pan = new JPanAdmServicioConsultar();
-                GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
-                jButtonAnterior.setEnabled(false);
-                jButtonSiguiente.setEnabled(true);
-                break;
-            }
-            case 3: {
-                JPanAdmServicioConsultar2 pan = new JPanAdmServicioConsultar2();
-                GUIFunctions.showPanel(pan, JPanelContentConsServicio,650, 456);
-                jButtonAnterior.setEnabled(true);
-                jButtonSiguiente.setEnabled(true);
-                break;
-            }
-        }
-        pantalla --;
-        System.out.println(pantalla);
+
+        GUIFunctions.showPanel(pan, JPanelContentConsServicio, 650, 456);
+        jButtonAnterior.setEnabled(false);
+        jButtonSiguiente.setEnabled(true);
+
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
 

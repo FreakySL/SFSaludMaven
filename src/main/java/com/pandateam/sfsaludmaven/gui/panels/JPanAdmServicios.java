@@ -6,6 +6,9 @@ package com.pandateam.sfsaludmaven.gui.panels;
 
 import com.pandateam.sfsaludmaven.gui.GUIFunctions;
 import java.awt.BorderLayout;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -147,9 +150,13 @@ public class JPanAdmServicios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanButtonConsultarServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonConsultarServiciosMouseClicked
-        // TODO add your handling code here:
-        JPanAdmServicioConsultarBase pan = new JPanAdmServicioConsultarBase();
-        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
+        try {
+            // TODO add your handling code here:
+            JPanAdmServicioConsultarBase pan = new JPanAdmServicioConsultarBase();
+            GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServicios.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jPanButtonConsultarServiciosMouseClicked
 
@@ -161,9 +168,13 @@ public class JPanAdmServicios extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanButtonCargarServicioMouseClicked
 
     private void jPanButtonCalcularPresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanButtonCalcularPresMouseClicked
-        // TODO add your handling code here:
-        JPanAdmServicioCalcPresupuestoBase pan = new JPanAdmServicioCalcPresupuestoBase();
-        GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
+        try {
+            // TODO add your handling code here:
+            JPanAdmServicioCalcPresupuestoBase pan = new JPanAdmServicioCalcPresupuestoBase();
+            GUIFunctions.showPanel(pan, jPanContentPacientes,650, 500);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServicios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jPanButtonCalcularPresMouseClicked
 
 

@@ -24,7 +24,7 @@ public class ServicioManager {
         servicioDAO.create(servicioDTO);
     }
     
-    public ServicioDTO verServicio(int id) throws SQLException {
+    public static ServicioDTO verServicio(int id) throws SQLException {
         return servicioDAO.read(id);
     }
     

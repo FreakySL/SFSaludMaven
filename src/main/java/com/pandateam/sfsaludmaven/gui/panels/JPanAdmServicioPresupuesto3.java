@@ -4,8 +4,16 @@
  */
 package com.pandateam.sfsaludmaven.gui.panels;
 
+import com.pandateam.sfsaludmaven.backend.dto.AtencionDTO;
+import com.pandateam.sfsaludmaven.backend.dto.ServicioDTO;
+import com.pandateam.sfsaludmaven.backend.managers.AtencionManager;
+import com.pandateam.sfsaludmaven.backend.managers.ServicioManager;
 import com.pandateam.sfsaludmaven.gui.GUIFunctions;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,14 +25,34 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
      * Creates new form JPanAdmPacientesConsultar
      */
     private static int idFilaSeleccionada = -1;
-    
-    public int getIdPacienteSeleccionado(){
+    private int servicioID;
+
+    public void setServicioID(int servicioID) {
+        this.servicioID = servicioID;
+    }
+
+    public int getIdPacienteSeleccionado() {
         return idFilaSeleccionada;
     }
-    
-    public JPanAdmServicioPresupuesto3() {
+
+    public JPanAdmServicioPresupuesto3(int id) throws SQLException {
         initComponents();
-        
+        servicioID = id;
+        List <AtencionDTO> atenciones = new ArrayList();
+        atenciones = AtencionManager.obtenerAtencionesDeServicio(id);
+        int cantidadAtenciones=atenciones.size();
+        double horas = AtencionManager.obtenerHorasDeAtenciones(atenciones);
+        jLabCantAtenciones.setText(""+cantidadAtenciones);
+        jLabCantHoras.setText(""+horas);
+    }
+
+    private double calcularPresupuesto() throws SQLException {
+        // Aquí llamas al método para obtener y cargar los datos del servicio usando el ID
+        ServicioDTO servicio = ServicioManager.verServicio(servicioID);
+        Number costoXHoraValue = (Number) jSpinnerPrecioHora.getValue();
+        double costoXHora = costoXHoraValue.doubleValue(); // Convertir a double
+        return ServicioManager.calcularPresupuesto(servicio, costoXHora);
+
     }
 
     /**
@@ -94,6 +122,8 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
         jLabCostoServicio.setForeground(new java.awt.Color(102, 102, 102));
         jLabCostoServicio.setText("___________");
 
+        jSpinnerPrecioHora.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         jButtonCalcular.setText("Calcular");
         jButtonCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,31 +138,34 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabCostoServicio))
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonCalcular)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jSpinnerPrecioHora))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabCantAtenciones)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel7)))
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSpinnerPrecioHora))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabCantHoras)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)))
-                .addContainerGap(232, Short.MAX_VALUE))
+                                .addComponent(jLabCantAtenciones)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabCantHoras)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel9))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jButtonCalcular))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabCostoServicio)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,19 +183,25 @@ public class JPanAdmServicioPresupuesto3 extends javax.swing.JPanel {
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10))
-                    .addComponent(jSpinnerPrecioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jSpinnerPrecioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonCalcular)))
+                .addGap(149, 149, 149)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabCostoServicio))
-                .addGap(31, 31, 31)
-                .addComponent(jButtonCalcular)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
-        // TODO add your handling code here:
+        try {
+            double costo = calcularPresupuesto();
+            jLabCostoServicio.setText(""+costo);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanAdmServicioPresupuesto3.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButtonCalcularActionPerformed
 
 
