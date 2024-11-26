@@ -32,8 +32,9 @@ public class SocioDAO implements DAO<SocioDTO> {
     public boolean create(SocioDTO object) {
         String sql = "INSERT INTO socio (Per_ID, S_NumeroSocio, Sus_ID) VALUES (?,?,?);";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, object.getNumAfiliado());
-            pstmt.setInt(2, object.getSuscripcionId());
+            pstmt.setInt(1, object.getIdSocio());
+            pstmt.setString(2, object.getNumAfiliado());
+            pstmt.setInt(3, object.getSuscripcionId());
 
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Carga exitosa");

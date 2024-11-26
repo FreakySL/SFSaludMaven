@@ -26,6 +26,10 @@ public class SuscripcionManager {
     public static void crearSuscripcion(SuscripcionDTO suscripcion) {
         suscripcionDAO.create(suscripcion);
     }
+    
+    public static SuscripcionDTO verSuscripcion(int id) throws SQLException {
+        return suscripcionDAO.read(id);
+    }
 
     public static boolean agregarSuscripcion(PacienteDTO paciente, String plan, Date fecha, int descuento) {
 

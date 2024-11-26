@@ -24,6 +24,10 @@ public class ServicioManager {
         servicioDAO.create(servicioDTO);
     }
     
+    public ServicioDTO verServicio(int id) throws SQLException {
+        return servicioDAO.read(id);
+    }
+    
     public static double calcularHorasServicio(int cantAtenciones, int cantHorasDia, double costoHora){
         /*
         long tiempoTranscurrido = fFin.getTime() - fInicio.getTime();

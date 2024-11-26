@@ -23,6 +23,11 @@ public class SuscripcionDAO implements DAO<SuscripcionDTO> {
 
     private Connection connection;
     private SuscripcionMapper suscripcionMapper;
+    
+    public SuscripcionDAO() {
+        connection = DatabaseManager.getInstance().getConnection();
+        suscripcionMapper = new SuscripcionMapper();
+    }
 
     @Override
     public boolean create(SuscripcionDTO object) {
