@@ -18,14 +18,14 @@ import javax.swing.table.DefaultTableModel;
  * @author santi
  */
 public class ServicioManager {
-    private static ServicioDAO servicioDAO;
-
-    public ServicioManager() {
-        servicioDAO = new ServicioDAO();
-    }
+    private static ServicioDAO servicioDAO = new ServicioDAO();
 
     public void agregarServicio(ServicioDTO servicioDTO) {
         servicioDAO.create(servicioDTO);
+    }
+    
+    public ServicioDTO verServicio(int id) throws SQLException {
+        return servicioDAO.read(id);
     }
     
     public static double calcularHorasServicio(int cantAtenciones, int cantHorasDia, double costoHora){

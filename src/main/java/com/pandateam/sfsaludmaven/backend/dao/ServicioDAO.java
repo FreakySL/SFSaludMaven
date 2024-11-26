@@ -51,8 +51,25 @@ public class ServicioDAO implements DAO<ServicioDTO> {
     }
 
     @Override
-    public ServicioDTO read(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ServicioDTO read(int id) throws SQLException {
+        String sql = "SELECT * \n"
+                + "FROM servicio\n"
+                + "WHERE servicio.S_ID = ?;";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            // Asignar los valores a los parámetros
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            return servicioMapper.map(rs);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
     @Override
