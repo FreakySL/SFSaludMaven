@@ -336,7 +336,7 @@ public class JPanAdmSuscripcionAsignar extends javax.swing.JPanel {
             SuscripcionDTO suscripcion = SuscripcionManager.encontrarPorTitular(jTextFieldDNITitular.getText());
             PacienteDTO paciente = PacienteManager.verPaciente(idPacienteSeleccionado);
             
-            System.out.println(""+paciente);
+            //System.out.println(""+paciente);
             
             SocioManager.asignarSuscripcion(paciente, suscripcion, index);
         } catch (SQLException ex) {
@@ -356,7 +356,7 @@ public class JPanAdmSuscripcionAsignar extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonBuscarNoSocioActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        System.out.println("" + jComboBox1.getSelectedIndex());
+        //System.out.println("" + jComboBox1.getSelectedIndex());
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 

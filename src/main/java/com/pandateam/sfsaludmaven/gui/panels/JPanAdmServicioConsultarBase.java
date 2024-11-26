@@ -114,7 +114,7 @@ public class JPanAdmServicioConsultarBase extends javax.swing.JPanel {
         //GUIFunctions.showPanel(pan2, JPanelContentConsServicio, 650, 456);
         
         int servicioID = panelConsultar.getServicioIDSeleccionado();
-        System.out.println(""+servicioID);
+        //System.out.println(""+servicioID);
         if (servicioID == -1) {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un servicio antes de continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {

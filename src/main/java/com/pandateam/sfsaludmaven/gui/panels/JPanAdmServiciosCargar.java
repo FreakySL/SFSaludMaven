@@ -892,7 +892,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtSiguiente7ActionPerformed
 
     private void jButtConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtConfirmarActionPerformed
-        System.out.println(dto.toString());
+        //System.out.println(dto.toString());
         servicioManager.agregarServicio(dto);
         
         // TODO add your handling code here:
