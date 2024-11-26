@@ -7,7 +7,9 @@ package daoTest;
 import com.pandateam.sfsaludmaven.backend.dao.PacienteDAO;
 import com.pandateam.sfsaludmaven.backend.dto.PacienteDTO;
 import java.sql.SQLException;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +26,7 @@ public class PacienteDAOTest {
         pacienteDAO = new PacienteDAO();
     }
 
+    
     @Test
     public void testConsultar() throws SQLException {
 
@@ -39,5 +42,18 @@ public class PacienteDAOTest {
             e.printStackTrace();
         }
 
+    }
+    
+    @Test
+    public void testTieneSus() throws SQLException {
+        assertTrue(pacienteDAO.isSuscripto(1));
+        assertTrue(pacienteDAO.isSuscripto(2));
+        assertTrue(pacienteDAO.isSuscripto(3));
+        assertFalse(pacienteDAO.isSuscripto(5));
+    }
+    
+    @Test
+    public void buscarPorDNI() throws SQLException {
+        assertNotNull(pacienteDAO.buscarPorDNI("34567890"));
     }
 }

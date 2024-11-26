@@ -6,6 +6,7 @@ package com.pandateam.sfsaludmaven.backend.managers;
 
 import com.pandateam.sfsaludmaven.backend.dao.AtencionDAO;
 import com.pandateam.sfsaludmaven.backend.dto.AtencionDTO;
+import static java.lang.Math.abs;
 import java.sql.Time;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +30,7 @@ public class AtencionManager {
             Time horaInicio = atencion.getHoraInicio();
             Time horaFin = atencion.getHoraFinal();
             // Calcular la diferencia en milisegundos 
-            long diferenciaMillis = horaFin.getTime() - horaInicio.getTime(); 
+            long diferenciaMillis = abs(horaFin.getTime() - horaInicio.getTime()); 
             // Convertir la diferencia a minutos 
             long diferenciaMinutos = TimeUnit.MILLISECONDS.toMinutes(diferenciaMillis);
             totalMinutos += diferenciaMinutos;
