@@ -39,7 +39,6 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabIDServicio = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -84,11 +83,6 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Descripción:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 67, -1, -1));
-
-        jLabIDServicio.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabIDServicio.setForeground(new java.awt.Color(0, 0, 0));
-        jLabIDServicio.setText("-");
-        add(jLabIDServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 16, 269, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
@@ -213,7 +207,6 @@ public class JPanAdmServicioConsultar2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabApellidoPaciente;
     private javax.swing.JLabel jLabDNICuidador;
     private javax.swing.JLabel jLabDNIPaciente;
-    private javax.swing.JLabel jLabIDServicio;
     private javax.swing.JLabel jLabNombreCuidador;
     private javax.swing.JLabel jLabNombrePaciente;
     private javax.swing.JLabel jLabel1;

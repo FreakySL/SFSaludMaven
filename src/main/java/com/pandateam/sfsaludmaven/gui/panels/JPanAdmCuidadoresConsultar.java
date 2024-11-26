@@ -8,6 +8,7 @@ import com.pandateam.sfsaludmaven.backend.managers.CuidadorManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,12 +21,24 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
      * Creates new form JPanAdmPacientesConsultar
      */
     private Object[] o = new Object[5];
-    private int idCuidadorSeleccionado = -1;
+    private static int idCuidadorSeleccionado = -1;
 
     public int getIdCuidadorSeleccionado() {
         return idCuidadorSeleccionado;
     }
-
+    
+    public static boolean getSeleccion() {
+        idCuidadorSeleccionado = jTableConsultaCuidador.getSelectedRow();
+        if (idCuidadorSeleccionado == -1) {
+            // Mostrar mensaje de advertencia si no hay selección 
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un elemento de la tabla antes de continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else {
+            // Proceder con la acción siguiente 
+            return true;
+        }
+    }
+    
     public JPanAdmCuidadoresConsultar() {
         initComponents();
         try {
@@ -127,6 +140,6 @@ public class JPanAdmCuidadoresConsultar extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableConsultaCuidador;
+    private static javax.swing.JTable jTableConsultaCuidador;
     // End of variables declaration//GEN-END:variables
 }

@@ -292,12 +292,18 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         JDCFechaInicio.setBackground(new java.awt.Color(255, 255, 255));
         JDCFechaInicio.setForeground(new java.awt.Color(0, 0, 0));
         jPanTabDatosServicio.add(JDCFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 164, -1));
+
+        JSpinCantAtenciones.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanTabDatosServicio.add(JSpinCantAtenciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 171, 164, -1));
 
         JDCFechaFin.setBackground(new java.awt.Color(255, 255, 255));
         JDCFechaFin.setForeground(new java.awt.Color(0, 0, 0));
         jPanTabDatosServicio.add(JDCFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 164, -1));
+
+        jSpinCantHorasDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanTabDatosServicio.add(jSpinCantHorasDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 211, 164, -1));
+
+        JSpinCostoHora.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanTabDatosServicio.add(JSpinCostoHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 251, 164, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
@@ -327,7 +333,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel7.setText("Costo por Hora establecido:");
+        jLabel7.setText("Descripción:");
         jPanTabDatosServicio.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         jButtSiguiente1.setBackground(new java.awt.Color(0, 153, 153));
@@ -358,7 +364,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
         jPanCostoServicioLayout.setHorizontalGroup(
             jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabCostoServicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 230, Short.MAX_VALUE)
         );
         jPanCostoServicioLayout.setVerticalGroup(
             jPanCostoServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -774,6 +780,7 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
     private void jButtCalcular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtCalcular1ActionPerformed
         // TODO add your handling code here:
         //((Integer)JSpinCantAtenciones.getValue()).intValue(),((Integer)jSpinCantHorasDia.getValue()).intValue(),
+        int peso = 0;
         int cantAtenciones = ((Integer) JSpinCantAtenciones.getValue());
         int cantHorasDia = ((Integer) jSpinCantHorasDia.getValue());
 
@@ -789,57 +796,82 @@ public class JPanAdmServiciosCargar extends javax.swing.JPanel {
 
         setPrecio(precioServ);
         jLabCostoServicio.setText("$" + precioServ);
-        dto.setFechaInicio(JDCFechaInicio.getDate());
-        dto.setFechaFin(JDCFechaFin.getDate());
+        
+        if (JDCFechaInicio.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fecha de Inicio.", "Advertencia", JOptionPane.WARNING_MESSAGE); 
+        } else { 
+            dto.setFechaInicio(JDCFechaInicio.getDate());
+            peso++;
+        }
+        
+        if (JDCFechaFin.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fecha de Fin.", "Advertencia", JOptionPane.WARNING_MESSAGE); 
+        } else { 
+            dto.setFechaFin(JDCFechaFin.getDate());
+            peso++;
+        }
+        
         dto.setDescripcion(jTextAreaDesc.getText());
         dto.setTipoServicio(jCBTipoServicio.getItemAt(jCBTipoServicio.getSelectedIndex()).toString());
         dto.setCosto(precioServ);
         
-        //activo el boton siguiente
-        jButtSiguiente1.setEnabled(true);
+        if(peso==2){
+           jButtSiguiente1.setEnabled(true);
+        } else {
+           jButtSiguiente1.setEnabled(false);
+        }
+        
+        
     }//GEN-LAST:event_jButtCalcular1ActionPerformed
 
     private void jButtSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente2ActionPerformed
         //Confirmacion del cuidador
         CuidadorDTO cuiDTO = new CuidadorDTO();
-        try {
-            cuiDTO = CuidadorManager.verCuidador(cuidadores.getIdCuidadorSeleccionado());
-        } catch (SQLException ex) {
-            Logger.getLogger(JPanAdmServiciosCargar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jLabConfNombreCuidador.setText(cuiDTO.getNombre());
-        jLabConfApellidoCuidador.setText(cuiDTO.getApellido());
-        jLabConfDNICuidador.setText(cuiDTO.getDni());
-        jLabConfProfesionCuidador.setText(cuiDTO.getProfesion());
         
-        //Confirmacion del servicio
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String fechaInicio = dateFormat.format(dto.getFechaInicio());
-        String fechaFin = dateFormat.format(dto.getFechaFin());
-        jLabConfFFin.setText(fechaFin);
-        jLabConfFInicio.setText(fechaInicio);
-        jLabConfCantAtenciones.setText(JSpinCantAtenciones.getValue().toString());
-        jLabCostoTotalServicio.setText("$" + dto.getCosto());
-        dto.setIdCuidador(cuidadores.getIdCuidadorSeleccionado());
-        
+        if(JPanAdmCuidadoresConsultar.getSeleccion()){
+            
+            try {
+                cuiDTO = CuidadorManager.verCuidador(cuidadores.getIdCuidadorSeleccionado());
+            } catch (SQLException ex) {
+                Logger.getLogger(JPanAdmServiciosCargar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jLabConfNombreCuidador.setText(cuiDTO.getNombre());
+            jLabConfApellidoCuidador.setText(cuiDTO.getApellido());
+            jLabConfDNICuidador.setText(cuiDTO.getDni());
+            jLabConfProfesionCuidador.setText(cuiDTO.getProfesion());
 
-        jTabbedPaneCargarServicios.setSelectedIndex(3);
+            //Confirmacion del servicio
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String fechaInicio = dateFormat.format(dto.getFechaInicio());
+            String fechaFin = dateFormat.format(dto.getFechaFin());
+            jLabConfFFin.setText(fechaFin);
+            jLabConfFInicio.setText(fechaInicio);
+            jLabConfCantAtenciones.setText(JSpinCantAtenciones.getValue().toString());
+            jLabCostoTotalServicio.setText("$" + dto.getCosto());
+            dto.setIdCuidador(cuidadores.getIdCuidadorSeleccionado());
+            
+            jTabbedPaneCargarServicios.setSelectedIndex(3);
+        }
+        
     }//GEN-LAST:event_jButtSiguiente2ActionPerformed
 
     private void jButtSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente4ActionPerformed
         //Confirmacion del paciente
         PacienteDTO pacDTO = new PacienteDTO();
-        try {
-            pacDTO = PacienteManager.verPaciente(pacientes.getIdPacienteSeleccionado());
-        } catch (SQLException ex) {
-            Logger.getLogger(JPanAdmServiciosCargar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jLabConfNombrePaciente.setText(pacDTO.getNombre());
-        jLabConfApellidoPaciente.setText(pacDTO.getApellido());
-        jLabConfDNIPaciente.setText(pacDTO.getDni());
-        jLabConfNroSocio.setText(pacDTO.getSuscrip());
-        jTabbedPaneCargarServicios.setSelectedIndex(2);
-        dto.setIdPaciente(pacientes.getIdPacienteSeleccionado());
+        if(JPanAdmPacientesConsultar.getSeleccion()){
+            try {
+                pacDTO = PacienteManager.verPaciente(pacientes.getIdPacienteSeleccionado());
+            } catch (SQLException ex) {
+                Logger.getLogger(JPanAdmServiciosCargar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jLabConfNombrePaciente.setText(pacDTO.getNombre());
+            jLabConfApellidoPaciente.setText(pacDTO.getApellido());
+            jLabConfDNIPaciente.setText(pacDTO.getDni());
+            jLabConfNroSocio.setText(pacDTO.getSuscrip());
+            jTabbedPaneCargarServicios.setSelectedIndex(2);
+            dto.setIdPaciente(pacientes.getIdPacienteSeleccionado());
+        } 
+        
     }//GEN-LAST:event_jButtSiguiente4ActionPerformed
 
     private void jButtSiguiente5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtSiguiente5ActionPerformed

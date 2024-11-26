@@ -9,6 +9,7 @@ import com.pandateam.sfsaludmaven.gui.GUIFunctions;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -27,6 +28,19 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
     public static int getIdPacienteSeleccionado(){
         return idPacienteSeleccionado;
     }
+    
+    public static boolean getSeleccion(){
+        idPacienteSeleccionado = jTableConsultaPaciente.getSelectedRow();
+        if (idPacienteSeleccionado == -1){ 
+            // Mostrar mensaje de advertencia si no hay selección 
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona un elemento de la tabla antes de continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else { 
+            // Proceder con la acción siguiente 
+            return true;
+        }
+    }
+    
     /*
     public int getDNIPaciente(){
         int dni = (int) jTableConsultaPaciente.getValueAt(idPacienteSeleccionado, 3);
@@ -266,6 +280,6 @@ public class JPanAdmPacientesConsultar extends javax.swing.JPanel {
     private javax.swing.JTextField jTFDNIPaciente;
     private javax.swing.JTextField jTFNombrePaciente;
     private javax.swing.JTextField jTFNroAfiliadoPaciente;
-    private javax.swing.JTable jTableConsultaPaciente;
+    private static javax.swing.JTable jTableConsultaPaciente;
     // End of variables declaration//GEN-END:variables
 }
